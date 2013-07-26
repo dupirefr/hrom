@@ -1,0 +1,57 @@
+#Webmaster
+hrom_webmaster:
+    resource: "@HROMWebmasterBundle/Resources/config/routing.yml"
+    prefix:   /wm
+
+#Admin
+hrom_admin:
+    resource: "@HROMAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+    
+#Core
+hrom_core:
+    resource: "@HROMCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#News
+hrom_news:
+    resource: "@HROMNewsBundle/Resources/config/routing.yml"
+    prefix:   /news
+
+hrom_news_admin:
+    resource: "@HROMNewsBundle/Resources/config/admin.yml"
+    prefix:   /admin/news
+    
+#Gallery
+hrom_gallery:
+    resource: "@HROMGalleryBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+#FOSUser config    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+ 
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+ 
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+ 
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+ 
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+    
+# Internal routing configuration to handle ESI
+# ****** WARNING ******
+# This route should be enabled with caution as it can open a security vulnerability
+# see http://symfony.com/blog/security-release-symfony-2-0-20-and-2-1-5-released for more information
+# ****** WARNING ******
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal

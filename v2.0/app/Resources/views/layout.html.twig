@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>{% block title %}HROM{% endblock %}</title>
+        
+        <meta name="description" content="{% block meta_description %}{% endblock %}" />
+        
+        {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+        {% endblock %}
+        
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div id="header">
+            <table>
+                <tr>
+                    <td id="logo"><img src="{{ asset('images/logo.png') }}" alt="logo" /></td>
+                    <td id="header_title"><h1>{% block header_title %}{% endblock %}</h1></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="body">
+            <div id="left_part">
+                <ul>
+					{% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+						
+                    <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
+                    <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
+                    <li {% if currentRoute == path('calendar') %}class="selected"{% endif %}><a href="{{ path('calendar') }}">Agenda</a></li>
+                    <li {% if currentRoute == path('galery') %}class="selected"{% endif %}><a href="{{ path('galery') }}">Photos</a></li>
+                    <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
+					<li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
+		    
+		    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
+			<hr />
+			{% if is_granted("ROLE_ADMIN") %}
+			    <li {% if '/admin/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('admin_home') }}">Administration</a></li>
+			{% endif %}
+
+			{% if is_granted("ROLE_WEBMASTER") %}
+			    <li {% if '/wm/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('wm_home') }}">Webmastering</a></li>
+			{% endif %}
+		    {% endif %}
+                </ul>
+            </div>
+
+            <div id="main">
+                <div id="connect">
+		    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+			<a href="{{ path('fos_user_security_logout') }}">
+			    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+			</a>
+		    {% else %}
+			<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+		    {% endif %}
+                </div>
+                    
+                <div id="content">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <hr />
+        </div>
+        
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<div class="news">
+	<h1>{{ news.title }}</h1>
+	
+	<div class="body">
+		{% if not (picture is empty) %}<img src="" alt="" />{% endif %}
+		{{ news.content }}
+			
+		<span class="signature">Ecrit par {{ news.author.surname }} {{ news.author.givenName }} le {{ news.instant|date("d/m/Y à H:i") }}</span>
+	</div>
+</div>

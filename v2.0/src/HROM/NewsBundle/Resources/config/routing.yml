@@ -1,0 +1,9 @@
+news_oversight:
+    path:	/
+    defaults:	{ _controller:	HROMNewsBundle:News:oversight }
+    
+news_specific:
+    path:	/{id}
+    defaults:	{ _controller:	HROMNewsBundle:News:specific }
+    requirements:
+        id:	\d+

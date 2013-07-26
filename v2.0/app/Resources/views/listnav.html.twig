@@ -1,0 +1,13 @@
+<div class="listnav">
+	{% if page > 1 %}
+		<a href="{{ path(navRoute, {'page' : 1}) }}"><<</a>
+		<a href="{{ path(navRoute, {'page' : page - 1}) }}"><</a>
+	{% endif %}
+		
+	page : {{ page }}
+	
+	{% if page < pageCount %}
+		<a href="{{ path(navRoute, {'page' : page + 1}) }}">></a>
+		<a href="{{ path(navRoute, {'page' : pageCount}) }}">>></a>
+	{% endif %}
+</div>

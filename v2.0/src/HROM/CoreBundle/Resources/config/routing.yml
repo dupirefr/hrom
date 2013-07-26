@@ -1,0 +1,21 @@
+welcome:
+    path:  /
+    defaults: { _controller: HROMCoreBundle:Core:root }
+home:
+    path:	/home
+    defaults:	{ _controller: HROMCoreBundle:Core:index }
+school:
+    path:  /school
+    defaults: { _controller: HROMCoreBundle:Core:school }
+calendar:
+    path:  /calendar
+    defaults: { _controller: HROMCoreBundle:Core:calendar }
+galery:
+    path:  /gallery
+    defaults: { _controller: HROMCoreBundle:Core:gallery }
+contact_us:
+    path:  /contactus
+    defaults: { _controller: HROMCoreBundle:Core:contactUs }
+links:
+    path:  /links
+    defaults: { _controller: HROMCoreBundle:Core:links }
