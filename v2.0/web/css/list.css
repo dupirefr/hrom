@@ -1,0 +1,11 @@
+/*Listings*/
+.listing {
+    width: 100%;
+}
+
+.listnav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    text-align: center;
+}

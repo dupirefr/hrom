@@ -8,7 +8,7 @@
         <meta name="description" content="{% block meta_description %}{% endblock %}" />
         
         {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
         {% endblock %}
         
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -26,7 +26,7 @@
         <div id="body">
             <div id="left_part">
                 <ul>
-					{% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                    {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 						
                     <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
                     <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
@@ -64,10 +64,6 @@
                     {% block body %}{% endblock %}
                 </div>
             </div>
-        </div>
-        
-        <div id="footer">
-            <hr />
         </div>
         
         {% block javascripts %}{% endblock %}

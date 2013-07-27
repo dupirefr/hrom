@@ -1,0 +1,38 @@
+/*Forms*/
+#content form {
+    width: 90%;
+    
+    margin: auto;
+    
+    font-size: 12pt;
+    
+    border: solid black 2px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+form table {
+    width: 100%;
+}
+
+form th {
+    min-width: 15%;
+    
+    text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+}
+
+form .field {
+    min-width: 30%;
+}
+
+.buttonZone {
+    text-align: center;
+}
+
+.required:after {
+    content: "*";
+}

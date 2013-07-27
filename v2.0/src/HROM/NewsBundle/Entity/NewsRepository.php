@@ -17,5 +17,7 @@ class NewsRepository extends EntityRepository {
 		$qb
 			->select('count(news)')
 			->from('HROMNewsBundle:News', 'news');
+                
+                return $qb->getQuery()->getSingleScalarResult();
 	}
 }

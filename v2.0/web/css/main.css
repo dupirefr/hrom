@@ -1,24 +1,31 @@
-/* 
-    Document   : main
-    Created on : 23-janv.-2013, 11:26:58
-    Author     : François Dupire
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
 /*General*/
-body { 
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
     width: 100%;
     
     margin: 0px;
     
     font-family: Georgia, "DejaVu Serif", Norasi, serif;
+    
+    background-color: #677E52;
 }
 
 h2 {
     color: #52251C;
     font-size: 15pt;
     font-weight: bold;
+}
+
+a {
+    color: black;
+}
+
+p[align="center"] {
+    text-align: center;
 }
 
 #description {
@@ -36,10 +43,8 @@ h2 {
 }
 
 /*Header*/
-#header {     
-    height: 200px;
-    
-    background-color: #677E52;
+#header {
+    height: 20%;
 }
 
 #header table {
@@ -58,23 +63,20 @@ h2 {
     font-size: 16pt;
     color: #F6E8B1;
     text-align: center;
-    /*text-decoration: underline;*/
 }
 
 /*Body*/
-#body {
-    min-height: 600px;
-    height: 1px;
+#body {    
+    min-height: 100%;
 }
 
     /*Menu*/
     #left_part {
-        height: 100%;
-        min-width: 10%;
-
-        background-color: #677E52;
+        position: absolute;
+        top: 20%;
         
-        float: left;
+        min-height: 100%;
+        width: 15%;
         
         font-size: 15pt;
     }
@@ -124,16 +126,18 @@ h2 {
 
     /*Content*/
     #main {
-        height: 100%;
-        width: 90%;
+        position: absolute;
+        top: 20%;
+        left: 15%;
         
-        margin-left: 10%;
+        min-height: 100%;
+        width: 85%;
 
         background-color: #B7CA79;
     }
     
     #content {
-        height: 100%;
+        min-height: 100%;
         width: 95%;
 	
 	margin: auto;
@@ -149,64 +153,3 @@ h2 {
             
             text-align: right;
        }
-       
-       #connect a {
-	   color: black;
-       }
-
-/*Listings*/
-.listing {
-    width: 100%;
-}
-
-.listnav {
-	width: 100%;
-	
-	text-align: center;
-}
-
-/*Forms*/
-#content form {
-    width: 90%;
-    
-    margin: auto;
-    
-    font-size: 12pt;
-    
-    border: solid black 2px;
-}
-
-legend {
-    font-weight: bold;
-}
-
-form table {
-    width: 100%;
-}
-
-form th {
-    min-width: 15%;
-    
-    text-align: left;
-    vertical-align: top;
-    font-weight: normal;
-}
-
-form .field {
-    min-width: 30%;
-}
-
-.buttonZone {
-    text-align: center;
-}
-
-.required:after {
-    content: "*";
-}
-
-/*Footer*/
-#footer {
-    height: 150px;
-    
-    margin-bottom: 0px;
-}

@@ -4,7 +4,7 @@
 		<a href="{{ path(navRoute, {'page' : page - 1}) }}"><</a>
 	{% endif %}
 		
-	page : {{ page }}
+	page : {{ page }} / {{ pageCount }}
 	
 	{% if page < pageCount %}
 		<a href="{{ path(navRoute, {'page' : page + 1}) }}">></a>

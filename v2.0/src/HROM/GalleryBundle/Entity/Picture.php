@@ -119,16 +119,16 @@ class Picture
      */
     public function setFile(UploadedFile $file)
     {
-		$this->file = $file;
+        $this->file = $file;
 
-		if($this->extension !== null) {
-			$this->tempFilename = $this->extension;
+        if($this->extension !== null) {
+            $this->tempFilename = $this->extension;
 
-			$this->alt = null;
-			$this->extension = null;
-		}
+            $this->alt = null;
+            $this->extension = null;
+        }
 
-		return $this;
+        return $this;
     }
     
     /**
@@ -138,7 +138,7 @@ class Picture
      */
     public function getFile()
     {
-		return $this->file;
+        return $this->file;
     }
 
     /**
@@ -171,7 +171,7 @@ class Picture
      * @return string le répertoire de l'image.
      */
     public function getPictureDir() {
-		return 'images/';
+        return 'images';
     }
     
     /**
@@ -180,7 +180,11 @@ class Picture
      * @return string le répertoire relatif de l'image.
      */
     public function getRootPictureDir() {
-		return __DIR__ . '../../../../web/' . $this->getPictureDir();
+	return __DIR__ . '../../../../../web/' . $this->getPictureDir();
+    }
+    
+    public function getWebPath() {
+        return $this->getPictureDir() . '/' . $this->id . '.' . $this->extension;
     }
     
     /**
@@ -190,13 +194,13 @@ class Picture
      * @ORM\PreUpdate()
      */
     public function preUpload() {
-		if($this->file === null) {
-			return;
+        if($this->file === null) {
+            return;
 
-		} else {
-			$this->extension = $this->file->guessExtension();
-			$this->alt = $this->file->getClientOriginalName();
-		}
+        } else {
+            $this->extension = $this->file->guessExtension();
+            $this->alt = $this->file->getClientOriginalName();
+        }
     }
     
     /**
@@ -206,20 +210,20 @@ class Picture
      * @ORM\PostUpdate()
      */
     public function upload() {
-		if($this->file === null) {
-			return;
+        if($this->file === null) {
+            return;
 
-		} else {
-			if($this->tempFilename !== null) {
-			$oldFile = $this->getRootPictureDir() . '/' . $this->id;
+        } else {
+            if($this->tempFilename !== null) {
+                $oldFile = $this->getRootPictureDir() . '/' . $this->id;
 
-			if(file_exists($oldFile)) {
-				unlink($oldFile);
-			}
-			}
+                if(file_exists($oldFile)) {
+                        unlink($oldFile);
+                }
+            }
 
-			$this->file->move($this->getRootPictureDir(), $this->id . '.' . $this->extension);
-		}
+            $this->file->move($this->getRootPictureDir(), $this->id . '.' . $this->extension);
+        }
     }
     
     /**
@@ -228,7 +232,7 @@ class Picture
      * @ORM\PreRemove()
      */
     public function preRemove() {
-		$this->tempFilename = $this->getRootPictureDir() . '/' . $this->id . '.' . $this->extension;
+	$this->tempFilename = $this->getRootPictureDir() . '/' . $this->id . '.' . $this->extension;
     }
     
     /**
@@ -237,8 +241,8 @@ class Picture
      * @ORM\PostRemove()
      */
     public function postRemove() {
-		if(file_exists($this->tempFilename)) {
-			unlink($this->tempFilename);
-		}
+        if(file_exists($this->tempFilename)) {
+            unlink($this->tempFilename);
+        }
     }
 }
