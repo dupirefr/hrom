@@ -11,13 +11,13 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class NewsRepository extends EntityRepository {
-	public function count() {
-		$qb = $this->_em->createQueryBuilder();
-		
-		$qb
-			->select('count(news)')
-			->from('HROMNewsBundle:News', 'news');
-                
-                return $qb->getQuery()->getSingleScalarResult();
-	}
+    public function count() {
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb
+                ->select('count(news)')
+                ->from('HROMNewsBundle:News', 'news');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

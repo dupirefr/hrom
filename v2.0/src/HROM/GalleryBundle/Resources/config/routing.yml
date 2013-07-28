@@ -1,0 +1,5 @@
+category_all:
+    path:	/{page}
+    defaults:	{ _controller: HROMGalleryBundle:Gallery:all, page: 1 }
+    requirements:
+        page:	(([1-9])+([0-9])*)

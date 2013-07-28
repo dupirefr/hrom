@@ -1,0 +1,39 @@
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Liste des albums - {{ parent() }}{% endblock %}
+{% block meta_description %}Liste des albums.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
+{% endblock %}
+{% block header_title %}Liste des albums{% endblock %}
+
+{% block body %}  
+    <div class="succeed">
+        <ul>
+            {% for message in app.session.flashbag.get('succeed') %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <table class="listing">
+        <tr><td collapse="5"><a class="add_content" href="{{ path('category_add') }}">Ajouter un album</a></td></tr>
+
+        <tr><th>Nom</th> <th>Date</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+
+        {% for category in categoryList %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>{{ category.date|date("d/m/Y") }}</td>
+                <td><a href="{{ path('category_edit', {'id' : category.id}) }}">X</a></td>
+                <td><a href="{{ path('category_delete',{'id' : category.id}) }}">X</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% set page = app.request.get('page') %}
+    {% set navRoute = 'category_list' %}
+
+    {% include '::listnav.html.twig' %}
+{% endblock %}

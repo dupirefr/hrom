@@ -1,0 +1,29 @@
+<form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }}>
+	<div class="error">{{ form_errors(form) }}</div>
+	
+    <div>Les champs marqués d'une astérisque (*) sont obligatoires.</div>
+    
+    <fieldset>
+		<legend>News</legend>
+		<table>
+			<tr><th>{{ form_label(form.title, "Titre") }}</th> <td class="field">{{ form_widget(form.title) }}</td> <td><span class="error">{{ form_errors(form.title) }}</span></td></tr>
+			<tr><th>{{ form_label(form.content, "Contenu") }}</th> <td class="field">{{ form_widget(form.content) }}</td> <td><span class="error">{{ form_errors(form.content) }}</span></td></tr>
+		</table>
+
+		<fieldset>
+			<legend>Image</legend>
+
+			<table>
+			<tr><th>{{ form_label(form.picture.file, "Fichier") }}</th> <td class="field">{{ form_widget(form.picture.file) }}</td> <td><span class="error">{{ form_errors(form.picture.file) }}</span></td></tr>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Evénements associés</legend>
+		</fieldset>
+    </fieldset>
+	
+	{{ form_rest(form) }}
+
+    <div class="buttonZone"><input class="button button-form" type="submit" value="Enregistrer" /></div>
+</form>

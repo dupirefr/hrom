@@ -25,7 +25,11 @@ hrom_news_admin:
 #Gallery
 hrom_gallery:
     resource: "@HROMGalleryBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /gallery
+    
+hrom_gallery:
+    resource: "@HROMGalleryBundle/Resources/config/admin.yml"
+    prefix:   /admin/gallery
     
 #FOSUser config    
 fos_user_security:
