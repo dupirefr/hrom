@@ -1,14 +1,14 @@
 {% extends "HROMAdminBundle::layout.html.twig" %}
 
-{% block title %}Modifier une news - {{ parent() }}{% endblock %}
-{% block meta_description %}Modification d'une news existante.{% endblock %}
+{% block title %}Modifier un album - {{ parent() }}{% endblock %}
+{% block meta_description %}Modification d'un album existant.{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
 {% endblock %}
-{% block header_title %}Modifier une news{% endblock %}
+{% block header_title %}Modifier un album{% endblock %}
 
 {% block body %}
 	{% set actionRouteParams = {'id' : app.request.get('id')} %}
-    {% include "HROMNewsBundle:NewsAdmin:form.html.twig" %}
+    {% include "HROMGalleryBundle:GalleryAdmin:form.html.twig" %}
 {% endblock %}

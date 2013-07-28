@@ -36,7 +36,7 @@ class Category
      * 
      * @ORM\Column(name="date", type="date", nullable=true)
      * 
-     * @Assert\DateTime()
+     * @Assert\Date()
      */
     private $date;
 

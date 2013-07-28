@@ -25,9 +25,9 @@
         {% for category in categoryList %}
             <tr>
                 <td>{{ category.name }}</td>
-                <td>{{ category.date|date("d/m/Y") }}</td>
-                <td><a href="{{ path('category_edit', {'id' : category.id}) }}">X</a></td>
-                <td><a href="{{ path('category_delete',{'id' : category.id}) }}">X</a></td>
+                <td>{% if not (category.date is empty) %}{{ category.date|date("d/m/Y") }}{% else %} / {% endif %}</td>
+                <td align="center"><a href="{{ path('category_edit', {'id' : category.id}) }}" class="btn">Modif.</a></td>
+                <td align="center"><a href="{{ path('category_delete',{'id' : category.id}) }}" class="btn">Suppr.</a></td>
             </tr>
         {% endfor %}
     </table>
