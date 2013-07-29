@@ -199,11 +199,10 @@ class News
         return $this->picture;
     }
 	
-	
-	/**
-	 * @ORM\PrePersist()
-	 */
-	public function presets() {
-		$this->instant = new \DateTime();
-	}
+    /**
+     * @ORM\PrePersist()
+     */
+    public function presets() {
+            $this->instant = new \DateTime();
+    }
 }

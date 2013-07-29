@@ -21,6 +21,16 @@ class NewsController extends Controller {
         return $this->render('HROMNewsBundle:News:last.html.twig', array('newsList' => $newsList));
     }
     
+    public function oversightAction() {
+	$repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
+        
+        $limit = Configuration::INDEX_NEWS;
+        
+        $newsList = $repository->findBy(array(), array('instant' => 'desc'), $limit);
+        
+        return $this->render('HROMNewsBundle:News:oversight.html.twig', array('newsList' => $newsList));
+    }
+    
     public function allAction($page) {
 	$repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         

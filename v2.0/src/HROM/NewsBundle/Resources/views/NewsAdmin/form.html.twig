@@ -6,15 +6,15 @@
     <fieldset>
 		<legend>News</legend>
 		<table>
-			<tr><th>{{ form_label(form.title, "Titre") }}</th> <td class="field">{{ form_widget(form.title) }}</td> <td><span class="error">{{ form_errors(form.title) }}</span></td></tr>
-			<tr><th>{{ form_label(form.content, "Contenu") }}</th> <td class="field">{{ form_widget(form.content) }}</td> <td><span class="error">{{ form_errors(form.content) }}</span></td></tr>
+			<tr><th>{{ form_label(form.title, "Titre") }}</th> <td>{{ form_widget(form.title) }}</td> <td><span class="error">{{ form_errors(form.title) }}</span></td></tr>
+			<tr><th>{{ form_label(form.content, "Contenu") }}</th> <td>{{ form_widget(form.content) }}</td> <td><span class="error">{{ form_errors(form.content) }}</span></td></tr>
 		</table>
 
 		<fieldset>
 			<legend>Image</legend>
 
 			<table>
-			<tr><th>{{ form_label(form.picture.file, "Fichier") }}</th> <td class="field">{{ form_widget(form.picture.file) }}</td> <td><span class="error">{{ form_errors(form.picture.file) }}</span></td></tr>
+			<tr><th>{{ form_label(form.picture.file, "Fichier") }}</th> <td>{{ form_widget(form.picture.file) }}</td> <td><span class="error">{{ form_errors(form.picture.file) }}</span></td></tr>
 			</table>
 		</fieldset>
 

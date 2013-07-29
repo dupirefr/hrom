@@ -12,7 +12,12 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', 'text')
-            ->add('date', 'date', array('required' => false))
+            ->add('date', 'date', array(
+                'required' => false,
+                'empty_value' => array('year' => 'Année', 'month' => 'Mois', 'day' => 'Jour'),
+                'years' => range(2000, date('Y')),
+                'invalid_message' => 'La date n\'est pas valide'
+            ))
         ;
     }
 

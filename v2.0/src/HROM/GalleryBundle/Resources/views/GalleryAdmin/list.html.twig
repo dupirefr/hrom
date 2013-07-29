@@ -9,6 +9,8 @@
 {% block header_title %}Liste des albums{% endblock %}
 
 {% block body %}  
+    <div align="right"><a href="{{ path('category_add') }}" class="btn">Ajouter un album</a></div>
+        
     <div class="succeed">
         <ul>
             {% for message in app.session.flashbag.get('succeed') %}
@@ -18,18 +20,20 @@
     </div>
 
     <table class="listing">
-        <tr><td collapse="5"><a class="add_content" href="{{ path('category_add') }}">Ajouter un album</a></td></tr>
-
-        <tr><th>Nom</th> <th>Date</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
-
-        {% for category in categoryList %}
-            <tr>
-                <td>{{ category.name }}</td>
-                <td>{% if not (category.date is empty) %}{{ category.date|date("d/m/Y") }}{% else %} / {% endif %}</td>
-                <td align="center"><a href="{{ path('category_edit', {'id' : category.id}) }}" class="btn">Modif.</a></td>
-                <td align="center"><a href="{{ path('category_delete',{'id' : category.id}) }}" class="btn">Suppr.</a></td>
-            </tr>
-        {% endfor %}
+        <thead>
+            <tr><th>Nom</th> <th>Date</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+        </thead>
+        
+        <tbody>
+            {% for category in categoryList %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>{% if not (category.date is empty) %}{{ category.date|date("d/m/Y") }}{% else %} / {% endif %}</td>
+                    <td align="center"><a href="{{ path('category_edit', {'id' : category.id}) }}" class="btn">Modif.</a></td>
+                    <td align="center"><a href="{{ path('category_delete',{'id' : category.id}) }}" class="btn">Suppr.</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
     {% set page = app.request.get('page') %}

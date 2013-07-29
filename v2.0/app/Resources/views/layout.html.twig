@@ -22,47 +22,57 @@
                 </tr>
             </table>
         </div>
-        
-        <div id="body">
-            <div id="left_part">
-                <ul>
-                    {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-						
-                    <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
-                    <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
-                    <li {% if currentRoute == path('calendar') %}class="selected"{% endif %}><a href="{{ path('calendar') }}">Agenda</a></li>
-                    <li {% if currentRoute == path('galery') %}class="selected"{% endif %}><a href="{{ path('galery') }}">Photos</a></li>
-                    <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
-					<li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
-		    
-		    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
-			<hr />
-			{% if is_granted("ROLE_ADMIN") %}
-			    <li {% if '/admin/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('admin_home') }}">Administration</a></li>
-			{% endif %}
+            
+        <div id="left_part">
+            <ul>
+                {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 
-			{% if is_granted("ROLE_WEBMASTER") %}
-			    <li {% if '/wm/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('wm_home') }}">Webmastering</a></li>
-			{% endif %}
-		    {% endif %}
-                </ul>
+                <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
+                <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
+                <li {% if currentRoute == path('calendar') %}class="selected"{% endif %}><a href="{{ path('calendar') }}">Agenda</a></li>
+                <li {% if currentRoute == path('galery') %}class="selected"{% endif %}><a href="{{ path('galery') }}">Photos</a></li>
+                <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
+                                    <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
+
+                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
+                    <hr />
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li {% if '/admin/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('admin_home') }}">Administration</a></li>
+                    {% endif %}
+
+                    {% if is_granted("ROLE_WEBMASTER") %}
+                        <li {% if '/wm/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('wm_home') }}">Webmastering</a></li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+        
+        <div id="connect">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}" class="btn">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}" class="btn">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+
+        <div id="content">
+            <div id="main">
+                {% block body %}{% endblock %}
             </div>
 
-            <div id="main">
-                <div id="connect">
-		    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-			<a href="{{ path('fos_user_security_logout') }}">
-			    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-			</a>
-		    {% else %}
-			<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-		    {% endif %}
-                </div>
-                    
-                <div id="content">
-                    {% block body %}{% endblock %}
-                </div>
+            <div id="right_part">
+                {% block right_part %}
+                    <div align="center">
+                        <h1>News</h1>
+                        {{ render(controller("HROMNewsBundle:News:oversight")) }}
+                        
+                        <h1>Agenda</h1>
+                        <h1>Photos</h1>
+                    </div>
+                {% endblock %}
             </div>
         </div>
         

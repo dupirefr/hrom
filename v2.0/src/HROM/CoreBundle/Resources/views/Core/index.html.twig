@@ -12,6 +12,6 @@
     <div id="news">
         {{ render(controller("HROMNewsBundle:News:last")) }}
             
-        <p align="center"><a href="{{ path('news_all') }}">Toutes les news</a><p>
+        <div align="center"><a href="{{ path('news_all') }}" class="btn">Toutes les news</a></div>
     </div>
 {% endblock %}

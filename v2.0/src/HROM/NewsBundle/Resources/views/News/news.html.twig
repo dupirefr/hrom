@@ -1,4 +1,4 @@
-<div class="news">
+<div class="news" id="news{{ news.id }}">
     <h1>{{ news.title }}</h1>
 
     {% if not (news.picture is empty) %}<img src="{{ asset(news.picture.webPath) }}" alt="{{ news.picture.alt }}" />{% endif %}

@@ -14,12 +14,6 @@ body {
     background-color: #677E52;
 }
 
-h2 {
-    color: #52251C;
-    font-size: 15pt;
-    font-weight: bold;
-}
-
 a {
     color: black;
 }
@@ -28,18 +22,12 @@ a {
     text-align: center;
 }
 
-#description {
-    font-style: italic;
+*[align="right"] {
+    text-align: right;
 }
 
 .error {
     color: red;
-}
-
-.error ul {
-    padding: 0px;
-    
-    font-size: 10pt;
 }
 
 /*Header*/
@@ -65,94 +53,103 @@ a {
     text-align: center;
 }
 
-/*Body*/
-#body {    
+/*Menu*/
+#left_part {
+    position: absolute;
+    top: 20%;
+
     min-height: 100%;
+    width: 15%;
+
+    font-size: 15pt;
 }
 
-    /*Menu*/
-    #left_part {
-        position: absolute;
-        top: 20%;
-        
-        min-height: 100%;
-        width: 15%;
-        
-        font-size: 15pt;
-    }
-    
-    #left_part ul {
-        list-style-type: none;
-        
-        padding: 0px;
-        margin: 0px 0px 0px 15px;
-    }
-    
-    #left_part li {
-        padding: 9px 15px 9px 15px;
-        margin: 0px;
-        
-        -webkit-border-top-left-radius: 20px;
-        -webkit-border-bottom-left-radius: 20px;
-        -moz-border-radius-topleft: 20px;
-        -moz-border-radius-bottomleft: 20px;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-    }
-    
-    #left_part a {
-        color: #F6E8B1;
-        
-        text-decoration: none;
-    }
-    
-    #left_part li:hover {
-        background-color: #B7CA79;
-    }
-    
-    #left_part li:hover a {        
-        color: black; 
-        text-decoration: underline;
-    }
-    
-    #left_part .selected {
-        background-color: #B7CA79;
-    }
-    
-    #left_part .selected a{
-        color: black; 
-        text-decoration: underline;
-    }
+#left_part ul {
+    list-style-type: none;
 
-    /*Content*/
-    #main {
-        position: absolute;
-        top: 20%;
-        left: 15%;
-        
-        min-height: 100%;
-        width: 85%;
+    padding: 0px;
+    margin: 0px 0px 0px 15px;
+}
 
-        background-color: #B7CA79;
-    }
+#left_part li {
+    padding: 9px 15px 9px 15px;
+    margin: 0px;
+
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#left_part a {
+    color: #F6E8B1;
+
+    text-decoration: none;
+}
+
+#left_part li:hover, #left_part .selected {
+    background-color: #B7CA79;
+}
+
+#left_part li:hover a, #left_part .selected a {        
+    color: black; 
+    text-decoration: underline;
+}
+
+/*Content*/
+#connect {
+    display: table-cell;
     
-    #content {
-        min-height: 100%;
-        width: 95%;
-	
-	margin: auto;
-    }
+    position: absolute;
+    top: 20%;
+    left: 15%;
+
+    height: 10%;
+    width: 85%;
     
-        /*Connect*/
-        #connect {
-            width: 95%;          
-            padding-top: 1%;
-	    padding-bottom: 1%;
-	
-	    margin: auto;
-            
-            text-align: right;
-       }
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+    text-align: right;
+
+    background-color: #B7CA79;
+}
+
+#content {
+    position: absolute;
+    top: 30%;
+    left: 15%;
+
+    min-height: 100%;
+    width: 85%;
+
+    background-color: #B7CA79;
+    
+    overflow: auto;
+}
+
+#main {
+    position: absolute;
+    
+    min-height: 100%;
+    width: 85%;
+}
+
+#right_part {
+    position: absolute;
+    left: 85%;
+
+    width: 15%;
+
+    border-left: 1px solid black;
+}
+
+#right_part h1 {
+    font-size: 14pt;
+    text-decoration: underline;
+}
        
 /*Buttons*/
 .btn {
@@ -184,35 +181,5 @@ a {
 }
 
 .btn:hover {
-    border: solid 2px #F6E8B1;
-}
-
-input[type="submit"] {
-    padding: 5px 10px 5px 10px;
-        
-    -webkit-border-top-left-radius: 20px;
-    -webkit-border-bottom-left-radius: 20px;
-    -webkit-border-top-right-radius: 20px;
-    -webkit-border-bottom-right-radius: 20px;
-    
-    -moz-border-radius-topleft: 20px;
-    -moz-border-radius-bottomleft: 20px;    
-    -moz-border-radius-topright: 20px;
-    -moz-border-radius-bottomright: 20px;
-    
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    
-    color: #F6E8B1;
-    background-color: #677E52;
-    border: solid 2px black;
-    
-    font-size : 13pt;
-    text-decoration: none;
-}
-
-input[type="submit"]:hover {    
     border: solid 2px #F6E8B1;
 }

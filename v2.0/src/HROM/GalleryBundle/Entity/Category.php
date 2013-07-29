@@ -27,7 +27,7 @@ class Category
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      * 
-     * @Assert\Length(min=4, minMessage="Le nom doit faire au moins {{ min }} caractère.|Le nom doit faire au moins {{ min }} caractères.", max=255, maxMessage="Le nom doit faire au plus {{ max}} caractère.|Le nom doit faire au plus {{ max}} caractères.")
+     * @Assert\Length(min=4, minMessage="Le nom doit faire au moins {{ limit }} caractère.|Le nom doit faire au moins {{ limit }} caractères.", max=255, maxMessage="Le nom doit faire au plus {{ limit }} caractère.|Le nom doit faire au plus {{ limit }} caractères.")
      */
     private $name;
     
@@ -36,7 +36,7 @@ class Category
      * 
      * @ORM\Column(name="date", type="date", nullable=true)
      * 
-     * @Assert\Date()
+     * @Assert\Date(message="La date n'est pas valide.")
      */
     private $date;
 

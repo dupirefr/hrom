@@ -1,36 +1,44 @@
 /*Forms*/
-#content form {
-    width: 90%;
+.form {
+    width: 70%;
     
     margin: auto;
     
     font-size: 12pt;
 }
 
-legend {
+.form .description {
+    
+}
+
+.form legend {
     font-weight: bold;
 }
 
-form table {
-    width: 100%;
-}
-
-form th {
-    min-width: 15%;
+.form label {
+    display: inline-block;
     
-    text-align: left;
-    vertical-align: top;
+    vertical-align: middle;
+    
+    font-weight: bold;
+    text-align: right;
+}
+
+.form .help {
+    font-size: 10pt;
+    font-style: italic;
     font-weight: normal;
+    text-align: right;
 }
 
-form .field {
-    min-width: 30%;
+.form input {
+    vertical-align: middle;
 }
 
-.buttonZone {
-    text-align: center;
+.form select {
+    vertical-align: middle;
 }
 
-.required:after {
+.form .required:after {
     content: "*";
 }

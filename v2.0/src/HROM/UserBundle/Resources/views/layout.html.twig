@@ -4,6 +4,10 @@
 
 {% block title %}Authentification - {{ parent() }}{% endblock %}
 {% block meta_description %}Authentification au site web de l'Harmonie.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+{% endblock %}
 {% block header_title %}Authentification{% endblock %}
 
 {% block body %}

@@ -1,3 +1,19 @@
 {% extends "::layout.html.twig" %}
 {% block title %}Administration - {{ parent() }}{% endblock %}
 {% block header_title %}Administration{% endblock %}
+{% block right_part %}
+    Panneau d'administration :
+    <ul>
+        <li>News</li>
+            <ul>
+                <li><a href="{{ path('news_list') }}">Liste des news</a></li>
+                <li><a href="{{ path('news_add') }}">Ajouter une news</a></li>
+            </ul>
+            
+        <li>Galerie</li>
+            <ul>
+                <li><a href="{{ path('category_list') }}">Liste des albums</a></li>
+                <li><a href="{{ path('category_add') }}">Ajouter un album</a></li>
+            </ul>
+    </ul>
+{% endblock %}
