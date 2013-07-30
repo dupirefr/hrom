@@ -10,9 +10,6 @@ school:
 calendar:
     path:  /calendar
     defaults: { _controller: HROMCoreBundle:Core:calendar }
-galery:
-    path:  /gallery
-    defaults: { _controller: HROMCoreBundle:Core:gallery }
 contact_us:
     path:  /contactus
     defaults: { _controller: HROMCoreBundle:Core:contactUs }

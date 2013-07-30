@@ -9,6 +9,37 @@
 {% block header_title %}Accueil{% endblock %}
 
 {% block body %}
+    <p id="intro" align="center">
+        Bienvenue<br /><br />
+
+        sur ce portail qui se veut être un lieu d’échange ouvert aux idées,<br />
+        innovantes ou classiques,<br />
+        tant qu’elles permettent à l’harmonie de faire des pas en avant encore et encore …<br /><br />
+
+        Vous êtes en passe de devenir Malonnoise, Malonnois …<br />
+        musiciens et musiciennes …<br />
+        amies, amis …<br />
+        intéressés ou en recherche musicale,<br />
+        en vue d’apprendre ou de re-jouer d’un instrument,<br />
+        rejoignez l’Harmonie de Malonne.<br /><br />
+
+        Son comité dynamique, Monique, Marie-Laure et Eileen<br />
+        son chef de musique, David la clé d’un bon niveau,<br />
+        puisqu’il est Géorgien d’origine,<br />
+        des professeurs pour vous encadrer,<br />
+        Marie-Madeleine, David, Vassili, Sandra, François, et Pascale,<br />
+        des musiciens « intergénérationnels »,<br />
+        vous accueilleront les bras ouverts.<br />
+        N’allez donc pas plus loin, vous êtes au bon endroit et<br />
+        dans la convivialité !
+    </p>
+
+    <hr />
+    
+    <p id="page-description">
+        Retrouvez ici les dernières "news" (nouvelles) de l'Harmonie ! Les infos sur les prochaines activités, les échos des derniers concerts, les événements des autres sociétés : tout est là !
+    </p>
+    
     <div id="news">
         {{ render(controller("HROMNewsBundle:News:last")) }}
             

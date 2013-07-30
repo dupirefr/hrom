@@ -11,12 +11,19 @@
     
 }
 
+.form fieldset {
+    border-color: #677E52;
+}
+
 .form legend {
+    font-size: 13pt;
     font-weight: bold;
 }
 
 .form label {
     display: inline-block;
+    
+    min-width: 30%;
     
     vertical-align: middle;
     
@@ -31,12 +38,12 @@
     text-align: right;
 }
 
-.form input {
+.form input[type="text"], .form textarea, .form select {
     vertical-align: middle;
 }
 
-.form select {
-    vertical-align: middle;
+.form input[type="text"], .form select {  
+    height: 20px;
 }
 
 .form .required:after {

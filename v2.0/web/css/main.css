@@ -48,7 +48,6 @@ a {
 }
 
 #header_title {    
-    font-size: 16pt;
     color: #F6E8B1;
     text-align: center;
 }
@@ -58,7 +57,7 @@ a {
     position: absolute;
     top: 20%;
 
-    min-height: 100%;
+    min-height: 80%;
     width: 15%;
 
     font-size: 15pt;
@@ -122,7 +121,7 @@ a {
     top: 30%;
     left: 15%;
 
-    min-height: 100%;
+    min-height: 70%;
     width: 85%;
 
     background-color: #B7CA79;
@@ -133,8 +132,24 @@ a {
 #main {
     position: absolute;
     
-    min-height: 100%;
     width: 85%;
+    
+    text-align: justify;
+}
+
+#compact {
+    width: 80%;
+    
+    margin: auto;
+}
+
+#compact div {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#page-description {
+    
 }
 
 #right_part {

@@ -1,23 +1,34 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}News - {{ parent() }}{% endblock %}
-{% block meta_description %}Les dernières nouvelles de l'Harmonie.{% endblock %}
+{% block title %}Galerie photos - {{ parent() }}{% endblock %}
+{% block meta_description %}L'harmonie en images.{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/news.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
 {% endblock %}
-{% block header_title %}News{% endblock %}
+{% block header_title %}Galerie photos{% endblock %}
 
 {% block body %}
-    <div id="news">
-        {% for news in newsList %}
-            {% include "HROMNewsBundle:News:news.html.twig" %}
-        {% endfor %}
+    <div id="categories">
+        <table>
+            <tbody>
+                {% for category in categoryList %}
+                    {% if (loop.index) % categoryCols == 1 %}<tr>{% endif %}
+                        
+                    <td>
+                        {{ category.name }}<br />
+                        <span class="description">{{ category.description }}</span>
+                    </td>
+                    
+                    {% if (loop.index) % categoryCols == 0 or (loop.last) %}</tr>{% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     {% set page = app.request.get('page') %}
-    {% set navRoute = 'news_all' %}
+    {% set navRoute = 'category_all' %}
 
     {% include '::listnav.html.twig' %}
 

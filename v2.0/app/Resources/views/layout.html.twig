@@ -17,8 +17,14 @@
         <div id="header">
             <table>
                 <tr>
-                    <td id="logo"><img src="{{ asset('images/logo.png') }}" alt="logo" /></td>
-                    <td id="header_title"><h1>{% block header_title %}{% endblock %}</h1></td>
+                    <td id="logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="logo" />
+                    </td>
+                    
+                    <td id="header_title">
+                        <h1>Harmonie Royale Ouvrière de Malonne</h1>
+                        <h2>{% block header_title %}{% endblock %}</h2>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -30,7 +36,7 @@
                 <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
                 <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
                 <li {% if currentRoute == path('calendar') %}class="selected"{% endif %}><a href="{{ path('calendar') }}">Agenda</a></li>
-                <li {% if currentRoute == path('galery') %}class="selected"{% endif %}><a href="{{ path('galery') }}">Photos</a></li>
+                <li {% if currentRoute == path('category_all') %}class="selected"{% endif %}><a href="{{ path('category_all') }}">Photos</a></li>
                 <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
                                     <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
 
@@ -60,7 +66,9 @@
 
         <div id="content">
             <div id="main">
-                {% block body %}{% endblock %}
+                <div id="compact">
+                    {% block body %}{% endblock %}
+                </div>
             </div>
 
             <div id="right_part">

@@ -15,7 +15,7 @@ class GalleryAdminController extends Controller {
 
         $limit = Configuration::ADMIN_CATEGORY_PER_PAGE;
 
-        $categoryList = $repository->findBy(array(), array('name' => 'asc', 'date' => 'desc'), $limit, ($page - 1)*$limit);
+        $categoryList = $repository->findBy(array(), array('name' => 'asc'), $limit, ($page - 1)*$limit);
 
         $categoryCount = $repository->count();
         $pageCount = max(floor($categoryCount / $limit), 1);

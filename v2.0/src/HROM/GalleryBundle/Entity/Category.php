@@ -32,13 +32,12 @@ class Category
     private $name;
     
     /**
-     * @var date
+     *
+     * @var string
      * 
-     * @ORM\Column(name="date", type="date", nullable=true)
-     * 
-     * @Assert\Date(message="La date n'est pas valide.")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $date;
+    private $description;
 
 
     /**
@@ -75,25 +74,25 @@ class Category
     }
 
     /**
-     * Set date
+     * Set description
      *
-     * @param \DateTime $date
+     * @param string $description
      * @return Category
      */
-    public function setDate($date)
+    public function setDescription($description)
     {
-        $this->date = $date;
+        $this->description = $description;
     
         return $this;
     }
 
     /**
-     * Get date
+     * Get description
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getDate()
+    public function getDescription()
     {
-        return $this->date;
+        return $this->description;
     }
 }
