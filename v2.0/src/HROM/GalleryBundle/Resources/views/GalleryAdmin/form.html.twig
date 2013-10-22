@@ -10,8 +10,10 @@
     <fieldset>
         <legend>Album</legend>
         
-        {{ form_label(form.name, "Nom", {help : "Indiquez le nom de l'album"}) }} {{ form_widget(form.name, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.name) }}</span><br />
-        {{ form_label(form.description, "Description", {help : "(Indiquez une description)"}) }} {{ form_widget(form.description, {attr : {cols : 50, rows : 5} }) }} <span class="error">{{ form_errors(form.description) }}</span>
+        {{ form_label(form.name, "Nom", {help : "Indiquez le nom de l'album"}) }} {{ form_widget(form.name, {attr : {size : 40} }) }} <span class="error">{{ form_errors(form.name) }}</span><br />
+        {{ form_label(form.year, "Année", {help : "(Indiquez l'année de l'album)"}) }} {{ form_widget(form.year) }} <span class="error">{{ form_errors(form.year) }}</span><br />
+        {{ form_label(form.googleAlbumID, "Identifiant", {help : "albumid Picasa"}) }} {{ form_widget(form.googleAlbumID, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.googleAlbumID) }}</span><br />
+        {{ form_label(form.googleAuthenticationKey, "Clé d'authentification", {help : "authkey Picasa"}) }} {{ form_widget(form.googleAuthenticationKey, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.googleAuthenticationKey) }}</span>   
     </fieldset>
 	
     {{ form_rest(form) }}

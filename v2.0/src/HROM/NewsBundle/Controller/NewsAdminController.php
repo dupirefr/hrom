@@ -22,7 +22,7 @@ class NewsAdminController extends Controller {
         $newsList = $repository->findBy(array(), array('instant' => 'desc'), $limit, ($page - 1)*$limit);
 
         $newsCount = $repository->count();
-        $pageCount = max(floor($newsCount / $limit), 1);
+        $pageCount = ceil($newsCount / $limit);
 
         return $this->render('HROMNewsBundle:NewsAdmin:list.html.twig', array('newsList' => $newsList, 'pageCount' => $pageCount));
     }

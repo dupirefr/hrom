@@ -1,34 +1,33 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}Galerie photos - {{ parent() }}{% endblock %}
+{% block title %}Photos/Vidéos - {{ parent() }}{% endblock %}
 {% block meta_description %}L'harmonie en images.{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/gallery.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
 {% endblock %}
-{% block header_title %}Galerie photos{% endblock %}
+{% block header_title %}Photos/Vidéos{% endblock %}
 
 {% block body %}
-    <div id="categories">
+    <div id="albums">
         <table>
             <tbody>
-                {% for category in categoryList %}
-                    {% if (loop.index) % categoryCols == 1 %}<tr>{% endif %}
+                {% for album in albumList %}
+                    {% if (loop.index) % albumCols == 1 %}<tr>{% endif %}
                         
                     <td>
-                        {{ category.name }}<br />
-                        <span class="description">{{ category.description }}</span>
+                        <a href="{{ path('album_select', {'id' : album.id})}}">{{ album.name }}</a>
                     </td>
                     
-                    {% if (loop.index) % categoryCols == 0 or (loop.last) %}</tr>{% endif %}
+                    {% if (loop.index) % albumCols == 0 or (loop.last) %}</tr>{% endif %}
                 {% endfor %}
             </tbody>
         </table>
     </div>
 
     {% set page = app.request.get('page') %}
-    {% set navRoute = 'category_all' %}
+    {% set navRoute = 'album_all' %}
 
     {% include '::listnav.html.twig' %}
 

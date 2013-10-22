@@ -36,9 +36,9 @@
                 <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
                 <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
                 <li {% if currentRoute == path('calendar') %}class="selected"{% endif %}><a href="{{ path('calendar') }}">Agenda</a></li>
-                <li {% if currentRoute == path('category_all') %}class="selected"{% endif %}><a href="{{ path('category_all') }}">Photos</a></li>
+                <li {% if currentRoute == path('album_all') %}class="selected"{% endif %}><a href="{{ path('album_all') }}">Photos/Vidéos</a></li>
                 <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
-                                    <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
+                <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
 
                 {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
                     <hr />
@@ -75,7 +75,7 @@
                 {% block right_part %}
                     <div align="center">
                         <h1>News</h1>
-                        {{ render(controller("HROMNewsBundle:News:oversight")) }}
+                        {{ render(controller("HROMNewsBundle:News:overview")) }}
                         
                         <h1>Agenda</h1>
                         <h1>Photos</h1>

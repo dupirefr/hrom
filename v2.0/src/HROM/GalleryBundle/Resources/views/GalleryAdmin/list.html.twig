@@ -9,7 +9,7 @@
 {% block header_title %}Liste des albums{% endblock %}
 
 {% block body %}  
-    <div align="right"><a href="{{ path('category_add') }}" class="btn">Ajouter un album</a></div>
+    <div align="right"><a href="{{ path('album_add') }}" class="btn">Ajouter un album</a></div>
         
     <div class="succeed">
         <ul>
@@ -21,23 +21,24 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Nom</th> <th>Description</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+            <tr><th>Nom</th> <th>Identifiant</th> <th>Clé d'authentification</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
         </thead>
         
         <tbody>
-            {% for category in categoryList %}
+            {% for album in albumList %}
                 <tr>
-                    <td>{{ category.name }}</td>
-                    <td>{% if not (category.description is empty) %}{{ category.description }}{% else %} / {% endif %}</td>
-                    <td align="center"><a href="{{ path('category_edit', {'id' : category.id}) }}" class="btn">Modif.</a></td>
-                    <td align="center"><a href="{{ path('category_delete',{'id' : category.id}) }}" class="btn">Suppr.</a></td>
+                    <td>{{ album.name }}</td>
+                    <td>{{album.googleAlbumID}}</td>
+                    <td>{{album.googleAuthenticationKey}}</td>
+                    <td align="center"><a href="{{ path('album_edit', {'id' : album.id}) }}" class="btn">Modif.</a></td>
+                    <td align="center"><a href="{{ path('album_delete',{'id' : album.id}) }}" class="btn">Suppr.</a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 
     {% set page = app.request.get('page') %}
-    {% set navRoute = 'category_list' %}
+    {% set navRoute = 'album_list' %}
 
     {% include '::listnav.html.twig' %}
 {% endblock %}

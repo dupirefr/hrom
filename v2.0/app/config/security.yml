@@ -30,6 +30,7 @@ security:
             logout:
                 path:       fos_user_security_logout
                 target:	/
+                invalidate_session: false
             remember_me:
                 key:	%secret%
 

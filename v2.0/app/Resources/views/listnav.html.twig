@@ -1,5 +1,6 @@
 <div class="listnav">
-	{% if page > 1 %}
+    {% if pageCount > 0 %}
+        {% if page > 1 %}
 		<a href="{{ path(navRoute, {'page' : 1}) }}" class="btn"><<</a>
 		<a href="{{ path(navRoute, {'page' : page - 1}) }}" class="btn"><</a>
 	{% endif %}
@@ -10,4 +11,7 @@
 		<a href="{{ path(navRoute, {'page' : page + 1}) }}" class="btn">></a>
 		<a href="{{ path(navRoute, {'page' : pageCount}) }}" class="btn">>></a>
 	{% endif %}
+    {% else %}
+        Aucun élément pour le moment.
+    {% endif %}
 </div>

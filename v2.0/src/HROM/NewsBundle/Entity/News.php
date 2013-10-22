@@ -5,7 +5,7 @@ namespace HROM\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use HROM\GalleryBundle\Entity\Picture;
+use HROM\NewsBundle\Entity\Picture;
 use HROM\UserBundle\Entity\User;
 
 
@@ -61,18 +61,16 @@ class News
     private $author;
     
     /**
-     * @ORM\OneToOne(targetEntity="HROM\GalleryBundle\Entity\Picture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="HROM\NewsBundle\Entity\Picture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      * 
-     * @Assert\Valid()
+     * @Assert\Valid() 
      */
     private $picture;
-	
-	
-	public function __construct(User $author) {
-		$this->author = $author;
-	}
-    
+
+    public function __construct(User $author) {
+        $this->author = $author;
+    }
     
     /**
      * Get id
@@ -128,19 +126,6 @@ class News
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set instant
-     *
-     * @param \DateTime $instant
-     * @return News
-     */
-    public function setInstant($instant)
-    {
-        $this->instant = $instant;
-    
-        return $this;
     }
 
     /**
@@ -202,7 +187,8 @@ class News
     /**
      * @ORM\PrePersist()
      */
-    public function presets() {
-            $this->instant = new \DateTime();
+    public function prePersist()
+    {
+        $this->instant = new \DateTime();
     }
 }
