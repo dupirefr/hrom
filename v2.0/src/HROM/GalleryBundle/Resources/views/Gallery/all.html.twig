@@ -17,7 +17,7 @@
                     {% if (loop.index) % albumCols == 1 %}<tr>{% endif %}
                         
                     <td>
-                        <a href="{{ path('album_select', {'id' : album.id})}}">{{ album.name }}</a>
+                        <a href="{{ path('album_select', {'id' : album.id})}}">{{ album.name }} {{ album.year }}</a>
                     </td>
                     
                     {% if (loop.index) % albumCols == 0 or (loop.last) %}</tr>{% endif %}

@@ -12,7 +12,7 @@ class GalleryController extends Controller {
 
         $limit = Configuration::ALBUM_COLS_PER_PAGE * Configuration::ALBUM_ROWS_PER_PAGE;
 
-        $albumList = $repository->findBy(array(), array('name' => 'asc'), $limit, ($page - 1)*$limit);
+        $albumList = $repository->findBy(array(), array('year' => 'desc', 'name' => 'asc'), $limit, ($page - 1)*$limit);
 
         $albumCount = $repository->count();
         $pageCount = ceil($albumCount / $limit);

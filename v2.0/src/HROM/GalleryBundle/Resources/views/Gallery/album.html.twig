@@ -5,7 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
-{% block header_title %}Album : {{ album.name }}{% endblock %}
+{% block header_title %}Album : {{ album.name }} {{ album.year }}{% endblock %}
 
 {% block body %}
     <div id="album" align="center">

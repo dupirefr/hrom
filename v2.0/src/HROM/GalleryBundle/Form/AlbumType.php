@@ -16,10 +16,22 @@ class AlbumType extends AbstractType
     {
         $builder
             ->add('name', 'text')
-            ->add('year', 'date', array('required' => false))
+            ->add('year', 'choice',
+                    array(
+                        'required' => false,
+                        'choices' => $this->buildYearChoices()
+                   )
+            )
             ->add('googleAlbumID', 'text')
             ->add('googleAuthenticationKey', 'text')
         ;
+    }
+    
+    public function buildYearChoices()
+    {
+        $yearsBefore = date('Y', mktime(0, 0, 0, 1, 1, 2000));
+        $yearsAfter = date('Y', mktime(0, 0, 0, date("m"), date("d"), date("Y")));
+        return array_combine(range($yearsBefore, $yearsAfter), range($yearsBefore, $yearsAfter));
     }
     
     /**

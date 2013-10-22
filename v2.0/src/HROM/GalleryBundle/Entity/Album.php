@@ -3,11 +3,12 @@
 namespace HROM\GalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Album
  *
- * @ORM\Table()
+ * @ORM\Table(name="album")
  * @ORM\Entity(repositoryClass="HROM\GalleryBundle\Entity\AlbumRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -26,13 +27,17 @@ class Album
      * @var string
      * 
      * @ORM\Column(name="name", type="string", length=255) 
+     * 
+     * @Assert\Length(min=4, minMessage="Le nom doit faire au moins {{ limit }} caractère.|Le nom doit faire au moins {{ limit }} caractères.", max=255, maxMessage="Le nom doit faire au plus {{ limit }} caractère.|Le nom doit faire au plus {{ limit }} caractères.")
      */
     private $name;
     
     /**
      * @var date
      * 
-     * @ORM\Column(name="year", type="date", nullable=true)
+     * @ORM\Column(name="year", type="integer", nullable=true)
+     * 
+     * @Assert\Range(min=2000, minMessage="L'année doit être au moins 2000.")
      */
     private $year;
 
@@ -76,7 +81,7 @@ class Album
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -132,7 +137,7 @@ class Album
     /**
      * Set year
      *
-     * @param \DateTime $year
+     * @param Integer $year
      * @return Album
      */
     public function setYear($year)
@@ -145,7 +150,7 @@ class Album
     /**
      * Get year
      *
-     * @return \DateTime 
+     * @return \Integer
      */
     public function getYear()
     {

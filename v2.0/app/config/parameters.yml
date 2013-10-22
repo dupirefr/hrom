@@ -1,10 +1,10 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: localhost
+    database_host: mysql1.web4all.fr
     database_port: 3306
-    database_name: hrom
-    database_user: root
+    database_name: 118230_test
+    database_user: 118230_test
     database_password: jorni32
     mailer_transport: smtp
     mailer_host: 127.0.0.1

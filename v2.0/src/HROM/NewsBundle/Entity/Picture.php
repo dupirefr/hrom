@@ -3,6 +3,7 @@
 namespace HROM\NewsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -33,7 +34,11 @@ class Picture
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-
+    
+    
+    /**
+     * @Assert\Image(mimeTypesMessage="Le fichier n'est pas une image valide.")
+     */
     private $file;
     
     private $temp;
@@ -71,7 +76,7 @@ class Picture
     /**
      * Set file
      * 
-     * @param UploadedFile $file
+     * @param UploadedFile $file)
      */
     public function setFile(UploadedFile $file)
     {

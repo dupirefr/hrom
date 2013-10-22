@@ -21,13 +21,14 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Nom</th> <th>Identifiant</th> <th>Clé d'authentification</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+            <tr><th>Nom</th> <th>Année</th> <th>Identifiant</th> <th>Clé d'authentification</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
         </thead>
         
         <tbody>
             {% for album in albumList %}
                 <tr>
                     <td>{{ album.name }}</td>
+                    <td>{{ album.year }}</td>
                     <td>{{album.googleAlbumID}}</td>
                     <td>{{album.googleAuthenticationKey}}</td>
                     <td align="center"><a href="{{ path('album_edit', {'id' : album.id}) }}" class="btn">Modif.</a></td>
