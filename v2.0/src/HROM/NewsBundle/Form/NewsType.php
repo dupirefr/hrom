@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use HROM\NewsBundle\Form\PictureType;
+use HROM\CoreBundle\Form\PictureType;
 
 class NewsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {

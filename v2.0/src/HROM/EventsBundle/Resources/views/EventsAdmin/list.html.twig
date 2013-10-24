@@ -1,0 +1,49 @@
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Liste des événements - {{ parent() }}{% endblock %}
+{% block meta_description %}Liste des événements.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
+{% endblock %}
+{% block header_title %}Liste des événements{% endblock %}
+
+{% block body %}
+    <div align="right"><a href="{{ path('event_add') }}" class="btn">Ajouter un événement</a></div>
+    
+    <div class="succeed">
+        <ul>
+            {% for message in app.session.flashbag.get('succeed') %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <table class="listing">
+        <thead>
+            <tr><th>Objet</th> <th>Description</th> <th>Date</th> <th>Heure</th> <th>Lieu</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+        </thead>
+
+        <tbody>
+            {% for event in eventsList %}
+                <tr>
+                    <td>{{ event.object }}</td>
+                    <td>{% if event.description|length > 255 %} {{ event.description|slice(0, 249) }} [...] {% else %} {{ event.description }} {% endif %}</td>
+                    <td>{{ event.date|date("d/m/Y") }}</td>
+                    <td>{% if not (event.time is empty) %}{{ event.time|date("H:i") }}{% endif %}</td>
+                    <td>
+                        {% set address = event.address %}
+                        {% include "HROMCoreBundle:Address:address.html.twig" %}
+                    </td>
+                    <td align="center"><a href="{{ path('event_edit', {'id' : event.id}) }}" class="btn">Modif.</a></td>
+                    <td align="center"><a href="{{ path('event_delete',{'id' : event.id}) }}" class="btn">Suppr.</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% set page = app.request.get('page') %}
+    {% set navRoute = 'events_list' %}
+
+    {% include '::listnav.html.twig' %}
+{% endblock %}

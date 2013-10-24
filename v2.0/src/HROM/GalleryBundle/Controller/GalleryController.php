@@ -6,8 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HROM\Configuration;
 
-class GalleryController extends Controller {
-    public function allAction($page) {
+class GalleryController extends Controller
+{
+    public function allAction($page)
+    {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMGalleryBundle:Album');
 
         $limit = Configuration::ALBUM_COLS_PER_PAGE * Configuration::ALBUM_ROWS_PER_PAGE;
@@ -24,7 +26,8 @@ class GalleryController extends Controller {
         );
     }
     
-    public function selectAction($id) {
+    public function selectAction($id)
+    {
         $album = $this->getDoctrine()->getManager()->find('HROMGalleryBundle:Album', $id);
         
         return $this->render('HROMGalleryBundle:Gallery:album.html.twig', array('album' => $album));

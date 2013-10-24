@@ -12,6 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class AlbumRepository extends EntityRepository
 {
+    /**
+     * Counts albums
+     * 
+     * @return integer
+     */
     public function count() {
         $qb = $this->_em->createQueryBuilder();
 

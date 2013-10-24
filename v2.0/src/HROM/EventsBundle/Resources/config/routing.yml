@@ -1,0 +1,3 @@
+events_calendar:
+    pattern: /calendar
+    defaults: { _controller: HROMEventsBundle:Events:calendar }

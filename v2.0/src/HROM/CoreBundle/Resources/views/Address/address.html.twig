@@ -1,0 +1,3 @@
+{{ address.street }}{% if not (address.number is empty) %}, {{ address.number }}{% endif %}<br />
+{{ address.postalCode }}{% if not (address.city is empty) %} {{ address.city }}{% endif %}<br />
+{% if not (address.box is empty) %}Boîte {{ address.box }}{% endif %}

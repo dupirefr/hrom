@@ -14,6 +14,17 @@
 {% endspaceless %}
 {% endblock date_widget %}
 
+{% block time_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
+        {{ form_widget(form.hour, vars) }}:{{ form_widget(form.minute, vars) }}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
+    {% endif %}
+{% endspaceless %}
+{% endblock time_widget %}
+
 {% block form_label %}
 {% spaceless %}
     {% if not compound %}

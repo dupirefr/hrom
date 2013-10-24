@@ -30,6 +30,15 @@ hrom_gallery:
 hrom_gallery_admin:
     resource: "@HROMGalleryBundle/Resources/config/admin.yml"
     prefix:   /admin/gallery
+
+#Events
+hrom_events:
+    resource: "@HROMEventsBundle/Resources/config/routing.yml"
+    prefix:   /events
+    
+hrom_events_admin:
+    resource: "@HROMEventsBundle/Resources/config/admin.yml"
+    prefix:   /admin/events
     
 #FOSUser config    
 fos_user_security:

@@ -1,0 +1,13 @@
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Ajouter un événement - {{ parent() }}{% endblock %}
+{% block meta_description %}Ajout d'un nouvel événement.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+{% endblock %}
+{% block header_title %}Ajouter un événement{% endblock %}
+
+{% block body %}   
+    {% include "HROMEventsBundle:EventsAdmin:form.html.twig" %}
+{% endblock %}

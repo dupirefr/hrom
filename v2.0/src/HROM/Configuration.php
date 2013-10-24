@@ -15,6 +15,9 @@ class Configuration {
     
     const ADMIN_NEWS_PER_PAGE = 30;
     
+    //Events
+    const ADMIN_EVENTS_PER_PAGE = 30;
+    
     //Gallery
     const ALBUM_COLS_PER_PAGE = 3;
     const ALBUM_ROWS_PER_PAGE = 4;

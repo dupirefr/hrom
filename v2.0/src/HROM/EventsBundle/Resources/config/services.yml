@@ -1,0 +1,7 @@
+parameters:
+#    hrom_events.example.class: HROM\EventsBundle\Example
+
+services:
+#    hrom_events.example:
+#        class: %hrom_events.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

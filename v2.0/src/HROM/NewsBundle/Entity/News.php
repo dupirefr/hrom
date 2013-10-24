@@ -5,7 +5,7 @@ namespace HROM\NewsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use HROM\NewsBundle\Entity\Picture;
+use HROM\CoreBundle\Entity\Picture;
 use HROM\UserBundle\Entity\User;
 
 
@@ -61,7 +61,7 @@ class News
     private $author;
     
     /**
-     * @ORM\OneToOne(targetEntity="HROM\NewsBundle\Entity\Picture", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="HROM\CoreBundle\Entity\Picture", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      * 
      * @Assert\Valid() 
