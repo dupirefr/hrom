@@ -33,7 +33,9 @@
                     <td>{% if not (event.time is empty) %}{{ event.time|date("H:i") }}{% endif %}</td>
                     <td>
                         {% set address = event.address %}
-                        {% include "HROMCoreBundle:Address:address.html.twig" %}
+                        {% if not (address is empty) %}
+                            {% include "HROMCoreBundle:Address:address.html.twig" %}
+                        {% endif %}
                     </td>
                     <td align="center"><a href="{{ path('event_edit', {'id' : event.id}) }}" class="btn">Modif.</a></td>
                     <td align="center"><a href="{{ path('event_delete',{'id' : event.id}) }}" class="btn">Suppr.</a></td>

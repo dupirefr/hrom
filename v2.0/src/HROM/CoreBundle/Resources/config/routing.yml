@@ -7,9 +7,7 @@ home:
 school:
     path:  /school
     defaults: { _controller: HROMCoreBundle:Core:school }
-calendar:
-    path:  /calendar
-    defaults: { _controller: HROMCoreBundle:Core:calendar }
+    
 contact_us:
     path:  /contactus
     defaults: { _controller: HROMCoreBundle:Core:contactUs }
