@@ -1,0 +1,3 @@
+hrom_contacts_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: HROMContactsBundle:Default:index }

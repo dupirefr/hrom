@@ -1,3 +1,7 @@
+hrom_contacts:
+    resource: "@HROMContactsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 #Webmaster
 hrom_webmaster:
     resource: "@HROMWebmasterBundle/Resources/config/routing.yml"
