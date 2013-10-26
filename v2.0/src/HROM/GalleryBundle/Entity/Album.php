@@ -47,13 +47,6 @@ class Album
      * @ORM\Column(name="googleAlbumID", type="string", length=255)
      */
     private $googleAlbumID;
-    
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="googleAuthenticationKey", type="string", length=255)
-     */
-    private $googleAuthenticationKey;
 
     /**
      * Get id
@@ -109,29 +102,6 @@ class Album
     public function getGoogleAlbumID()
     {
         return $this->googleAlbumID;
-    }
-
-    /**
-     * Set googleAuthenticationKey
-     *
-     * @param string $googleAuthenticationKey
-     * @return Album
-     */
-    public function setGoogleAuthenticationKey($googleAuthenticationKey)
-    {
-        $this->googleAuthenticationKey = $googleAuthenticationKey;
-    
-        return $this;
-    }
-
-    /**
-     * Get googleAuthenticationKey
-     *
-     * @return string 
-     */
-    public function getGoogleAuthenticationKey()
-    {
-        return $this->googleAuthenticationKey;
     }
 
     /**

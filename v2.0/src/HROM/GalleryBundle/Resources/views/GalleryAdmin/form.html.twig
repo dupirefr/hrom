@@ -13,7 +13,6 @@
         {{ form_label(form.name, "Nom", {help : "Indiquez le nom de l'album"}) }} {{ form_widget(form.name, {attr : {size : 40} }) }} <span class="error">{{ form_errors(form.name) }}</span><br />
         {{ form_label(form.year, "Année", {help : "(Indiquez l'année de l'album)"}) }} {{ form_widget(form.year) }} <span class="error">{{ form_errors(form.year) }}</span><br />
         {{ form_label(form.googleAlbumID, "Identifiant", {help : "Indiquez l'albumid Picasa"}) }} {{ form_widget(form.googleAlbumID, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.googleAlbumID) }}</span><br />
-        {{ form_label(form.googleAuthenticationKey, "Clé d'authentification", {help : "Indiquez l'authkey Picasa"}) }} {{ form_widget(form.googleAuthenticationKey, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.googleAuthenticationKey) }}</span>   
     </fieldset>
 	
     {{ form_rest(form) }}

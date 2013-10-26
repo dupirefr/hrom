@@ -1,39 +1,28 @@
-{% extends "::layout.html.twig" %}
+{% for week in cal %}
+    <tr>
+        {% for day in week %}
+            <td class="
+                {% if not (day is empty) %}
+                    {% if day.past %}past
+                    {% elseif day.today %}today
+                    {% elseif day.future %}future
+                    {% endif %}
 
-{% block title %}Agenda - {{ parent() }}{% endblock %}
-{% block meta_description %}L'agenda de l'Harmonie.{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/events.css') }}" />
-{% endblock %}
-{% block header_title %}Agenda{% endblock %}
-
-{% block body %}
-    <div id="calendar">
-        <table>
-            <caption>
-                {{ calendar.date|date("F Y") }}
-            </caption>
-            {% for week in calendar.calendar %}
-                <tr>
-                    {% for day in week %}
-                        <td class="
-                            {% if not (day is empty) %}
-                                {% if day.past %}past
-                                {% elseif day.today %}today
-                                {% elseif day.future %}future
-                                {% endif %}
+                    {% if not (day.eventsList is empty) %}busy{% endif %}                                
+                {% endif %}
+            ">
+                {% if not (day is empty) %}
+                    {% if not (day.eventsList is empty) %}
+                        <a href="{{ path('events_calendar_day', {'day' : day.date|date('d'), 'month' : day.date|date('m'), 'year' : day.date|date('Y')}) }}">
+                    {% endif %}
                                 
-                                {% if not (day.eventsList is empty) %}busy{% endif %}                                
-                            {% endif %}
-                        ">
-                            {% if not (day is empty) %}
-                                {{ day.date|date("d") }}
-                            {% endif %}
-                        </td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>     
-    </div>
-{% endblock %}
+                    {{ day.date|date('d') }}
+                                
+                    {% if not (day.eventsList is empty) %}
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </td>
+        {% endfor %}
+    </tr>
+{% endfor %}

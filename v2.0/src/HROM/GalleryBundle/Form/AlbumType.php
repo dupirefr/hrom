@@ -23,7 +23,6 @@ class AlbumType extends AbstractType
                    )
             )
             ->add('googleAlbumID', 'text')
-            ->add('googleAuthenticationKey', 'text')
         ;
     }
     

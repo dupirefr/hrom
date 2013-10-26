@@ -1,3 +1,18 @@
 events_calendar:
     pattern: /calendar
     defaults: { _controller: HROMEventsBundle:Events:calendar }
+
+events_calendar_specified:
+    pattern: /calendar/{month}/{year}
+    defaults: { _controller: HROMEventsBundle:Events:calendarSpecified }
+    requirements:
+        month:  \d+
+        year:   \d+
+
+events_calendar_day:
+    pattern: /calendar/{day}/{month}/{year}
+    defaults: { _controller: HROMEventsBundle:Events:calendarDay }
+    requirements:
+        day:    \d+
+        month:  \d+
+        year:   \d+

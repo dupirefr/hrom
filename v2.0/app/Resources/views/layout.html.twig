@@ -9,6 +9,7 @@
         
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/events.css') }}" />
         {% endblock %}
         
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -35,7 +36,7 @@
 
                 <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
                 <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
-                <li {% if currentRoute == path('events_calendar') %}class="selected"{% endif %}><a href="{{ path('events_calendar') }}">Agenda</a></li>
+                <li {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}><a href="{{ path('events_calendar') }}">Agenda</a></li>
                 <li {% if path('album_all') in currentRoute %}class="selected"{% endif %}><a href="{{ path('album_all') }}">Photos/Vidéos</a></li>
                 <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
                 <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
@@ -78,6 +79,8 @@
                         {{ render(controller("HROMNewsBundle:News:overview")) }}
                         
                         <h1>Agenda</h1>
+                        {{ render(controller('HROMEventsBundle:Events:miniCalendar')) }}
+                        
                         <h1>Photos</h1>
                     </div>
                 {% endblock %}

@@ -18,6 +18,8 @@ class Calendar
      */
     private $date;
     
+    private $calendar;
+    
     /**
      * @var EventRepository 
      */
@@ -27,6 +29,8 @@ class Calendar
     {
         $this->date = $date;
         $this->repository = $repository;
+        
+        $this->fillCalendar();
     }
     
     /**
@@ -46,26 +50,21 @@ class Calendar
      */
     public function getCalendar()
     {
+        return $this->calendar;
+    }
+    
+    /**
+     * Gives date's CalendarDay
+     * 
+     * @return CalendarDay
+     */
+    public function getSelectedDay()
+    {
         $monthFirstDay = $this->getMonthFirstDay();
-        $monthDaysNumber = $this->getMonthDaysNumber();
         
-        $calendar = array();
+        $cell = $this->date->format('d') + $monthFirstDay - 2;
         
-        for($d = 1; $d < $monthFirstDay; $d++) {
-            $calendar[0][$d - 1] = NULL;
-        }
-        
-        for($d = 1, $i = $monthFirstDay - 1; $d <= $monthDaysNumber; $d++, $i++) {
-            $calendar[$i / 7][$i % 7] = new CalendarDay(new \DateTime(date('m/d/Y', mktime(0, 0, 0, $this->date->format('m'), $d, $this->date->format('Y')))), $this->repository);
-            
-            while($d == $monthDaysNumber && ($i + 1) % 7 != 0) {      
-                $i++;
-                
-                $calendar[$i / 7][$i % 7] = NULL;
-            }
-        }
-        
-        return $calendar;
+        return $this->calendar[$cell / 7][$cell % 7];
     }
     
     /**
@@ -86,6 +85,31 @@ class Calendar
     private function getMonthDaysNumber()
     {
         return date('t', mktime(0, 0, 0, $this->date->format('m'), 1, $this->date->format('Y')));
+    }
+    
+    /**
+     * Fills calendar
+     */
+    private function fillCalendar()
+    {
+        $monthFirstDay = $this->getMonthFirstDay();
+        $monthDaysNumber = $this->getMonthDaysNumber();
+        
+        $this->calendar = array();
+        
+        for($d = 1; $d < $monthFirstDay; $d++) {
+            $this->calendar[0][$d - 1] = NULL;
+        }
+        
+        for($d = 1, $i = $monthFirstDay - 1; $d <= $monthDaysNumber; $d++, $i++) {
+            $this->calendar[$i / 7][$i % 7] = new CalendarDay(new \DateTime(date('m/d/Y', mktime(0, 0, 0, $this->date->format('m'), $d, $this->date->format('Y')))), $this->repository);
+            
+            while($d == $monthDaysNumber && ($i + 1) % 7 != 0) {      
+                $i++;
+                
+                $this->calendar[$i / 7][$i % 7] = NULL;
+            }
+        }
     }
 }
 

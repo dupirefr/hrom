@@ -21,7 +21,7 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Titre</th> <th>Contenu</th> <th>Evénements associés</th> <th>Modifier ?</th> <th>Supprimer ?</th></tr>
+            <tr><th>Titre</th> <th>Contenu</th> <th></th> <th></th></tr>
         </thead>
 
         <tbody>
@@ -29,7 +29,6 @@
                 <tr>
                     <td>{{ news.title }}</td>
                     <td>{% if news.content|length > 255 %} {{ news.content|slice(0, 249) }} [...] {% else %} {{ news.content }} {% endif %}</td>
-                    <td></td>
                     <td align="center"><a href="{{ path('news_edit', {'id' : news.id}) }}" class="btn">Modif.</a></td>
                     <td align="center"><a href="{{ path('news_delete',{'id' : news.id}) }}" class="btn">Suppr.</a></td>
                 </tr>

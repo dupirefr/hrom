@@ -1,15 +1,55 @@
-#calendar table {    
+#agenda table, #mini_agenda table {    
     margin: auto;
+    
+    border: 1px solid black;
+    
+    border-collapse: collapse;
+    
+    background-color: #677E52;
+    
+    clear: both;
 }
 
-#calendar td {
-    width: 70px;
-    height: 70px;
+#agenda caption {
+    font-size: 15pt;
+    font-weight: bold;
+    
+    padding: 5px;
+}
+
+#mini_agenda caption {
+    font-weight: bold;
+}
+
+#agenda th, #mini_agenda th {
+    text-align: center;
+}
+
+#agenda td {
+    width: 80px;
+    height: 80px;
+    
+    text-align: left;
+    vertical-align: top;
+    
+    background-color: white;
     
     border: 1px solid black;
 }
 
-#calendar .infobubble {
+#mini_agenda td {
+    width: 5px;
+    height: 5px;
+    
+    text-align: left;
+    vertical-align: top;
+    
+    background-color: white;
+    
+    border: 1px solid black;
+}
+
+#agenda .infobubble {
     position: relative;
     bottom: 30px;
     left: 0px;
@@ -20,23 +60,46 @@
     visibility: hidden;
 }
 
-#calendar td:hover .infobubble { 
+#agenda td:hover .infobubble { 
     visibility: visible;
 }
 
-.past {
+#agenda .past, #mini_agenda .past {
     text-decoration: line-through;
 }
 
-.today {
+#agenda .today, #mini_agenda .today {
     text-decoration: underline;
 }
 
-.future {
+#agenda .future, #mini_agenda .future {
 
 }
 
-.busy {
+#agenda .busy, #mini_agenda .busy {
     font-weight: bold;
     color: red;
+}
+
+#agenda #today {
+    text-align: center;
+}
+
+.event {
+    margin: auto;
+    padding: 10px;
+    
+    text-align: justify;
+    
+    border: solid black 1px;
+    
+    overflow: auto;
+}
+
+.event h3 {
+    display: inline;
+}
+
+.event img {
+    float: left;
 }
