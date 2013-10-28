@@ -21,12 +21,18 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Objet</th> <th>Description</th> <th>Date</th> <th>Heure</th> <th>Lieu</th> <th></th> <th></th></tr>
+            <tr><th width="25%">Objet</th> <th width="35%">Description</th> <th width="8%">Date</th> <th width="7%">Heure</th> <th width="15%">Lieu</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
         </thead>
 
         <tbody>
             {% for event in eventsList %}
-                <tr>
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
                     <td>{{ event.object }}</td>
                     <td>{% if event.description|length > 255 %} {{ event.description|slice(0, 249) }} [...] {% else %} {{ event.description }} {% endif %}</td>
                     <td>{{ event.date|date("d/m/Y") }}</td>
@@ -37,8 +43,8 @@
                             {% include "HROMCoreBundle:Address:address.html.twig" %}
                         {% endif %}
                     </td>
-                    <td align="center"><a href="{{ path('event_edit', {'id' : event.id}) }}" class="btn">Modif.</a></td>
-                    <td align="center"><a href="{{ path('event_delete',{'id' : event.id}) }}" class="btn">Suppr.</a></td>
+                    <td align="center"><a href="{{ path('event_edit', {'id' : event.id}) }}">Modif.</a></td>
+                    <td align="center"><a href="{{ path('event_delete',{'id' : event.id}) }}">Suppr.</a></td>
                 </tr>
             {% endfor %}
         </tbody>

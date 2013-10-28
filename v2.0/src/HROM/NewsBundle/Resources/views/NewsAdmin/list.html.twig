@@ -21,16 +21,22 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Titre</th> <th>Contenu</th> <th></th> <th></th></tr>
+            <tr><th width="30%">Titre</th> <th width="60%">Contenu</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
         </thead>
 
         <tbody>
             {% for news in newsList %}
-                <tr>
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
                     <td>{{ news.title }}</td>
                     <td>{% if news.content|length > 255 %} {{ news.content|slice(0, 249) }} [...] {% else %} {{ news.content }} {% endif %}</td>
-                    <td align="center"><a href="{{ path('news_edit', {'id' : news.id}) }}" class="btn">Modif.</a></td>
-                    <td align="center"><a href="{{ path('news_delete',{'id' : news.id}) }}" class="btn">Suppr.</a></td>
+                    <td align="center"><a href="{{ path('news_edit', {'id' : news.id}) }}">Modif.</a></td>
+                    <td align="center"><a href="{{ path('news_delete',{'id' : news.id}) }}">Suppr.</a></td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -21,17 +21,23 @@
 
     <table class="listing">
         <thead>
-            <tr><th>Nom</th> <th>Année</th> <th>Identifiant</th> <th></th> <th></th></tr>
+            <tr><th width="30%">Nom</th> <th width="10%">Année</th> <th width="50%">Identifiant</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
         </thead>
         
         <tbody>
             {% for album in albumList %}
-                <tr>
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
                     <td>{{ album.name }}</td>
                     <td>{{ album.year }}</td>
                     <td>{{album.googleAlbumID}}</td>
-                    <td align="center"><a href="{{ path('album_edit', {'id' : album.id}) }}" class="btn">Modif.</a></td>
-                    <td align="center"><a href="{{ path('album_delete',{'id' : album.id}) }}" class="btn">Suppr.</a></td>
+                    <td align="center"><a href="{{ path('album_edit', {'id' : album.id}) }}">Modif.</a></td>
+                    <td align="center"><a href="{{ path('album_delete',{'id' : album.id}) }}">Suppr.</a></td>
                 </tr>
             {% endfor %}
         </tbody>
