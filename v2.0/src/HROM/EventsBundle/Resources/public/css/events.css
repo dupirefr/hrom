@@ -49,19 +49,13 @@
     border: 1px solid black;
 }
 
-#agenda .infobubble {
-    position: relative;
-    bottom: 30px;
-    left: 0px;
+#agenda td a, #mini_agenda td a {
+    display: block;
     
-    border: solid 1px black;
-    background-color: white;
+    width: 100%;
+    height: 100%;
     
-    visibility: hidden;
-}
-
-#agenda td:hover .infobubble { 
-    visibility: visible;
+    text-decoration: none;
 }
 
 #agenda .past, #mini_agenda .past {
@@ -69,11 +63,12 @@
 }
 
 #agenda .today, #mini_agenda .today {
+    font-weight: bold;
+    
     text-decoration: underline;
 }
 
 #agenda .future, #mini_agenda .future {
-
 }
 
 #agenda .busy, #mini_agenda .busy {

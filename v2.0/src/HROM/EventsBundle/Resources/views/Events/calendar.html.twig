@@ -11,16 +11,10 @@
                     {% if not (day.eventsList is empty) %}busy{% endif %}                                
                 {% endif %}
             ">
-                {% if not (day is empty) %}
-                    {% if not (day.eventsList is empty) %}
-                        <a href="{{ path('events_calendar_day', {'day' : day.date|date('d'), 'month' : day.date|date('m'), 'year' : day.date|date('Y')}) }}">
-                    {% endif %}
-                                
-                    {{ day.date|date('d') }}
-                                
-                    {% if not (day.eventsList is empty) %}
-                        </a>
-                    {% endif %}
+                {% if not (day is empty) %} 
+                    <a href="{{ path('events_calendar_day', {'day' : day.date|date('d'), 'month' : day.date|date('m'), 'year' : day.date|date('Y')}) }}">
+                        {{ day.date|date('d') }}
+                    </a>
                 {% endif %}
             </td>
         {% endfor %}
