@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 	    
 	    new FOS\UserBundle\FOSUserBundle(),
+            new Liip\UrlAutoConverterBundle\LiipUrlAutoConverterBundle(),
 	    
             new HROM\CoreBundle\HROMCoreBundle(),
             new HROM\NewsBundle\HROMNewsBundle(),

@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
 	"friendsofsymfony/user-bundle": "dev-master",
         "jms/security-extra-bundle": "dev-master",
-        "jms/di-extra-bundle": "dev-master"
+        "jms/di-extra-bundle": "dev-master",
+        "liip/url-auto-converter-bundle": "dev-master"
 	
     },
     "scripts": {

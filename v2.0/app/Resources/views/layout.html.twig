@@ -78,10 +78,8 @@
                         <h1>News</h1>
                         {{ render(controller("HROMNewsBundle:News:overview")) }}
                         
-                        <h1>Agenda</h1>
+                        <h1><a href="{{ path('events_calendar') }}">Agenda</a></h1>
                         {{ render(controller('HROMEventsBundle:Events:miniCalendar')) }}
-                        
-                        <h1>Photos</h1>
                     </div>
                 {% endblock %}
             </div>

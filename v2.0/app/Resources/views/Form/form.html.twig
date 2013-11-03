@@ -1,30 +1,5 @@
 {% extends 'form_div_layout.html.twig' %}
 
-{% block date_widget %}
-{% spaceless %}
-    {% if widget == 'single_text' %}
-        {{ block('form_widget_simple') }}
-    {% else %}
-        {{ date_pattern|replace({
-            '{{ year }}':  form_widget(form.year),
-            '{{ month }}': form_widget(form.month),
-            '{{ day }}':   form_widget(form.day),
-        })|raw }}
-    {% endif %}
-{% endspaceless %}
-{% endblock date_widget %}
-
-{% block time_widget %}
-{% spaceless %}
-    {% if widget == 'single_text' %}
-        {{ block('form_widget_simple') }}
-    {% else %}
-        {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
-        {{ form_widget(form.hour, vars) }}:{{ form_widget(form.minute, vars) }}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
-    {% endif %}
-{% endspaceless %}
-{% endblock time_widget %}
-
 {% block form_label %}
 {% spaceless %}
     {% if not compound %}
@@ -38,10 +13,79 @@
     <label {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
         <span {% if required %}class="required"{% endif %}>{{ label|trans({}, translation_domain) }}</span>
             
-        {% if help is defined %}
-            <br /><span class="help">{{ help }}</span>
+        {% if attr.help is defined %}
+            <br /><span class="help">{{ attr.help }}</span>
         {% endif %}
     </label>
     
 {% endspaceless %}
 {% endblock form_label %}
+
+{% block form_widget_compound %}
+{% spaceless %}
+    {% set attr = attr|merge({'class': 'row'}) %}
+
+    <div {{ block('widget_container_attributes') }}>
+        {% if form.parent is empty %}
+            {{ form_errors(form) }}
+        {% endif %}
+        {{ block('form_rows') }}
+        {{ form_rest(form) }}
+    </div>
+{% endspaceless %}
+{% endblock form_widget_compound %}
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        {% set container_attr = container_attr|merge({'class': 'row'}) %}
+
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+{% block time_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        {% set container_attr = container_attr|merge({'class': 'inline'}) %}
+
+        <div {{ block('widget_container_attributes') }}>
+            {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
+            {{ form_widget(form.hour, vars) }}:{{ form_widget(form.minute, vars) }}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock time_widget %}
+
+{% block collection_widget %}
+{% spaceless %}
+    {% if prototype is defined %}
+        {% set attr = attr|merge({'data-prototype': block('collection_item_widget') }) %}
+    {% endif %}
+    {{ block('form_widget') }}
+{% endspaceless %}
+{% endblock collection_widget %}
+ 
+{% block collection_item_widget %}
+{% spaceless %}
+    <div class="row">
+        {% set fieldNum = 1 %}
+        {% for row in prototype %}
+            {{ form_label(row) }}
+            {{ form_widget(row) }}
+            {% set fieldNum = fieldNum + 1 %}
+        {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock collection_item_widget %}

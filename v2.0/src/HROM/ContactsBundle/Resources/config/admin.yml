@@ -1,0 +1,21 @@
+contacts_list:
+    path:	/{page}
+    defaults:	{ _controller: HROMContactsBundle:ContactAdmin:list, page: 1 }
+    requirements:
+        page:	(([1-9])+([0-9])*)
+
+contact_add:
+    path: /add
+    defaults: { _controller: HROMContactsBundle:ContactAdmin:add }
+    
+contact_edit:
+    path: /edit/{id}
+    defaults: { _controller: HROMContactsBundle:ContactAdmin:edit }
+    requirements:
+        id: \d+
+
+contact_delete:
+    path:	/delete/{id}
+    defaults:	{ _controller: HROMContactsBundle:ContactAdmin:delete }
+    requirements:
+        id:	\d+

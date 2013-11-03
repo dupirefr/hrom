@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContactRepository extends EntityRepository
 {
+    /**
+     * Count contacts
+     * 
+     * @return integer
+     */
+    public function count() {
+        $qb = $this->_em->createQueryBuilder();
+
+        $qb
+                ->select('count(contact)')
+                ->from('HROMContactsBundle:Contact', 'contact');
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

@@ -1,0 +1,15 @@
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Modifier un contact - {{ parent() }}{% endblock %}
+{% block meta_description %}Modification d'un contact existant.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hromcontacts/css/contact.css') }}" />
+{% endblock %}
+{% block header_title %}Modifier un contact {% endblock %}
+
+{% block body %}
+	{% set actionRouteParams = {'id' : app.request.get('id')} %}
+    {% include "HROMContactsBundle:ContactAdmin:form.html.twig" %}
+{% endblock %}

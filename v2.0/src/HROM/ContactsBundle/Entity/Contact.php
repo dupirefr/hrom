@@ -3,11 +3,12 @@
 namespace HROM\ContactsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contact
  *
- * @ORM\Table()
+ * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="HROM\ContactsBundle\Entity\ContactRepository")
  */
 class Contact
@@ -25,6 +26,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="surname", type="string", length=100)
+     * 
+     * @Assert\Length(max=100, maxMessage="Le nom doit faire au plus {{ limit }} caractère.|Le nom doit faire au plus {{ limit }} caractères.")
      */
     private $surname;
 
@@ -32,9 +35,30 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="givenName", type="string", length=100)
+     * 
+     * @Assert\Length(max=100, maxMessage="Le prénom doit faire au plus {{ limit }} caractère.|Le prénom doit faire au plus {{ limit }} caractères.")
      */
     private $givenName;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Phone", mappedBy="contact")
+     */
+    private $phoneNumbers;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Email", mappedBy="contact")
+     */
+    private $emailAddresses;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->phoneNumbers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->emailAddresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -90,5 +114,73 @@ class Contact
     public function getGivenName()
     {
         return $this->givenName;
+    }
+    
+    /**
+     * Add phoneNumber
+     *
+     * @param Phone $phoneNumber
+     * @return Contact
+     */
+    public function addPhoneNumber(Phone $phoneNumber)
+    {
+        $this->phoneNumbers[] = $phoneNumber;
+        $phoneNumber->setContact($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove phoneNumber
+     *
+     * @param Phone $phoneNumber
+     */
+    public function removePhoneNumber(Phone $phoneNumber)
+    {
+        $this->phoneNumbers->removeElement($phoneNumber);
+    }
+
+    /**
+     * Get phoneNumbers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhoneNumbers()
+    {
+        return $this->phoneNumbers;
+    }
+
+    /**
+     * Add emailAddress
+     *
+     * @param Email $emailAddress
+     * @return Contact
+     */
+    public function addEmailAddresse(Email $emailAddress)
+    {
+        $this->emailAddresses[] = $emailAddress;
+        $emailAddress->setContact($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove emailAddress
+     *
+     * @param Email $emailAddress
+     */
+    public function removeEmailAddresse(Email $emailAddress)
+    {
+        $this->emailAddresses->removeElement($emailAddress);
+    }
+
+    /**
+     * Get emailAddresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmailAddresses()
+    {
+        return $this->emailAddresses;
     }
 }

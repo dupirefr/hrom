@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+#albums td {
+    width: 33%;
+}
+
 #album {
     text-align: center;
 }

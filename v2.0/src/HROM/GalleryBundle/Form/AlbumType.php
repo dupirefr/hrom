@@ -19,10 +19,27 @@ class AlbumType extends AbstractType
             ->add('year', 'choice',
                     array(
                         'required' => false,
-                        'choices' => $this->buildYearChoices()
+                        'choices' => $this->buildYearChoices(),
+                        'attr' =>
+                                array(
+                                    'help' => '(Indiquez l\'année au cours de laquelle les photos ont été prises)'
+                                )
                    )
             )
-            ->add('googleAlbumID', 'text')
+            ->add('description', 'textarea',
+                    array(
+                        'attr' =>
+                                array(
+                                    'help' => 'Indiquez une description du cadre dans lequel les photos ont été prises'
+                                )
+                    ))
+            ->add('googleAlbumID', 'text',
+                    array(
+                        'attr' =>
+                                array(
+                                    'help' => 'Indiquez l\'identifiant Picasa de l\'album'
+                                )
+                    ))
         ;
     }
     

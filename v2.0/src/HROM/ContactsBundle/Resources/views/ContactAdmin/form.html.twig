@@ -1,0 +1,27 @@
+{% form_theme form ':Form:form.html.twig' %}
+
+<form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form">	
+    <div>Les champs marqués d'une astérisque (*) sont obligatoires.</div>
+    
+    <div class="error">{{ form_errors(form) }}</div>
+    
+    <fieldset>
+        <legend>Contact</legend>
+        {{ form_label(form.surname, "Nom") }} {{ form_widget(form.surname, {attr : {size : 20} }) }} <span class="error">{{ form_errors(form.surname) }}</span><br />
+        {{ form_label(form.givenName, "Prénom") }} {{ form_widget(form.givenName, {attr : {size : 20} }) }} <span class="error">{{ form_errors(form.givenName) }}</span>
+       
+        <fieldset>
+            <legend>{{ form_label(form.phoneNumbers, "Téléphone(s)") }}</legend>
+            {{ form_widget(form.phoneNumbers) }}
+        </fieldset>   
+        
+        <fieldset>
+            <legend>{{ form_label(form.emailAddresses, "Email(s)") }}</legend>
+            {{ form_widget(form.emailAddresses) }}
+        </fieldset>
+    </fieldset>
+	
+    {{ form_rest(form) }}
+
+    <div align="center"><input class="btn" type="submit" value="Enregistrer" /></div>
+</form>

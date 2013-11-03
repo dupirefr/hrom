@@ -3,7 +3,7 @@
 
     {% if not (news.picture is empty) %}<img src="{{ asset(news.picture.path) }}" alt="{{ news.picture.alt }}" />{% endif %}
 
-    <p>{{ news.content }}</p><br />
+    <p>{{ news.content|converturls }}</p><br />
 
     <p class="signature">Ecrit par {{ news.author.surname }} {{ news.author.givenName }} le {{ news.instant|date("d/m/Y à H:i") }}</p>
 </div>

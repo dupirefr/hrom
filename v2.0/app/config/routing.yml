@@ -1,7 +1,3 @@
-hrom_contacts:
-    resource: "@HROMContactsBundle/Resources/config/routing.yml"
-    prefix:   /
-
 #Webmaster
 hrom_webmaster:
     resource: "@HROMWebmasterBundle/Resources/config/routing.yml"
@@ -17,6 +13,15 @@ hrom_core:
     resource: "@HROMCoreBundle/Resources/config/routing.yml"
     prefix:   /
 
+#Contacts
+hrom_contacts:
+    resource: "@HROMContactsBundle/Resources/config/routing.yml"
+    prefix:   /contacts
+    
+hrom_contacts_admin:
+    resource: "@HROMContactsBundle/Resources/config/admin.yml"
+    prefix:   /admin/contacts
+    
 #News
 hrom_news:
     resource: "@HROMNewsBundle/Resources/config/routing.yml"

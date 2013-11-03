@@ -8,6 +8,9 @@ namespace HROM;
  * @author François Dupire
  */
 class Configuration {
+    //Contacts
+    const ADMIN_CONTACTS_PER_PAGE = 30;
+    
     //News
     const INDEX_NEWS = 3;
     
@@ -20,7 +23,7 @@ class Configuration {
     
     //Gallery
     const ALBUM_COLS_PER_PAGE = 3;
-    const ALBUM_ROWS_PER_PAGE = 4;
+    const ALBUM_ROWS_PER_PAGE = 5;
     
     const ADMIN_CATEGORY_PER_PAGE = 30;
 }
