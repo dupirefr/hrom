@@ -21,7 +21,7 @@
 
     <table class="listing">
         <thead>
-            <tr><th width="20%">Nom</th> <th width="20%">Prénom</th> <th width="25%">Téléphone(s)</th> <th width="25%">Email(s)</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
+            <tr><th width="15%">Nom</th> <th width="15%">Prénom</th> <th width="15%">Adresse</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
         </thead>
 
         <tbody>
@@ -35,14 +35,18 @@
                 ">
                     <td>{{ contact.surname }}</td>
                     <td>{{ contact.givenName }}</td>
+                    <td>
+                        {% set address = contact.address %}
+                        {% include('HROMCoreBundle:Address:address.html.twig') %}
+                    </td>
                     <td><ul>
                         {% for phoneNumber in contact.phoneNumbers %}
-                            <li>{{ phoneNumber }}</li>
+                            <li>{{ phoneNumber.number }}</li>
                         {% endfor %}
                     </ul></td>
                     <td><ul>
                         {% for emailAddress in contact.emailAddresses %}
-                            <li>{{ emailAddress }}</li>
+                            <li>{{ emailAddress.address|converturls() }}</li>
                         {% endfor %}
                     </ul></td>
                     <td align="center"><a href="{{ path('contact_edit', {'id' : contact.id}) }}">Modif.</a></td>

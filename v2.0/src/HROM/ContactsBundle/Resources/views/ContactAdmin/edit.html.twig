@@ -9,7 +9,14 @@
 {% endblock %}
 {% block header_title %}Modifier un contact {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/hromcontacts/js/phones.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/hromcontacts/js/emails.js') }}"></script>
+{% endblock %}
+
 {% block body %}
-	{% set actionRouteParams = {'id' : app.request.get('id')} %}
+    {% set actionRouteParams = {'id' : app.request.get('id')} %}
     {% include "HROMContactsBundle:ContactAdmin:form.html.twig" %}
 {% endblock %}

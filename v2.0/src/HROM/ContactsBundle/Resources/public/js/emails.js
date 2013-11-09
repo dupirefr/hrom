@@ -3,7 +3,7 @@ jQuery(document).ready(function($)
     var $container = $('div#hrom_contactsbundle_contacttype_emailAddresses');
 
     var $addButton = $('<div id="addEmail"><a href="#" class="btn">Ajouter</a></div>');
-    $container.append($addButton);
+    $container.prepend($addButton);
 
     $addButton.click(function(e)
     {
@@ -19,7 +19,7 @@ jQuery(document).ready(function($)
         addPhone($container);
         
     } else {
-        $container.children('div').each(function()
+        $container.children('div.row').each(function()
         {
            addDeleteButton($(this)); 
         });
@@ -28,7 +28,7 @@ jQuery(document).ready(function($)
     function addPhone($container)
     {
         var $prototype = $($container.attr('data-prototype')
-                .replace(/__name__/g, index)
+                .replace(/__email_proto__/g, index)
         );
             
         addDeleteButton($prototype);

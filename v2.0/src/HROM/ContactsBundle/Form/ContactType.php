@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use HROM\CoreBundle\Form\AddressType;
 use HROM\ContactsBundle\Form\PhoneType;
 use HROM\ContactsBundle\Form\EmailType;
 
@@ -14,17 +15,38 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('surname', 'text')
-            ->add('givenName', 'text')
+            ->add('surname', 'text', array(
+                'label' => 'Nom'
+            ))
+            ->add('givenName', 'text', array(
+                'label' => 'Prénom'
+            ))
+            ->add('address', new AddressType(), array(
+                'label' => 'Adresse'
+            ))
             ->add('phoneNumbers', 'collection', array(
                 'type' => new PhoneType(),
-                'allow_add'    => true,
-                'allow_delete' => true
+                'label' => 'Téléphone(s)',
+                'options' => array(
+                    'label' => 'Numéro'
+                ),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
+                'prototype_name' => '__phone_proto__'
             ))
             ->add('emailAddresses', 'collection', array(
                 'type' => new EmailType(),
+                'label' => 'Email(s)',
+                'options' => array(
+                    'label' => 'Adresse'
+                ),
                 'allow_add'    => true,
-                'allow_delete' => true  
+                'allow_delete' => true,
+                'by_reference' => false,
+                'prototype' => true,
+                'prototype_name' => '__email_proto__'
             ));
     }
 

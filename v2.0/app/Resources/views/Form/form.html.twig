@@ -1,5 +1,15 @@
 {% extends 'form_div_layout.html.twig' %}
 
+{% block form_row %}
+{% spaceless %}
+    <div class="row">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        <span class="error">{{ form_errors(form) }}</span>
+    </div>
+{% endspaceless %}
+{% endblock %}
+    
 {% block form_label %}
 {% spaceless %}
     {% if not compound %}
@@ -67,25 +77,3 @@
     {% endif %}
 {% endspaceless %}
 {% endblock time_widget %}
-
-{% block collection_widget %}
-{% spaceless %}
-    {% if prototype is defined %}
-        {% set attr = attr|merge({'data-prototype': block('collection_item_widget') }) %}
-    {% endif %}
-    {{ block('form_widget') }}
-{% endspaceless %}
-{% endblock collection_widget %}
- 
-{% block collection_item_widget %}
-{% spaceless %}
-    <div class="row">
-        {% set fieldNum = 1 %}
-        {% for row in prototype %}
-            {{ form_label(row) }}
-            {{ form_widget(row) }}
-            {% set fieldNum = fieldNum + 1 %}
-        {% endfor %}
-    </div>
-{% endspaceless %}
-{% endblock collection_item_widget %}

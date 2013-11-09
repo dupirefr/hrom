@@ -204,3 +204,11 @@ a {
 .btn:hover {
     border: solid 2px #F6E8B1;
 }
+
+.plus-btn, .minus-btn {
+    width: 1%;
+    
+    text-align: center;
+    
+    margin: 1px;
+}

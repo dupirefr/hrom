@@ -15,7 +15,9 @@ class AddressType extends AbstractType
             ->add('number', 'text')
             ->add('postalCode', 'text')
             ->add('city', 'text')
-            ->add('box', 'text')
+            ->add('box', 'text', array(
+                'required' => false
+            ))
         ;
     }
 

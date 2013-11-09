@@ -5,6 +5,8 @@ namespace HROM\ContactsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use HROM\CoreBundle\Entity\Address;
+
 /**
  * Contact
  *
@@ -41,14 +43,22 @@ class Contact
     private $givenName;
     
     /**
-     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Phone", mappedBy="contact")
+     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Phone", mappedBy="contact", cascade={"persist", "remove"})
      */
     private $phoneNumbers;
     
     /**
-     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Email", mappedBy="contact")
+     * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Email", mappedBy="contact", cascade={"persist", "remove"})
      */
     private $emailAddresses;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="HROM\CoreBundle\Entity\Address", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     * 
+     * @Assert\Valid();
+     */
+    private $address;
     
     
     /**
@@ -124,8 +134,8 @@ class Contact
      */
     public function addPhoneNumber(Phone $phoneNumber)
     {
-        $this->phoneNumbers[] = $phoneNumber;
         $phoneNumber->setContact($this);
+        $this->phoneNumbers[] = $phoneNumber;
     
         return $this;
     }
@@ -156,10 +166,10 @@ class Contact
      * @param Email $emailAddress
      * @return Contact
      */
-    public function addEmailAddresse(Email $emailAddress)
+    public function addEmailAddress(Email $emailAddress)
     {
-        $this->emailAddresses[] = $emailAddress;
         $emailAddress->setContact($this);
+        $this->emailAddresses[] = $emailAddress;
     
         return $this;
     }
@@ -169,7 +179,7 @@ class Contact
      *
      * @param Email $emailAddress
      */
-    public function removeEmailAddresse(Email $emailAddress)
+    public function removeEmailAddress(Email $emailAddress)
     {
         $this->emailAddresses->removeElement($emailAddress);
     }
@@ -182,5 +192,28 @@ class Contact
     public function getEmailAddresses()
     {
         return $this->emailAddresses;
+    }
+
+    /**
+     * Set address
+     *
+     * @param Address $address
+     * @return Contact
+     */
+    public function setAddress(Address $address)
+    {
+        $this->address = $address;
+    
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return Address 
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

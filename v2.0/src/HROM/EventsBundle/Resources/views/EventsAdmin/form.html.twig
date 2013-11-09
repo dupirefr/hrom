@@ -7,21 +7,21 @@
     
     <fieldset>
         <legend>Evénement</legend>
-        {{ form_label(form.object, "Objet", {help : "Indiquez l'objet de l'événement"}) }} {{ form_widget(form.object, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.object) }}</span><br />
-        {{ form_label(form.description, "Description", {help : "(Décrivez l'événement)"}) }} {{ form_widget(form.description, {attr : {cols : 50, rows : 10} }) }} <span class="error">{{ form_errors(form.description) }}</span><br />
-        {{ form_label(form.date, "Date", {help : "Indiquez la date de l'événement"}) }} {{ form_widget(form.date) }} <span class="error">{{ form_errors(form.date) }}</span><br />
-        {{ form_label(form.time, "Heure", {help : "(Indiquez l'heure de l'événement)"}) }} {{ form_widget(form.time) }} <span class="error">{{ form_errors(form.time) }}</span>
+        {{ form_label(form.object, 'Objet') }} {{ form_widget(form.object, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.object) }}</span><br />
+        {{ form_label(form.description, 'Description') }} {{ form_widget(form.description, {attr : {cols : 50, rows : 10} }) }} <span class="error">{{ form_errors(form.description) }}</span><br />
+        {{ form_label(form.date, 'Date') }} {{ form_widget(form.date) }} <span class="error">{{ form_errors(form.date) }}</span><br />
+        {{ form_label(form.time, 'Heure') }} {{ form_widget(form.time) }} <span class="error">{{ form_errors(form.time) }}</span>
        
         <fieldset>
-            <legend>Lieu</legend>
+            <legend>{{ form_label(form.address, 'Lieu') }}</legend>
             <span class="help">Donnez le plus d'information possible</span><br />
             
-            {% include "HROMCoreBundle:Address:addressForm.html.twig" %}
+            {% include 'HROMCoreBundle:Address:addressForm.html.twig' %}
         </fieldset>
         
         <fieldset>
             <legend>Image</legend>
-            {% include "HROMCoreBundle:Picture:pictureForm.html.twig" %}
+            {% include 'HROMCoreBundle:Picture:pictureForm.html.twig' %}
         </fieldset>
     </fieldset>
 	
