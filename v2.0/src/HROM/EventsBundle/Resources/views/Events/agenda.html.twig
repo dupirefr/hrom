@@ -50,7 +50,7 @@
                     
 		<a href="{{ path('events_calendar_specified', {'month' : month, 'year' : previousYear}) }}" class="btn"><<</a>
 		<a href="{{ path('events_calendar_specified', {'month' : previousMonth, 'year' : previousMonthYear}) }}" class="btn"><</a>
-                {{ calendar.date|date('F Y') }}
+                {{ (calendar.date|date('F'))|trans }} {{ calendar.date|date('Y') }}
 		<a href="{{ path('events_calendar_specified', {'month' : nextMonth, 'year' : nextMonthYear}) }}" class="btn">></a>
 		<a href="{{ path('events_calendar_specified', {'month' : month, 'year' : nextYear}) }}" class="btn">>></a>
             </caption>

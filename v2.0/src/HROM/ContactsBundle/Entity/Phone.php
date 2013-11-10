@@ -29,6 +29,7 @@ class Phone
      *
      * @ORM\Column(name="number", type="string", length=20)
      * 
+     * @Assert\NotBlank(message="Le numéro est obligatoire.")
      * @Assert\Length(min=9, minMessage="Le numéro de téléphone n'est pas valide.", max=20, maxMessage="Le numéro de téléphone n'est pas valide.")
      */
     private $number;

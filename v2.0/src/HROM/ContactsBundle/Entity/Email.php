@@ -29,7 +29,8 @@ class Email
      *
      * @ORM\Column(name="address", type="string", length=255)
      * 
-     * @Assert\Regex(pattern="^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$", message="L'adresse email n'est pas valide.")
+     * @Assert\NotBlank(message="L'adresse est obligatoire.")
+     * @Assert\Email(message="L'adresse email n'est pas valide.")
      */
     private $address;
     

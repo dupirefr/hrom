@@ -31,6 +31,7 @@ class Event
      *
      * @ORM\Column(name="object", type="string", length=255)
      * 
+     * @Assert\NotBlank(message="L'objet est obligatoire.")
      * @Assert\Length(min=10, minMessage="L'objet doit faire au moins {{ limit }} caractère.|L'objet doit faire au moins {{ limit }} caractères.", max=255, maxMessage="L'objet doit faire au plus {{ limit }} caractère.|L'objet doit faire au plus {{ limit }} caractères.")
      */
     private $object;
@@ -47,6 +48,7 @@ class Event
      *
      * @ORM\Column(name="date", type="date")
      * 
+     * @Assert\NotBlank(message="La date est obligatoire.")
      * @Assert\Date(message="La date n'est pas valide.")
      * @FutureDate(message="La date doit être postérieure à aujourd'hui.")
      */

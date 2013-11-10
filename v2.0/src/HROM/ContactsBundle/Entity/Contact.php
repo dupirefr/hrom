@@ -29,6 +29,7 @@ class Contact
      *
      * @ORM\Column(name="surname", type="string", length=100)
      * 
+     * @Assert\NotBlank(message="Le nom est obligatoire.")
      * @Assert\Length(max=100, maxMessage="Le nom doit faire au plus {{ limit }} caractère.|Le nom doit faire au plus {{ limit }} caractères.")
      */
     private $surname;
@@ -38,17 +39,23 @@ class Contact
      *
      * @ORM\Column(name="givenName", type="string", length=100)
      * 
+     * @Assert\NotBlank(message="Le prénom est obligatoire.")
      * @Assert\Length(max=100, maxMessage="Le prénom doit faire au plus {{ limit }} caractère.|Le prénom doit faire au plus {{ limit }} caractères.")
      */
     private $givenName;
     
     /**
      * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Phone", mappedBy="contact", cascade={"persist", "remove"})
+     * 
+     * @Assert\Count(min=1, minMessage="Vous devez spécifier au moins {{ limit }} numéro de téléphone.|Vous devez spécifier au moins {{ limit }} numéros de téléphone.")
+     * @Assert\Valid()
      */
     private $phoneNumbers;
     
     /**
      * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Email", mappedBy="contact", cascade={"persist", "remove"})
+     * 
+     * @Assert\Valid()
      */
     private $emailAddresses;
     
@@ -134,8 +141,10 @@ class Contact
      */
     public function addPhoneNumber(Phone $phoneNumber)
     {
-        $phoneNumber->setContact($this);
-        $this->phoneNumbers[] = $phoneNumber;
+        if($phoneNumber !== NULL) {
+            $phoneNumber->setContact($this);
+            $this->phoneNumbers[] = $phoneNumber;
+        }
     
         return $this;
     }
@@ -168,9 +177,11 @@ class Contact
      */
     public function addEmailAddress(Email $emailAddress)
     {
-        $emailAddress->setContact($this);
-        $this->emailAddresses[] = $emailAddress;
-    
+        if($emailAddress !== null) {
+            $emailAddress->setContact($this);
+            $this->emailAddresses[] = $emailAddress;
+        }
+
         return $this;
     }
 

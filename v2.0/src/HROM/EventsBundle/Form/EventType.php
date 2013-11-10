@@ -14,12 +14,39 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('object', 'text')
-            ->add('description', 'textarea', array('required' => false))
-            ->add('date', 'date', array('years' => range(date('Y'), date('Y') + 10)))
-            ->add('time', 'time', array('required' => false))
-            ->add('address', new AddressType(), array('required' => false))
-            ->add('picture', new PictureType(), array('required' => false))
+            ->add('object', 'text', array(
+                'label' => 'Objet',
+                'attr' => array(
+                    'size' => 50
+                )
+            ))
+            ->add('description', 'textarea', array(
+                'required' => false,
+                'label' => 'Description',
+                'attr' => array(
+                    'cols' => 50,
+                    'rows' => 10
+                )
+            ))
+            ->add('date', 'date', array(
+                'years' => range(date('Y'), date('Y') + 10),
+                'label' => 'Date'
+            ))
+            ->add('time', 'time', array(
+                'required' => false,
+                'label' => 'Heure'
+            ))
+            ->add('address', new AddressType(), array(
+                'required' => false,
+                'label' => 'Adresse',
+                'attr' => array(
+                    'help' => 'Donnez le plus d\'information possible'
+                )
+            ))
+            ->add('picture', new PictureType(), array(
+                'required' => false,
+                'label' => 'Image'
+            ))
         ;
     }
 

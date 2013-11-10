@@ -2,7 +2,7 @@ jQuery(document).ready(function($)
 {
     var $container = $('div#hrom_contactsbundle_contacttype_emailAddresses');
 
-    var $addButton = $('<div id="addEmail"><a href="#" class="btn">Ajouter</a></div>');
+    var $addButton = $('<div id="addEmail"><a href="#" class="btn plus-btn">+</a></div>');
     $container.prepend($addButton);
 
     $addButton.click(function(e)
@@ -15,10 +15,7 @@ jQuery(document).ready(function($)
     
     var index = $container.find(':input').length;
     
-    if(index == 0) {
-        addPhone($container);
-        
-    } else {
+    if(index > 0) {
         $container.children('div.row').each(function()
         {
            addDeleteButton($(this)); 
@@ -40,7 +37,7 @@ jQuery(document).ready(function($)
 
     function addDeleteButton($prototype)
     {
-        $deleteButton = $('<a href="#" class="btn">Supprimer</a><br /><br />');
+        $deleteButton = $('<a href="#" class="btn minus-btn">-</a>');
         
         $deleteButton.appendTo($prototype);
         

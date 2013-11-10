@@ -27,6 +27,7 @@ class Address
      *
      * @ORM\Column(name="street", type="string", length=255, nullable=true)
      * 
+     * @Assert\NotBlank(message="La rue est obligatoire.")
      * @Assert\Length(max=255, maxMessage="La rue doit faire au plus {{ limit }} caractère.|La rue doit faire au plus {{ limit }} caractères.")
      */
     private $street;
@@ -36,6 +37,7 @@ class Address
      *
      * @ORM\Column(name="number", type="string", length=6, nullable=true)
      * 
+     * @Assert\NotBlank(message="Le numéro est obligatoire.")
      * @Assert\Regex(pattern="/^[1-9][0-9]{0,3}[a-zA-Z]{0,2}$/", message="Le numéro n'est pas valide.")
      */
     private $number;
@@ -45,6 +47,7 @@ class Address
      *
      * @ORM\Column(name="postalCode", type="integer", nullable=true)
      * 
+     * @Assert\NotBlank(message="Le code postal est obligatoire.")
      * @Assert\Range(min=1000, minMessage="Le code postal n'est pas valide.", max=9999, maxMessage="Le code postal n'est pas valide.")
      */
     private $postalCode;
@@ -54,6 +57,7 @@ class Address
      *
      * @ORM\Column(name="city", type="string", length=100, nullable=true)
      * 
+     * @Assert\NotBlank(message="La ville est obligatoire.")
      * @Assert\Length(max=100, maxMessage="La ville doit faire au plus {{ limit }} caractère.|La ville doit faire au plus {{ limit }} caractères.")
      */
     private $city;

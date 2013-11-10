@@ -16,10 +16,16 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('surname', 'text', array(
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'attr' => array(
+                    'size' => 20
+                )
             ))
             ->add('givenName', 'text', array(
-                'label' => 'Prénom'
+                'label' => 'Prénom',
+                'attr' => array(
+                    'size' => 20
+                )
             ))
             ->add('address', new AddressType(), array(
                 'label' => 'Adresse'
@@ -27,23 +33,29 @@ class ContactType extends AbstractType
             ->add('phoneNumbers', 'collection', array(
                 'type' => new PhoneType(),
                 'label' => 'Téléphone(s)',
+                'attr' => array(
+                    'help' => 'Au moins un numéro de téléphone'
+                ),
                 'options' => array(
                     'label' => 'Numéro'
                 ),
                 'allow_add' => true,
                 'allow_delete' => true,
+                'error_bubbling' => false,
                 'by_reference' => false,
                 'prototype' => true,
                 'prototype_name' => '__phone_proto__'
             ))
             ->add('emailAddresses', 'collection', array(
                 'type' => new EmailType(),
+                'required' => false,
                 'label' => 'Email(s)',
                 'options' => array(
                     'label' => 'Adresse'
                 ),
                 'allow_add'    => true,
                 'allow_delete' => true,
+                'error_bubbling' => false,
                 'by_reference' => false,
                 'prototype' => true,
                 'prototype_name' => '__email_proto__'

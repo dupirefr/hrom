@@ -23,7 +23,7 @@
     <label {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
         <span {% if required %}class="required"{% endif %}>{{ label|trans({}, translation_domain) }}</span>
             
-        {% if attr.help is defined %}
+        {% if attr.help is defined and not compound %}
             <br /><span class="help">{{ attr.help }}</span>
         {% endif %}
     </label>
@@ -50,15 +50,13 @@
     {% if widget == 'single_text' %}
         {{ block('form_widget_simple') }}
     {% else %}
-        {% set container_attr = container_attr|merge({'class': 'row'}) %}
-
-        <div {{ block('widget_container_attributes') }}>
+        <span {{ block('widget_container_attributes') }}>
             {{ date_pattern|replace({
                 '{{ year }}':  form_widget(form.year),
                 '{{ month }}': form_widget(form.month),
                 '{{ day }}':   form_widget(form.day),
             })|raw }}
-        </div>
+        </span>
     {% endif %}
 {% endspaceless %}
 {% endblock date_widget %}
@@ -68,12 +66,10 @@
     {% if widget == 'single_text' %}
         {{ block('form_widget_simple') }}
     {% else %}
-        {% set container_attr = container_attr|merge({'class': 'inline'}) %}
-
-        <div {{ block('widget_container_attributes') }}>
+        <span {{ block('widget_container_attributes') }}>
             {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
             {{ form_widget(form.hour, vars) }}:{{ form_widget(form.minute, vars) }}{% if with_seconds %}:{{ form_widget(form.second, vars) }}{% endif %}
-        </div>
+        </span>
     {% endif %}
 {% endspaceless %}
 {% endblock time_widget %}

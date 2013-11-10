@@ -1,7 +1,7 @@
 <div id="mini_agenda">
     <table>
         <caption>
-            {{ calendar.date|date("F Y") }}
+            {{ (calendar.date|date('F'))|trans }} {{ calendar.date|date('Y') }}
         </caption>
 
         <tr><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th></tr>
