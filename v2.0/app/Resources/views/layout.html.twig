@@ -8,6 +8,7 @@
         <meta name="description" content="{% block meta_description %}{% endblock %}" />
         
         {% block stylesheets %}
+            <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
             <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hromevents/css/events.css') }}" />
         {% endblock %}
@@ -31,27 +32,25 @@
         </div>
             
         <div id="left_part">
-            <ul>
-                {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+            {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 
-                <li {% if currentRoute == path('home') %}class="selected"{% endif %}><a href="{{ path('home') }}">Accueil</a></li>
-                <li {% if currentRoute == path('school') %}class="selected"{% endif %}><a href="{{ path('school') }}">Ecole de Musique</a></li>
-                <li {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}><a href="{{ path('events_calendar') }}">Agenda</a></li>
-                <li {% if path('album_all') in currentRoute %}class="selected"{% endif %}><a href="{{ path('album_all') }}">Photos/Vidéos</a></li>
-                <li {% if currentRoute == path('contact_us') %}class="selected"{% endif %}><a href="{{ path('contact_us') }}">Contacts</a></li>
-                <li {% if currentRoute == path('links') %}class="selected"{% endif %}><a href="{{ path('links') }}">Liens</a></li>
+            <a href="{{ path('home') }}" {% if currentRoute == path('home') %}class="selected"{% endif %}>Accueil</a></li>
+            <a href="{{ path('school') }}" {% if currentRoute == path('school') %}class="selected"{% endif %}>Ecole de Musique</a></li>
+            <a href="{{ path('events_calendar') }}" {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}>Agenda</a></li>
+            <a href="{{ path('album_all') }}" {% if path('album_all') in currentRoute %}class="selected"{% endif %}>Photos/Vidéos</a></li>
+            <a href="{{ path('contact_us') }}" {% if currentRoute == path('contact_us') %}class="selected"{% endif %}>Contacts</a></li>
+            <a href="{{ path('links') }}" {% if currentRoute == path('links') %}class="selected"{% endif %}>Liens</a></li>
 
-                {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
-                    <hr />
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <li {% if '/admin/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('admin_home') }}">Administration</a></li>
-                    {% endif %}
-
-                    {% if is_granted("ROLE_WEBMASTER") %}
-                        <li {% if '/wm/' in currentRoute %}class="selected"{% endif %}><a href="{{ path('wm_home') }}">Webmastering</a></li>
-                    {% endif %}
+            {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
+                <hr />
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('admin_home') }}" {% if '/admin/' in currentRoute %}class="selected"{% endif %}>Administration</a></li>
                 {% endif %}
-            </ul>
+
+                {% if is_granted("ROLE_WEBMASTER") %}
+                    <a href="{{ path('wm_home') }}" {% if '/wm/' in currentRoute %}class="selected"{% endif %}>Webmastering</a></li>
+                {% endif %}
+            {% endif %}
         </div>
         
         <div id="connect">

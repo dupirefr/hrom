@@ -9,7 +9,7 @@ body {
     
     margin: 0px;
     
-    font-family: Georgia, "DejaVu Serif", Norasi, serif;
+    font-family: 'Alegreya', Georgia, 'DejaVu Serif', Norasi, serif;
     
     background-color: #677E52;
 }
@@ -65,38 +65,33 @@ a {
     width: 15%;
 
     font-size: 15pt;
-}
-
-#left_part ul {
-    list-style-type: none;
 
     padding: 0px;
     margin: 0px 0px 0px 15px;
 }
 
-#left_part li {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
 #left_part a {
-    padding: 9px 15px 9px 15px;
+    display: block;
+    
+    padding: 7px 15px 7px 15px;
     margin: 0px;
     
     color: #F6E8B1;
 
     text-decoration: none;
     
-    display: block;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
-#left_part li:hover, #left_part .selected {
-    background-color: #B7CA79;
-}
-
-#left_part li:hover a, #left_part .selected a {        
+#left_part a:hover, #left_part .selected {
+    background-color: #B7CA79;        
+    
     color: black; 
     text-decoration: underline;
+}
+
+#left_part li:hover a, #left_part .selected a {
 }
 
 /*Content*/
