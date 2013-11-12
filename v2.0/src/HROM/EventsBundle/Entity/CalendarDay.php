@@ -2,6 +2,7 @@
 
 namespace HROM\EventsBundle\Entity;
 
+use HROM\EventsBundle\Entity\Event;
 use HROM\EventsBundle\Entity\EventRepository;
 
 /**
@@ -16,13 +17,21 @@ class CalendarDay
      */
     private $date;
     
+    /**
+     * @var Array 
+     */
     private $eventsList;
     
-    public function __construct(\DateTime $date, EventRepository $repository)
+    public function __construct(\DateTime $date, $eventsList)
     {
         $this->date = $date;
+        $this->eventsList = array();
         
-        $this->eventsList = $repository->findBy(array('date' => $date), array('time' => 'asc', 'object' => 'asc'));
+        foreach($eventsList as $event) {            
+            if($event->getDate() == $date) {
+                array_push($this->eventsList, $event);
+            }
+        }
     }
     
     /**

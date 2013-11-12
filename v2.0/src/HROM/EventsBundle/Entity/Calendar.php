@@ -91,9 +91,11 @@ class Calendar
      * Fills calendar
      */
     private function fillCalendar()
-    {
+    {        
         $monthFirstDay = $this->getMonthFirstDay();
         $monthDaysNumber = $this->getMonthDaysNumber();
+        
+        $eventsList = $this->repository->findMonthEvents($this->date, $monthDaysNumber);
         
         $this->calendar = array();
         
@@ -102,7 +104,7 @@ class Calendar
         }
         
         for($d = 1, $i = $monthFirstDay - 1; $d <= $monthDaysNumber; $d++, $i++) {
-            $this->calendar[$i / 7][$i % 7] = new CalendarDay(new \DateTime(date('m/d/Y', mktime(0, 0, 0, $this->date->format('m'), $d, $this->date->format('Y')))), $this->repository);
+            $this->calendar[$i / 7][$i % 7] = new CalendarDay(new \DateTime(date('m/d/Y', mktime(0, 0, 0, $this->date->format('m'), $d, $this->date->format('Y')))), $eventsList);
             
             while($d == $monthDaysNumber && ($i + 1) % 7 != 0) {      
                 $i++;
