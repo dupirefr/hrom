@@ -31,6 +31,11 @@ hrom_news_admin:
     resource: "@HROMNewsBundle/Resources/config/admin.yml"
     prefix:   /admin/news
     
+#Cursus    
+hrom_cursus_admin:
+    resource: "@HROMCursusBundle/Resources/config/admin.yml"
+    prefix:   /admin/cursus
+    
 #Gallery
 hrom_gallery:
     resource: "@HROMGalleryBundle/Resources/config/routing.yml"
@@ -68,12 +73,3 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-    
-# Internal routing configuration to handle ESI
-# ****** WARNING ******
-# This route should be enabled with caution as it can open a security vulnerability
-# see http://symfony.com/blog/security-release-symfony-2-0-20-and-2-1-5-released for more information
-# ****** WARNING ******
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal

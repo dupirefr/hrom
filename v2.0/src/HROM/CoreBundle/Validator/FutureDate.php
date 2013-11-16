@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class FutureDate extends Constraint
 {
-    public $message;
+    public $message = 'La date doit se situer dans le future.';
 }
 
 ?>

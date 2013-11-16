@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use HROM\CoreBundle\Entity\Address;
+use HROM\CoreBundle\Validator\UniqueCollectionItem;
 
 /**
  * Contact
@@ -49,6 +50,9 @@ class Contact
      * 
      * @Assert\Count(min=1, minMessage="Vous devez spécifier au moins {{ limit }} numéro de téléphone.|Vous devez spécifier au moins {{ limit }} numéros de téléphone.")
      * @Assert\Valid()
+     * @Assert\All(constraints={
+     *      @UniqueCollectionItem(propertyPath="number", message="Il ne peut y avoir plusieurs fois le même numéro de téléphone.")
+     * })
      */
     private $phoneNumbers;
     
@@ -56,6 +60,9 @@ class Contact
      * @ORM\OneToMany(targetEntity="HROM\ContactsBundle\Entity\Email", mappedBy="contact", cascade={"persist", "remove"})
      * 
      * @Assert\Valid()
+     * @Assert\All(constraints={
+     *      @UniqueCollectionItem(propertyPath="address", message="Il ne peut y avoir plusieurs fois la même adresse email.")
+     * })
      */
     private $emailAddresses;
     
@@ -63,7 +70,7 @@ class Contact
      * @ORM\OneToOne(targetEntity="HROM\CoreBundle\Entity\Address", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * 
-     * @Assert\Valid();
+     * @Assert\Valid()
      */
     private $address;
     

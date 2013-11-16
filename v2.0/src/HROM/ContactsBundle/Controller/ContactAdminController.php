@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HROM\Configuration;
 
+use HROM\CoreBundle\Other\Utils;
+
 use HROM\ContactsBundle\Entity\Contact;
 use HROM\ContactsBundle\Form\ContactType;
 
@@ -55,16 +57,31 @@ class ContactAdminController extends Controller {
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
         $contact = $repository->find($id);
-
+        
+        $originalPhoneNumbers = Utils::copyArray($contact->getPhoneNumbers());
+        $originalEmailAddresses = Utils::copyArray($contact->getEmailAddresses());
+        
         $form = $this->createForm(new ContactType(), $contact);
-
+        
         $request = $this->getRequest();
-
-        if($request->getMethod() == 'POST') {
+        if($request->isMethod('POST')) {
             $form->bind($request);
 
             if($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+                
+                $originalPhoneNumbers = Utils::substractArray($originalPhoneNumbers, $contact->getPhoneNumbers());
+                
+                foreach($originalPhoneNumbers as $phoneNumber) {
+                    $em->remove($phoneNumber);
+                }
+                
+                $originalEmailAddresses = Utils::substractArray($originalEmailAddresses, $contact->getEmailAddresses());
+                
+                foreach($originalEmailAddresses as $emailAddress) {
+                    $em->remove($emailAddress);
+                }
+                
                 $em->persist($contact);
                 $em->flush();
 
