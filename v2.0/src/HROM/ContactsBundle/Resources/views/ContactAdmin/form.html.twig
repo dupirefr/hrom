@@ -42,6 +42,12 @@
                 {% endfor %}
             </div>
         </fieldset>
+        
+        <fieldset>
+            <legend>{{ form_label(form.roles) }}</legend>
+            
+            {{ form_row(form.roles) }}
+        </fieldset>
     </fieldset>
 	
     {{ form_widget(form._token) }}  

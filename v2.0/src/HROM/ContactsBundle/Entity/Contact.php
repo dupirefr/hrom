@@ -5,6 +5,8 @@ namespace HROM\ContactsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use HROM\ContactsBundle\Validator\ExistingRole;
+
 use HROM\CoreBundle\Entity\Address;
 use HROM\CoreBundle\Validator\UniqueCollectionItem;
 
@@ -73,6 +75,15 @@ class Contact
      * @Assert\Valid()
      */
     private $address;
+    
+    /**
+     * @var array
+     * 
+     * @ORM\Column(name="roles", type="array")
+     * 
+     * @ExistingRole() 
+     */
+    private $roles;
     
     
     /**
@@ -233,5 +244,51 @@ class Contact
     public function getAddress()
     {
         return $this->address;
+    }
+
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return Contact
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+    
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array 
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Add emailAddresses
+     *
+     * @param \HROM\ContactsBundle\Entity\Email $emailAddresses
+     * @return Contact
+     */
+    public function addEmailAddresse(\HROM\ContactsBundle\Entity\Email $emailAddresses)
+    {
+        $this->emailAddresses[] = $emailAddresses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove emailAddresses
+     *
+     * @param \HROM\ContactsBundle\Entity\Email $emailAddresses
+     */
+    public function removeEmailAddresse(\HROM\ContactsBundle\Entity\Email $emailAddresses)
+    {
+        $this->emailAddresses->removeElement($emailAddresses);
     }
 }

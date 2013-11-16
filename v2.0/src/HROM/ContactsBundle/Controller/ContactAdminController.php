@@ -10,6 +10,8 @@ use HROM\CoreBundle\Other\Utils;
 use HROM\ContactsBundle\Entity\Contact;
 use HROM\ContactsBundle\Form\ContactType;
 
+use HROM\ContactsBundle\Validator\ExistingRole;
+
 /**
  * Controller for showing and managing news.
  *
@@ -26,7 +28,7 @@ class ContactAdminController extends Controller {
         $contactsCount = $repository->count();
         $pageCount = ceil($contactsCount / $limit);
 
-        return $this->render('HROMContactsBundle:ContactAdmin:list.html.twig', array('contactsList' => $contactsList, 'pageCount' => $pageCount));
+        return $this->render('HROMContactsBundle:ContactAdmin:list.html.twig', array('contactsList' => $contactsList, 'pageCount' => $pageCount, 'authorizedRoles' => ExistingRole::getAuthorizedRoles()));
     }
     
     public function addAction() {
@@ -45,7 +47,7 @@ class ContactAdminController extends Controller {
                 $em->flush();
 
                 $session = $this->get('session');
-                $session->getFlashBag()->add('succeed', 'Le contact a bien été ajoutée.');
+                $session->getFlashBag()->add('succeed', 'Le contact a bien été ajouté.');
 
                 return $this->redirect($this->generateUrl('contacts_list'));
             }

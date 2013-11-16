@@ -10,6 +10,8 @@ use HROM\CoreBundle\Form\AddressType;
 use HROM\ContactsBundle\Form\PhoneType;
 use HROM\ContactsBundle\Form\EmailType;
 
+use HROM\ContactsBundle\Validator\ExistingRole;
+
 class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -59,6 +61,14 @@ class ContactType extends AbstractType
                 'by_reference' => false,
                 'prototype' => true,
                 'prototype_name' => '__email_proto__'
+            ))
+            ->add('roles', 'choice', array(
+                'label' => 'Rôle(s)',
+                'multiple' => true,
+                'choices' => ExistingRole::getAuthorizedRoles(),
+                'attr' => array(
+                    'size' => count(ExistingRole::getAuthorizedRoles())
+                )
             ));
     }
 

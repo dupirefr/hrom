@@ -21,7 +21,7 @@
 
     <table class="listing">
         <thead>
-            <tr><th width="15%">Nom</th> <th width="15%">Prénom</th> <th width="15%">Adresse</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
+            <tr><th width="10%">Nom</th> <th width="10%">Prénom</th> <th width="15%">Adresse</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th> <th width="10%">Rôles</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
         </thead>
 
         <tbody>
@@ -47,6 +47,11 @@
                     <td><ul>
                         {% for emailAddress in contact.emailAddresses %}
                             <li>{{ emailAddress.address|converturls() }}</li>
+                        {% endfor %}
+                    </ul></td>
+                    <td><ul>
+                        {% for role in contact.roles %}
+                            <li>{{ authorizedRoles[role] }}</li>
                         {% endfor %}
                     </ul></td>
                     <td align="center"><a href="{{ path('contact_edit', {'id' : contact.id}) }}">Modif.</a></td>

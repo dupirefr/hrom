@@ -9,7 +9,7 @@ namespace HROM;
  */
 class Configuration {
     //Contacts
-    const ADMIN_CONTACTS_PER_PAGE = 30;
+    const ADMIN_CONTACTS_PER_PAGE = 50;
     
     //News
     const INDEX_NEWS = 3;
