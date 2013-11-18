@@ -11,6 +11,7 @@ use HROM\ContactsBundle\Entity\Contact;
 use HROM\ContactsBundle\Form\ContactType;
 
 use HROM\ContactsBundle\Validator\ExistingRole;
+use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 
 /**
  * Controller for showing and managing news.
@@ -28,7 +29,12 @@ class ContactAdminController extends Controller {
         $contactsCount = $repository->count();
         $pageCount = ceil($contactsCount / $limit);
 
-        return $this->render('HROMContactsBundle:ContactAdmin:list.html.twig', array('contactsList' => $contactsList, 'pageCount' => $pageCount, 'authorizedRoles' => ExistingRole::getAuthorizedRoles()));
+        return $this->render('HROMContactsBundle:ContactAdmin:list.html.twig', array(
+            'contactsList' => $contactsList,
+            'pageCount' => $pageCount,
+            'rolesArray' => ExistingRole::getAuthorizedRoles(),
+            'committeeRolesArray' => ExistingCommitteeRole::getAuthorizedRoles()
+        ));
     }
     
     public function addAction() {

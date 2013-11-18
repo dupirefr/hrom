@@ -1,0 +1,50 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Nous contacter - {{ parent() }}{% endblock %}
+{% block meta_description %}Contacts{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
+{% endblock %}
+{% block header_title %}Nous contacter{% endblock %}
+
+{% block body %}
+    <h2>Le comité</h2>
+    <table class="listing">
+        <thead>
+            <tr><th width="10%">Fonction</th> <th width="10%">Nom</th> <th width="10%">Prénom</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+        </thead>
+
+        <tbody>
+            {% for member in committee %}
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
+                    <td>{{ committeeRolesArray[member.committeeRole] }}</td>
+                    
+                    <td>{{ member.surname }}</td>
+                    
+                    <td>{{ member.givenName }}</td>
+                    
+                    <td><ul>
+                        {% for phoneNumber in member.phoneNumbers %}
+                            <li>{{ phoneNumber.number }}</li>
+                        {% endfor %}
+                    </ul></td>
+                    
+                    <td><ul>
+                        {% for emailAddress in member.emailAddresses %}
+                            <li>{{ emailAddress.address|converturls() }}</li>
+                        {% endfor %}
+                    </ul></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Les professeurs</h2>
+{% endblock %}

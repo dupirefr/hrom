@@ -8,9 +8,6 @@ school:
     path:  /school
     defaults: { _controller: HROMCoreBundle:Core:school }
     
-contact_us:
-    path:  /contactus
-    defaults: { _controller: HROMCoreBundle:Core:contactUs }
 links:
     path:  /links
     defaults: { _controller: HROMCoreBundle:Core:links }

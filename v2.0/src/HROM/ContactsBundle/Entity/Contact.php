@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use HROM\ContactsBundle\Validator\ExistingRole;
+use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 
 use HROM\CoreBundle\Entity\Address;
 use HROM\CoreBundle\Validator\UniqueCollectionItem;
@@ -84,6 +85,15 @@ class Contact
      * @ExistingRole() 
      */
     private $roles;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="committeeRole", type="string", length=255, nullable=true)
+     * 
+     * @ExistingCommitteeRole()
+     */
+    private $committeeRole;
     
     
     /**
@@ -290,5 +300,28 @@ class Contact
     public function removeEmailAddresse(\HROM\ContactsBundle\Entity\Email $emailAddresses)
     {
         $this->emailAddresses->removeElement($emailAddresses);
+    }
+
+    /**
+     * Set committeeRole
+     *
+     * @param string $committeeRole
+     * @return Contact
+     */
+    public function setCommitteeRole($committeeRole)
+    {
+        $this->committeeRole = $committeeRole;
+    
+        return $this;
+    }
+
+    /**
+     * Get committeeRole
+     *
+     * @return string 
+     */
+    public function getCommitteeRole()
+    {
+        return $this->committeeRole;
     }
 }

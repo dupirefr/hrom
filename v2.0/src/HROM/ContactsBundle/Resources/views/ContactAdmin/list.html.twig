@@ -51,7 +51,7 @@
                     </ul></td>
                     <td><ul>
                         {% for role in contact.roles %}
-                            <li>{{ authorizedRoles[role] }}</li>
+                            <li>{{ rolesArray[role] }} {% if role == 'ROLE_COMMITTEE' %}({{ committeeRolesArray[contact.committeeRole] }}){% endif %}</li>
                         {% endfor %}
                     </ul></td>
                     <td align="center"><a href="{{ path('contact_edit', {'id' : contact.id}) }}">Modif.</a></td>

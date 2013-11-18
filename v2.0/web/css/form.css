@@ -57,6 +57,10 @@
     width: 100%;
 }
 
+.form .hidden {
+    display: none;
+}
+
 .form .error ul {
     display: inline-block;
 }

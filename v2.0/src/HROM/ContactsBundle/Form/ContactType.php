@@ -11,6 +11,7 @@ use HROM\ContactsBundle\Form\PhoneType;
 use HROM\ContactsBundle\Form\EmailType;
 
 use HROM\ContactsBundle\Validator\ExistingRole;
+use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 
 class ContactType extends AbstractType
 {
@@ -69,6 +70,10 @@ class ContactType extends AbstractType
                 'attr' => array(
                     'size' => count(ExistingRole::getAuthorizedRoles())
                 )
+            ))
+            ->add('committeeRole', 'choice', array(
+                'label' => 'Fonction',
+                'choices' => ExistingCommitteeRole::getAuthorizedRoles()
             ));
     }
 

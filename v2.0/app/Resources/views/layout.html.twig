@@ -38,7 +38,7 @@
             <a href="{{ path('school') }}" {% if currentRoute == path('school') %}class="selected"{% endif %}>Ecole de Musique</a></li>
             <a href="{{ path('events_calendar') }}" {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}>Agenda</a></li>
             <a href="{{ path('album_all') }}" {% if path('album_all') in currentRoute %}class="selected"{% endif %}>Photos/Vidéos</a></li>
-            <a href="{{ path('contact_us') }}" {% if currentRoute == path('contact_us') %}class="selected"{% endif %}>Contacts</a></li>
+            <a href="{{ path('contactus') }}" {% if currentRoute == path('contactus') %}class="selected"{% endif %}>Contacts</a></li>
             <a href="{{ path('links') }}" {% if currentRoute == path('links') %}class="selected"{% endif %}>Liens</a></li>
 
             {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
