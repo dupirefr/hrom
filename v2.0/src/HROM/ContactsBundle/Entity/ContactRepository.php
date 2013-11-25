@@ -27,13 +27,7 @@ class ContactRepository extends EntityRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
     
-    /**
-     * Gives contact with $role
-     * 
-     * @param string $role
-     * @return list
-     */
-    public function findByRole($role) {
+    public function queryFindByRole($role) {
         $qb = $this->_em->createQueryBuilder();
         
         $qb
@@ -41,6 +35,18 @@ class ContactRepository extends EntityRepository
                 ->from('HROMContactsBundle:Contact', 'contact')
                 ->where('contact.roles LIKE :role')
                     ->setParameter('role', '%' . $role . '%');
+        
+        return $qb;
+    }
+    
+    /**
+     * Gives contact with $role
+     * 
+     * @param string $role
+     * @return list
+     */
+    public function findByRole($role) {
+        $qb = $this->queryFindByRole($role);
         
         return $qb->getQuery()->getResult();
     }

@@ -17,6 +17,9 @@ class ContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $rolesChoices = ExistingRole::getAuthorizedRoles();
+        $committeeRolesChoices = ExistingCommitteeRole::getAuthorizedRoles();
+        
         $builder
             ->add('surname', 'text', array(
                 'label' => 'Nom',
@@ -66,14 +69,14 @@ class ContactType extends AbstractType
             ->add('roles', 'choice', array(
                 'label' => 'Rôle(s)',
                 'multiple' => true,
-                'choices' => ExistingRole::getAuthorizedRoles(),
+                'choices' => $rolesChoices,
                 'attr' => array(
-                    'size' => count(ExistingRole::getAuthorizedRoles())
+                    'size' => count($rolesChoices)
                 )
             ))
             ->add('committeeRole', 'choice', array(
                 'label' => 'Fonction',
-                'choices' => ExistingCommitteeRole::getAuthorizedRoles()
+                'choices' => $committeeRolesChoices
             ));
     }
 

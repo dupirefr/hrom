@@ -1,28 +1,46 @@
 jQuery(document).ready(function($)
 {
     var $rolesSelection = $('select#hrom_contactsbundle_contacttype_roles');
-    var $rolesSelected = $('select#hrom_contactsbundle_contacttype_roles :selected');
+    var rolesSelected = 'select#hrom_contactsbundle_contacttype_roles :selected';
     var $committeeRoleRow = $('select#hrom_contactsbundle_contacttype_committeeRole').parent();
     
     $committeeRoleRow.css('display', 'none');
     
-    $rolesSelected.each(function() {
-        if($(this).val() === 'ROLE_COMMITTEE') {
-            $committeeRoleRow.css('display', 'inline-block');
-        }
-    });
-    
-    $rolesSelection.change(function() {        
-        $rolesSelected.each(function() {
-            var found = false;
-            if($(this).val() === 'ROLE_COMMITTEE') {
-                $committeeRoleRow.css('display', 'inline-block');
+    function isCommitteeRoleSelected(selected)
+    {
+        var found = false;
+        
+        selected.each(function()
+        {
+            if($(this).val() === 'ROLE_COMMITTEE')
+            {
                 found = true;
             }
-            
-            if(!found) {
-                $committeeRoleRow.css('display', 'none');
-            }
         });
-    });
+        
+        return found;
+    }
+    
+    function switchCommitteeRoleVisibility(event) {
+        var selected = $(event.data.selected);
+        var row = event.data.row;
+        
+        var found = isCommitteeRoleSelected(selected);
+        
+        if(found)
+        {
+            row.css('display', 'inline-block');
+        }
+        else        
+        {
+            row.css('display', 'none');
+        }
+    }
+    
+    if(isCommitteeRoleSelected($(rolesSelected)))
+    {
+        $committeeRoleRow.css('display', 'inline-block');
+    }
+    
+    $rolesSelection.change({selected : rolesSelected, row: $committeeRoleRow}, switchCommitteeRoleVisibility);
 });

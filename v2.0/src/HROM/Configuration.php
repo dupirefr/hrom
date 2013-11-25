@@ -26,6 +26,9 @@ class Configuration {
     const ALBUM_ROWS_PER_PAGE = 5;
     
     const ADMIN_CATEGORY_PER_PAGE = 30;
+    
+    //Cursus
+    const ADMIN_CURSUS_PER_PAGE = 50;
 }
 
 ?>

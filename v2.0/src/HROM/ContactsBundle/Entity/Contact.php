@@ -162,6 +162,15 @@ class Contact
     }
     
     /**
+     * Get full name (surname + given name)
+     * 
+     * @return string
+     */
+    public function getFullName() {
+        return $this->surname . ' ' . $this->givenName;
+    }
+    
+    /**
      * Add phoneNumber
      *
      * @param Phone $phoneNumber
