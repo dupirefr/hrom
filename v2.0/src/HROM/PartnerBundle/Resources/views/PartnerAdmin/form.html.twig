@@ -1,8 +1,8 @@
-<!--
+{#
     Partner form
 
     @author François Dupire
--->
+#}
 {% form_theme form ':Form:form.html.twig' %}
 
 <form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form" novalidate>	

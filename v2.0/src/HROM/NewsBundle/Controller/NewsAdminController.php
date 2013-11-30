@@ -9,11 +9,14 @@ use HROM\NewsBundle\Entity\News;
 use HROM\NewsBundle\Form\NewsType;
 
 /**
- * Controller for showing and managing news.
+ * Controller for news management
  *
- * @author François Dupire <dupire.francois@gmail.com>
+ * @author François Dupire
  */
 class NewsAdminController extends Controller {
+    /**
+     * Handles news list demands
+     */
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
 
@@ -27,6 +30,9 @@ class NewsAdminController extends Controller {
         return $this->render('HROMNewsBundle:NewsAdmin:list.html.twig', array('newsList' => $newsList, 'pageCount' => $pageCount));
     }
     
+    /**
+     * Handles news addition demands
+     */
     public function addAction() {
         $news = new News($this->getUser());
 
@@ -52,6 +58,9 @@ class NewsAdminController extends Controller {
         return $this->render('HROMNewsBundle:NewsAdmin:add.html.twig', array('form' => $form->createView(), 'actionRoute' => 'news_add'));
     }
     
+    /**
+     * Handles news modification demands
+     */
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         $news = $repository->find($id);
@@ -78,6 +87,9 @@ class NewsAdminController extends Controller {
         return $this->render('HROMNewsBundle:NewsAdmin:edit.html.twig', array('form' => $form->createView(), 'actionRoute' => 'news_edit'));
     }
     
+    /**
+     * Handles news deletion demands
+     */
     public function deleteAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         $news = $repository->find($id);

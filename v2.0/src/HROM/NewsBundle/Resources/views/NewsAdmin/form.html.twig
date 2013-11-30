@@ -1,3 +1,8 @@
+{#
+    News form
+
+    @author François Dupire
+#}
 {% form_theme form ':Form:form.html.twig' %}
 
 <form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form">	
@@ -7,11 +12,12 @@
     
     <fieldset>
         <legend>News</legend>
-        {{ form_label(form.title, "Titre", {help : "Indiquez le titre de la news"}) }} {{ form_widget(form.title, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.title) }}</span><br />
-        {{ form_label(form.content, "Contenu", {help : "Indiquez le contenu de la news"}) }} {{ form_widget(form.content, {attr : {cols : 50, rows : 10} }) }} <span class="error">{{ form_errors(form.content) }}</span>
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
        
         <fieldset>
-            <legend>Image</legend>
+            <legend>{{ form_label(form.picture) }}</legend>
+            {% set picture = form.picture %}
             {% include "HROMCoreBundle:Picture:pictureForm.html.twig" %}
         </fieldset>
     </fieldset>

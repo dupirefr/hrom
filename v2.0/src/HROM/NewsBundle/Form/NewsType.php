@@ -8,12 +8,29 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use HROM\CoreBundle\Form\PictureType;
 
+/**
+ * News form builder
+ * 
+ * @author François Dupire
+ */
 class NewsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('title', 'text')
-                ->add('content', 'textarea')
+                ->add('title', 'text', array(
+                    'label' => 'Titre',
+                    'attr' => array(
+                        'size' => 50
+                    )
+                ))
+                ->add('content', 'textarea', array(
+                    'label' => 'Contenu',
+                    'attr' => array(
+                        'cols' => 50,
+                        'rows' => 10
+                    )
+                ))
                 ->add('picture', new PictureType(), array(
+                    'label' => 'Image',
                     'required' => false
                 ))
         ;

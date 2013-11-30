@@ -6,11 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HROM\Configuration;
 
 /**
- * Controller for showing and managing news.
+ * Controller for showing news.
  *
- * @author François Dupire <dupire.francois@gmail.com>
+ * @author François Dupire
  */
 class NewsController extends Controller {
+    /**
+     * Shows last news
+     */
     public function lastAction() {
 	$repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         
@@ -21,6 +24,9 @@ class NewsController extends Controller {
         return $this->render('HROMNewsBundle:News:last.html.twig', array('newsList' => $newsList));
     }
     
+    /**
+     * Shows last news titles
+     */
     public function overviewAction() {
 	$repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         
@@ -31,6 +37,9 @@ class NewsController extends Controller {
         return $this->render('HROMNewsBundle:News:overview.html.twig', array('newsList' => $newsList));
     }
     
+    /**
+     * Shows news list
+     */
     public function allAction($page) {
 	$repository = $this->getDoctrine()->getManager()->getRepository('HROMNewsBundle:News');
         

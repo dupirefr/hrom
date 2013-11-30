@@ -10,7 +10,9 @@ use HROM\UserBundle\Entity\User;
 
 
 /**
- * News
+ * News entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="news")
  * @ORM\Entity(repositoryClass="HROM\NewsBundle\Entity\NewsRepository")
