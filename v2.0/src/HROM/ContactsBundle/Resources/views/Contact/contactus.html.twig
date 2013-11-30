@@ -14,10 +14,11 @@
 {% block header_title %}Nous contacter{% endblock %}
 
 {% block body %}
+    Vous souhaitez obtenir un renseignement sur un concert, sur un cours ou sur l'Harmonie en général : vous trouverez votre bonheur ci-dessous.
     <h2>Le comité</h2>
     <table class="listing">
         <thead>
-            <tr><th width="10%">Fonction</th> <th width="10%">Nom</th> <th width="10%">Prénom</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            <tr><th width="10%">Fonction</th> <th width="20%">Nom</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
         </thead>
 
         <tbody>
@@ -31,9 +32,7 @@
                 ">
                     <td>{{ committeeRolesArray[member.committeeRole] }}</td>
                     
-                    <td>{{ member.surname }}</td>
-                    
-                    <td>{{ member.givenName }}</td>
+                    <td>{{ member.fullname }}</td>
                     
                     <td><ul>
                         {% for phoneNumber in member.phoneNumbers %}
@@ -51,5 +50,92 @@
         </tbody>
     </table>
     
+    <h2>Le chef de musique</h2>
+    <table class="listing">
+        <thead>
+            <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+        </thead>
+
+        <tbody>
+            <tr class="impair">
+                <td>{{ director[0].fullname }}</td>
+
+                <td><ul>
+                    {% for phoneNumber in director[0].phoneNumbers %}
+                        <li>{{ phoneNumber.number }}</li>
+                    {% endfor %}
+                </ul></td>
+
+                <td><ul>
+                    {% for emailAddress in director[0].emailAddresses %}
+                        <li>{{ emailAddress.address|converturls() }}</li>
+                    {% endfor %}
+                </ul></td>
+            </tr>
+        </tbody>
+    </table>
+    
     <h2>Les professeurs</h2>
+    <table class="listing">
+        <thead>
+            <tr><th width="10%">Cours</th> <th width="20%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+        </thead>
+
+        <tbody>
+            {% set i = 1 %}
+            {% for cursus in cursusList %}
+                {% for teacher in cursus.teachers %}
+                    <tr class="
+                        {% if i is divisibleby(2) %}
+                            pair
+                        {% else %}
+                            impair
+                        {% endif %}
+                    ">
+                        <td>{{ cursus.name }}</td>
+
+                        <td>{{ teacher.fullname }}</td>
+
+                        <td><ul>
+                            {% for phoneNumber in teacher.phoneNumbers %}
+                                <li>{{ phoneNumber.number }}</li>
+                            {% endfor %}
+                        </ul></td>
+
+                        <td><ul>
+                            {% for emailAddress in teacher.emailAddresses %}
+                                <li>{{ emailAddress.address|converturls() }}</li>
+                            {% endfor %}
+                        </ul></td>
+                    </tr>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Le webmaster</h2>
+    <table class="listing">
+        <thead>
+            <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+        </thead>
+
+        <tbody>
+            <tr class="impair">
+                <td>{{ webmaster[0].fullname }}</td>
+
+                <td><ul>
+                    {% for phoneNumber in webmaster[0].phoneNumbers %}
+                        <li>{{ phoneNumber.number }}</li>
+                    {% endfor %}
+                </ul></td>
+
+                <td><ul>
+                    {% for emailAddress in webmaster[0].emailAddresses %}
+                        <li>{{ emailAddress.address|converturls() }}</li>
+                    {% endfor %}
+                </ul></td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}

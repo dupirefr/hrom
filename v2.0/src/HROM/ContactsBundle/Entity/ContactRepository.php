@@ -55,4 +55,13 @@ class ContactRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    
+    public function findKeyCommitteeMembers() {
+        $qb = $this->queryFindByRole('ROLE_COMMITTEE');
+        $qb
+                ->andWhere('contact.committeeRole NOT LIKE :committeeRole')
+                    ->setParameter('committeeRole', '%ROLE_COMM_MEMBER%');
+        
+        return $qb->getQuery()->getResult();
+    }
 }
