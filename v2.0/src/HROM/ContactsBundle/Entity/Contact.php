@@ -12,7 +12,9 @@ use HROM\CoreBundle\Entity\Address;
 use HROM\CoreBundle\Validator\UniqueCollectionItem;
 
 /**
- * Contact
+ * Contact entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="HROM\ContactsBundle\Entity\ContactRepository")

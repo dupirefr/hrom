@@ -11,6 +11,9 @@ use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
  * @author François Dupire
  */
 class ContactController extends Controller {
+    /**
+     * Handles contact_us page requests
+     */
     public function contactUsAction() {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
 

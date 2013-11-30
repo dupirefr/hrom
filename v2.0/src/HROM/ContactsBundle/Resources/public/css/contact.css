@@ -1,4 +1,8 @@
-/*Contact*/
+/**
+ * Contacts css
+ *
+ * @author François Dupire
+ */
 #addPhone, #addEmail {
     text-align: right;
 }

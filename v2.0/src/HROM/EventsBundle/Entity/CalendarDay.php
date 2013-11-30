@@ -6,7 +6,7 @@ use HROM\EventsBundle\Entity\Event;
 use HROM\EventsBundle\Entity\EventRepository;
 
 /**
- * Day of a calendar
+ * Calendar's day
  *
  * @author François Dupire
  */

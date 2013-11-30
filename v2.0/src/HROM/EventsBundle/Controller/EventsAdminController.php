@@ -9,8 +9,16 @@ use HROM\Configuration;
 use HROM\EventsBundle\Entity\Event;
 use HROM\EventsBundle\Form\EventType;
 
+/**
+ * Controller for events management
+ * 
+ * @author François Dupire
+ */
 class EventsAdminController extends Controller
 {
+    /**
+     * Handles events list demands
+     */
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMEventsBundle:Event');
 
@@ -24,6 +32,9 @@ class EventsAdminController extends Controller
         return $this->render('HROMEventsBundle:EventsAdmin:list.html.twig', array('eventsList' => $eventsList, 'pageCount' => $pageCount));
     }
     
+    /**
+     * Handles event addition demands
+     */
     public function addAction() {
         $event = new Event();
 
@@ -49,6 +60,9 @@ class EventsAdminController extends Controller
         return $this->render('HROMEventsBundle:EventsAdmin:add.html.twig', array('form' => $form->createView(), 'actionRoute' => 'event_add'));
     }
     
+    /**
+     * Handles event modification demands
+     */
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMEventsBundle:Event');
         $event = $repository->find($id);
@@ -75,6 +89,9 @@ class EventsAdminController extends Controller
         return $this->render('HROMEventsBundle:EventsAdmin:edit.html.twig', array('form' => $form->createView(), 'actionRoute' => 'event_edit'));
     }
     
+    /**
+     * Handles event deletion demands
+     */
     public function deleteAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMEventsBundle:Event');
         $event = $repository->find($id);

@@ -6,7 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Address
+ * Address entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="address")
  * @ORM\Entity(repositoryClass="HROM\CoreBundle\Entity\AddressRepository")

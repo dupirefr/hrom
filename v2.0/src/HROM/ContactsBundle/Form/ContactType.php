@@ -13,8 +13,12 @@ use HROM\ContactsBundle\Form\EmailType;
 use HROM\ContactsBundle\Validator\ExistingRole;
 use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 
-class ContactType extends AbstractType
-{
+/**
+ * Contacts form builder
+ * 
+ * @author François Dupire
+ */
+class ContactType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $rolesChoices = ExistingRole::getAuthorizedRoles();

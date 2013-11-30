@@ -8,7 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Picture
+ * Picture entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="picture")
  * @ORM\Entity(repositoryClass="HROM\CoreBundle\Entity\PictureRepository")

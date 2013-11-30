@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new HROM\EventsBundle\HROMEventsBundle(),
             new HROM\ContactsBundle\HROMContactsBundle(),
             new HROM\CursusBundle\HROMCursusBundle(),
+            new HROM\PartnerBundle\HROMPartnerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,8 @@
+/**
+ * JS script for showing/unshowing committees roles regarding to users' roles
+ * 
+ * @author François Dupire
+ */
 jQuery(document).ready(function($)
 {
     var $rolesSelection = $('select#hrom_contactsbundle_contacttype_roles');

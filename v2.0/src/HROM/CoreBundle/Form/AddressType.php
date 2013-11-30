@@ -6,6 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Address form builder
+ * 
+ * @author François Dupire
+ */
 class AddressType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

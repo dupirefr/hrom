@@ -10,7 +10,9 @@ use HROM\CoreBundle\Entity\Picture;
 use HROM\CoreBundle\Validator\FutureDate;
 
 /**
- * Event
+ * Event entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="events")
  * @ORM\Entity(repositoryClass="HROM\EventsBundle\Entity\EventRepository")

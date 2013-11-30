@@ -1,3 +1,9 @@
+/**
+ * JS script for adding/removing email's input in form
+ * 
+ * @author François Dupire
+ */
+
 jQuery(document).ready(function($)
 {
     var $container = $('div#hrom_contactsbundle_contacttype_emailAddresses');

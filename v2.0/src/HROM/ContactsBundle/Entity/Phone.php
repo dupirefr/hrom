@@ -8,7 +8,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use HROM\ContactsBundle\Entity\Contact;
 
 /**
- * Phone
+ * Phone entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="phone")
  * @ORM\Entity(repositoryClass="HROM\ContactsBundle\Entity\PhoneRepository")

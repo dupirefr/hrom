@@ -6,8 +6,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EmailType extends AbstractType
-{
+/**
+ * Emails form builder
+ * 
+ * @author François Dupire
+ */
+class EmailType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

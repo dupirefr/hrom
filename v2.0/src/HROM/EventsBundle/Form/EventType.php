@@ -9,6 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use HROM\CoreBundle\Form\AddressType;
 use HROM\CoreBundle\Form\PictureType;
 
+/**
+ * Events form builder
+ * 
+ * @author François Dupire
+ */
 class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -21,8 +26,8 @@ class EventType extends AbstractType
                 )
             ))
             ->add('description', 'textarea', array(
-                'required' => false,
                 'label' => 'Description',
+                'required' => false,
                 'attr' => array(
                     'cols' => 50,
                     'rows' => 10
@@ -33,19 +38,19 @@ class EventType extends AbstractType
                 'label' => 'Date'
             ))
             ->add('time', 'time', array(
-                'required' => false,
-                'label' => 'Heure'
+                'label' => 'Heure',
+                'required' => false
             ))
             ->add('address', new AddressType(), array(
-                'required' => false,
                 'label' => 'Adresse',
+                'required' => false,
                 'attr' => array(
                     'help' => 'Donnez le plus d\'information possible'
                 )
             ))
             ->add('picture', new PictureType(), array(
-                'required' => false,
-                'label' => 'Image'
+                'label' => 'Image',
+                'required' => false
             ))
         ;
     }

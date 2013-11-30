@@ -7,7 +7,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 /**
- * Constraint to insure that an item in a collection is unique
+ * Validator for UniqueCollectionItem constraint
  *
  * @author François Dupire
  * 

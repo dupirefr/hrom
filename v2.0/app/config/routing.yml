@@ -54,6 +54,15 @@ hrom_events_admin:
     resource: "@HROMEventsBundle/Resources/config/admin.yml"
     prefix:   /admin/events
     
+#Partners
+hrom_partners:
+    resource: "@HROMPartnerBundle/Resources/config/routing.yml"
+    prefix:   /partners
+    
+hrom_partners_admin:
+    resource: "@HROMPartnerBundle/Resources/config/admin.yml"
+    prefix:   /admin/partners
+    
 #FOSUser config    
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

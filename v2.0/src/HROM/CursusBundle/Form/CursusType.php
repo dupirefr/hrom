@@ -8,6 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use HROM\ContactsBundle\Entity\ContactRepository;
 
+/**
+ * Cursus form builder
+ * 
+ * @author François Dupire
+ */
 class CursusType extends AbstractType
 {
     /**

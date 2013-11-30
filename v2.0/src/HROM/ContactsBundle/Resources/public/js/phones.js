@@ -1,3 +1,8 @@
+/**
+ * JS script for adding/removing phone's inputs in form
+ * 
+ * @author François Dupire
+ */
 jQuery(document).ready(function($)
 {
     var $container = $('div#hrom_contactsbundle_contacttype_phoneNumbers');

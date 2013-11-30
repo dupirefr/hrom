@@ -1,4 +1,5 @@
 <?php
+
 namespace HROM\ContactsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,11 +15,14 @@ use HROM\ContactsBundle\Validator\ExistingRole;
 use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 
 /**
- * Controller for showing and managing news.
+ * Controller for contacts management
  *
  * @author François Dupire
  */
 class ContactAdminController extends Controller {
+    /**
+     * Handles contacts' list demands
+     */
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
 
@@ -37,6 +41,9 @@ class ContactAdminController extends Controller {
         ));
     }
     
+    /**
+     * Handles contacts addition demands
+     */
     public function addAction() {
         $contact = new Contact();
 
@@ -62,6 +69,9 @@ class ContactAdminController extends Controller {
         return $this->render('HROMContactsBundle:ContactAdmin:add.html.twig', array('form' => $form->createView(), 'actionRoute' => 'contact_add'));
     }
     
+    /**
+     * Handles contacts modification demands
+     */
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
         $contact = $repository->find($id);
@@ -78,6 +88,7 @@ class ContactAdminController extends Controller {
             if($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 
+                //Updating phones and emails lists regards to submitted form
                 $originalPhoneNumbers = Utils::substractArray($originalPhoneNumbers, $contact->getPhoneNumbers());
                 
                 foreach($originalPhoneNumbers as $phoneNumber) {
@@ -103,6 +114,9 @@ class ContactAdminController extends Controller {
         return $this->render('HROMContactsBundle:ContactAdmin:edit.html.twig', array('form' => $form->createView(), 'actionRoute' => 'contact_edit'));
     }
     
+    /**
+     * Handles contacts deletion demands
+     */
     public function deleteAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
         $contact = $repository->find($id);

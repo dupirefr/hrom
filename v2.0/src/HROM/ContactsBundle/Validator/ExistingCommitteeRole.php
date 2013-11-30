@@ -5,7 +5,7 @@ namespace HROM\ContactsBundle\Validator;
 use HROM\ContactsBundle\Entity\Contact;
 
 /**
- * Constraint to insure that a contact's role is valid.
+ * Constraint to insure that a contact's committee's role is valid.
  *
  * @author François Dupire
  * 

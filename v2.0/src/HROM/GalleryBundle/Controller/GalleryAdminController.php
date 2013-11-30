@@ -9,7 +9,15 @@ use HROM\Configuration;
 use HROM\GalleryBundle\Entity\Album;
 use HROM\GalleryBundle\Form\AlbumType;
 
+/**
+ * Controller for galleries management
+ * 
+ * @author François Dupire
+ */
 class GalleryAdminController extends Controller {
+    /**
+     * Handles galleries list demands
+     */
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMGalleryBundle:Album');
 
@@ -23,6 +31,9 @@ class GalleryAdminController extends Controller {
         return $this->render('HROMGalleryBundle:GalleryAdmin:list.html.twig', array('albumList' => $albumList, 'pageCount' => $pageCount));
     }
     
+    /**
+     * Handles gallery addition demands
+     */
     public function addAction() {
         $album = new Album();
 
@@ -48,6 +59,9 @@ class GalleryAdminController extends Controller {
         return $this->render('HROMGalleryBundle:GalleryAdmin:add.html.twig', array('form' => $form->createView(), 'actionRoute' => 'category_add'));
     }
     
+    /**
+     * Handles gallery modification demands
+     */
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMGalleryBundle:Album');
         $album = $repository->find($id);
@@ -74,6 +88,9 @@ class GalleryAdminController extends Controller {
         return $this->render('HROMGalleryBundle:GalleryAdmin:edit.html.twig', array('form' => $form->createView(), 'actionRoute' => 'category_edit'));
     }
     
+    /**
+     * Handles gallery deletion demands
+     */
     public function deleteAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMGalleryBundle:Album');
         $album = $repository->find($id);

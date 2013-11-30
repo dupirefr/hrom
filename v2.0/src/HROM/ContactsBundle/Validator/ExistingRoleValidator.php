@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 /**
- * Constraint to insure that a date is in the future.
+ * Validator for ExistingRole constraint
  *
  * @author François Dupire
  * 

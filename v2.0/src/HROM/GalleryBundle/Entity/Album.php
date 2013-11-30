@@ -6,7 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Album
+ * Album entity
+ * 
+ * @author François Dupire
  *
  * @ORM\Table(name="album")
  * @ORM\Entity(repositoryClass="HROM\GalleryBundle\Entity\AlbumRepository")

@@ -1,0 +1,19 @@
+<!--
+    Partner modifying page
+
+    @author François Dupire
+-->
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Modifier un partenaire - {{ parent() }}{% endblock %}
+{% block meta_description %}Modification d'un partenaire existant.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+{% endblock %}
+{% block header_title %}Modifier un partenaire{% endblock %}
+
+{% block body %}
+    {% set actionRouteParams = {'id' : app.request.get('id')} %}
+    {% include "HROMPartnerBundle:PartnerAdmin:form.html.twig" %}
+{% endblock %}

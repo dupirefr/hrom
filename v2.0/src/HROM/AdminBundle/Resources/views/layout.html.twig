@@ -1,3 +1,9 @@
+<!--
+    Admin layout
+
+    @author François Dupire
+-->
+
 {% extends "::layout.html.twig" %}
 {% block title %}Administration - {{ parent() }}{% endblock %}
 {% block header_title %}Administration{% endblock %}
@@ -22,5 +28,9 @@
         <h1>Cours</h1>
         <a href="{{ path('cursus_list') }}">Liste des cours</a><br />
         <a href="{{ path('cursus_add') }}">Ajouter un cours</a>
+
+        <h1>Partenaires</h1>
+        <a href="{{ path('partners_list') }}">Liste des partenaires</a><br />
+        <a href="{{ path('partner_add') }}">Ajouter un partenaire</a>
     </div>
 {% endblock %}

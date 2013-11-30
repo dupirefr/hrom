@@ -9,8 +9,16 @@ use HROM\Configuration;
 use HROM\CursusBundle\Entity\Cursus;
 use HROM\CursusBundle\Form\CursusType;
 
+/**
+ * Controller for cursus management
+ * 
+ * @author François Dupire
+ */
 class CursusAdminController extends Controller
 {
+    /**
+     * Handles cursus' list demands
+     */
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMCursusBundle:Cursus');
 
@@ -27,6 +35,9 @@ class CursusAdminController extends Controller
         ));
     }
     
+    /**
+     * Handles cursus addition demands
+     */
     public function addAction() {
         $cursus = new Cursus();
 
@@ -52,6 +63,9 @@ class CursusAdminController extends Controller
         return $this->render('HROMCursusBundle:CursusAdmin:add.html.twig', array('form' => $form->createView(), 'actionRoute' => 'cursus_add'));
     }
     
+    /**
+     * Handles cursus modification demands
+     */
     public function editAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMCursusBundle:Cursus');
         $cursus = $repository->find($id);
@@ -78,6 +92,9 @@ class CursusAdminController extends Controller
         return $this->render('HROMCursusBundle:CursusAdmin:edit.html.twig', array('form' => $form->createView(), 'actionRoute' => 'cursus_edit'));
     }
     
+    /**
+     * Handles cursus deletion demands
+     */
     public function deleteAction($id) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMCursusBundle:Cursus');
         $cursus = $repository->find($id);

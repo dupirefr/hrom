@@ -2,7 +2,7 @@
 namespace HROM\CoreBundle\Other;
 
 /**
- * Classes with tools
+ * Classes with miscellaneous tools
  *
  * @author François Dupire
  */

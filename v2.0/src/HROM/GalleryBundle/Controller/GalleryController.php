@@ -6,8 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use HROM\Configuration;
 
+/**
+ * Controller for showing albums and photos/videos
+ */
 class GalleryController extends Controller
 {
+    /**
+     * Shows albums list
+     */
     public function allAction($page)
     {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMGalleryBundle:Album');
@@ -26,6 +32,9 @@ class GalleryController extends Controller
         );
     }
     
+    /**
+     * Shows selected album
+     */
     public function selectAction($id)
     {
         $album = $this->getDoctrine()->getManager()->find('HROMGalleryBundle:Album', $id);

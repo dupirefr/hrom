@@ -7,7 +7,7 @@ use HROM\EventsBundle\Entity\EventRepository;
 use HROM\EventsBundle\Entity\CalendarDay;
 
 /**
- * Provides a calendar
+ * Calendar object
  *
  * @author François Dupire
  */
@@ -88,7 +88,7 @@ class Calendar
     }
     
     /**
-     * Fills calendar
+     * Fills $this->calendar with days and events
      */
     private function fillCalendar()
     {        
