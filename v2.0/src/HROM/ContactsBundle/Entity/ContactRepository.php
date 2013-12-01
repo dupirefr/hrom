@@ -32,35 +32,61 @@ class ContactRepository extends EntityRepository
      * @param string $role
      * @return QueryBuilder
      */
-    public function queryFindByRole($role) {
+    public function queryFindTeachers() {
         $qb = $this->_em->createQueryBuilder();
         
         $qb
                 ->select('contact')
                 ->from('HROMContactsBundle:Contact', 'contact')
                 ->where('contact.roles LIKE :role')
-                    ->setParameter('role', '%' . $role . '%');
+                    ->setParameter('role', '%ROLE_TEACHER%');
         
         return $qb;
     }
     
-    /**
-     * Gets contacts granted with $role
-     * 
-     * @param string $role
-     * @return array
-     */
-    public function findByRole($role) {
-        $qb = $this->queryFindByRole($role);
+    public function findTeachers() {
+        $qb = $this->queryFindTeachers();
+        
+        $qb
+                ->join('contact.courses', 'courses')
+                    ->addSelect('courses')
+                ->leftJoin('contact.phoneNumbers', 'phones')
+                    ->addSelect('phones')
+                ->leftJoin('contact.emailAddresses', 'emails')
+                    ->addSelect('emails');
         
         return $qb->getQuery()->getResult();
     }
     
-    public function findKeyCommitteeMembers() {
-        $qb = $this->queryFindByRole('ROLE_COMMITTEE');
+    /**
+     * Gets contacts granter with at least one role from $roles
+     * 
+     * @param array $roles
+     * @return array
+     */
+    public function findByRoles($roles) {
+        $qb = $this->_em->createQueryBuilder();
+        
         $qb
-                ->andWhere('contact.committeeRole NOT LIKE :committeeRole')
-                    ->setParameter('committeeRole', '%ROLE_COMM_MEMBER%');
+                ->select('contact')
+                ->from('HROMContactsBundle:Contact', 'contact');
+        
+        $qb
+                ->leftJoin('contact.phoneNumbers', 'phones')
+                    ->addSelect('phones')
+                ->leftJoin('contact.emailAddresses', 'emails')
+                    ->addSelect('emails')
+                ->leftJoin('contact.courses', 'courses')
+                    ->addSelect('courses');
+        
+        $qb
+                ->where('0 < 1');
+        
+        foreach($roles as $role) {
+            $qb
+                    ->orWhere('contact.roles LIKE :role')
+                        ->setParameter('role', '%' . $role . '%');
+        }
         
         return $qb->getQuery()->getResult();
     }

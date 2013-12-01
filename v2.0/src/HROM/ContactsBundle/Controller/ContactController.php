@@ -16,15 +16,29 @@ class ContactController extends Controller {
      */
     public function contactUsAction() {
         $contactRepository = $this->getDoctrine()->getManager()->getRepository('HROMContactsBundle:Contact');
-        $cursusRepository = $this->getDoctrine()->getManager()->getRepository('HROMCursusBundle:Cursus');
 
-        $committee = $contactRepository->findKeyCommitteeMembers();
+        $contactsList = $contactRepository->findByRoles(array('ROLE_COMMITTEE', 'ROLE_TEACHER', 'ROLE_DIRECTOR', 'ROLE_WEBMASTER'));
         
-        $cursusList = $cursusRepository->findBy(array(), array('name' => 'asc'));
+        $committee = array();
+        $teachers = array();
         
-        $director = $contactRepository->findByRole('ROLE_DIRECTOR');
-        
-        $webmaster = $contactRepository->findByRole('ROLE_WEBMASTER');
+        foreach($contactsList as $contact) {
+            if(in_array('ROLE_COMMITTEE', $contact->getRoles()) && $contact->getCommitteeRole() != 'ROLE_COMM_MEMBER') {
+                $committee[] = $contact;
+            }
+            
+            if(in_array('ROLE_TEACHER', $contact->getRoles()))  {
+                $teachers[] = $contact;
+            }
+            
+            if(in_array('ROLE_DIRECTOR', $contact->getRoles())) {
+                $director = $contact;
+            }
+            
+            if(in_array('ROLE_WEBMASTER', $contact->getRoles())) {
+                $webmaster = $contact;
+            }
+        }
         
         usort($committee, 'HROM\ContactsBundle\Validator\ExistingCommitteeRole::precedence');
 
@@ -32,7 +46,7 @@ class ContactController extends Controller {
             'committee' => $committee,
             'committeeRolesArray' => ExistingCommitteeRole::getAuthorizedRoles(),
             'director' => $director,
-            'cursusList' => $cursusList,
+            'teachers' => $teachers,
             'webmaster' => $webmaster
         ));
     }

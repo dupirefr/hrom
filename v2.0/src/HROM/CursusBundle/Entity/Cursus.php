@@ -34,7 +34,7 @@ class Cursus
     private $name;
     
     /**
-     * @ORM\ManyToMany(targetEntity="HROM\ContactsBundle\Entity\Contact")
+     * @ORM\ManyToMany(targetEntity="HROM\ContactsBundle\Entity\Contact", inversedBy="courses")
      * @ORM\JoinColumn(nullable=true)
      */
     private $teachers;

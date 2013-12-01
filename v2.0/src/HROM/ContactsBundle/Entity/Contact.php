@@ -11,6 +11,8 @@ use HROM\ContactsBundle\Validator\ExistingCommitteeRole;
 use HROM\CoreBundle\Entity\Address;
 use HROM\CoreBundle\Validator\UniqueCollectionItem;
 
+use \HROM\CursusBundle\Entity\Cursus;
+
 /**
  * Contact entity
  * 
@@ -96,6 +98,11 @@ class Contact
      * @ExistingCommitteeRole()
      */
     private $committeeRole;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="HROM\CursusBundle\Entity\Cursus", mappedBy="teachers")
+     */
+    private $courses;
     
     
     /**
@@ -334,5 +341,38 @@ class Contact
     public function getCommitteeRole()
     {
         return $this->committeeRole;
+    }
+
+    /**
+     * Add cursus
+     *
+     * @param Cursus $cursus
+     * @return Contact
+     */
+    public function addCourse(Cursus $cursus)
+    {
+        $this->courses[] = $cursus;
+    
+        return $this;
+    }
+
+    /**
+     * Remove cursus
+     *
+     * @param Cursus $cursus
+     */
+    public function removeCourse(Cursus $cursus)
+    {
+        $this->courses->removeElement($cursus);
+    }
+
+    /**
+     * Get cursus
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCourses()
+    {
+        return $this->courses;
     }
 }

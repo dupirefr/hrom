@@ -31,7 +31,11 @@ hrom_news_admin:
     resource: "@HROMNewsBundle/Resources/config/admin.yml"
     prefix:   /admin/news
     
-#Cursus    
+#Cursus
+hrom_school:
+    resource: "@HROMCursusBundle/Resources/config/routing.yml"
+    prefix:   /school
+    
 hrom_cursus_admin:
     resource: "@HROMCursusBundle/Resources/config/admin.yml"
     prefix:   /admin/cursus

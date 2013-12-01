@@ -58,16 +58,16 @@
 
         <tbody>
             <tr class="impair">
-                <td>{{ director[0].fullname }}</td>
+                <td>{{ director.fullname }}</td>
 
                 <td><ul>
-                    {% for phoneNumber in director[0].phoneNumbers %}
+                    {% for phoneNumber in director.phoneNumbers %}
                         <li>{{ phoneNumber.number }}</li>
                     {% endfor %}
                 </ul></td>
 
                 <td><ul>
-                    {% for emailAddress in director[0].emailAddresses %}
+                    {% for emailAddress in director.emailAddresses %}
                         <li>{{ emailAddress.address|converturls() }}</li>
                     {% endfor %}
                 </ul></td>
@@ -78,38 +78,38 @@
     <h2>Les professeurs</h2>
     <table class="listing">
         <thead>
-            <tr><th width="10%">Cours</th> <th width="20%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            <tr><th width="20%">Nom</th> <th width="20%">Cours</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
         </thead>
 
         <tbody>
-            {% set i = 1 %}
-            {% for cursus in cursusList %}
-                {% for teacher in cursus.teachers %}
-                    <tr class="
-                        {% if i is divisibleby(2) %}
-                            pair
-                        {% else %}
-                            impair
-                        {% endif %}
-                    ">
-                        <td>{{ cursus.name }}</td>
+            {% for teacher in teachers %}
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
+                    <td>{{ teacher.fullname }}</td>
 
-                        <td>{{ teacher.fullname }}</td>
+                    <td><ul>
+                        {% for cursus in teacher.courses %}
+                            <li>{{ cursus.name }}</li>
+                        {% endfor %}
+                    </ul></td>
 
-                        <td><ul>
-                            {% for phoneNumber in teacher.phoneNumbers %}
-                                <li>{{ phoneNumber.number }}</li>
-                            {% endfor %}
-                        </ul></td>
+                    <td><ul>
+                        {% for phoneNumber in teacher.phoneNumbers %}
+                            <li>{{ phoneNumber.number }}</li>
+                        {% endfor %}
+                    </ul></td>
 
-                        <td><ul>
-                            {% for emailAddress in teacher.emailAddresses %}
-                                <li>{{ emailAddress.address|converturls() }}</li>
-                            {% endfor %}
-                        </ul></td>
-                    </tr>
-                    {% set i = i + 1 %}
-                {% endfor %}
+                    <td><ul>
+                        {% for emailAddress in teacher.emailAddresses %}
+                            <li>{{ emailAddress.address|converturls() }}</li>
+                        {% endfor %}
+                    </ul></td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
@@ -122,16 +122,16 @@
 
         <tbody>
             <tr class="impair">
-                <td>{{ webmaster[0].fullname }}</td>
+                <td>{{ webmaster.fullname }}</td>
 
                 <td><ul>
-                    {% for phoneNumber in webmaster[0].phoneNumbers %}
+                    {% for phoneNumber in webmaster.phoneNumbers %}
                         <li>{{ phoneNumber.number }}</li>
                     {% endfor %}
                 </ul></td>
 
                 <td><ul>
-                    {% for emailAddress in webmaster[0].emailAddresses %}
+                    {% for emailAddress in webmaster.emailAddresses %}
                         <li>{{ emailAddress.address|converturls() }}</li>
                     {% endfor %}
                 </ul></td>
