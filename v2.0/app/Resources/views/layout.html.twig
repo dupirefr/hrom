@@ -45,7 +45,7 @@
             <a href="{{ path('events_calendar') }}" {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}>Agenda</a></li>
             <a href="{{ path('album_all') }}" {% if path('album_all') in currentRoute %}class="selected"{% endif %}>Photos/Vidéos</a></li>
             <a href="{{ path('contactus') }}" {% if currentRoute == path('contactus') %}class="selected"{% endif %}>Contacts</a></li>
-            <a href="{{ path('links') }}" {% if currentRoute == path('links') %}class="selected"{% endif %}>Liens</a></li>
+            <a href="{{ path('partners_all') }}" {% if currentRoute == path('partners_all') %}class="selected"{% endif %}>Liens</a></li>
 
             {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
                 <hr />
@@ -60,6 +60,7 @@
         </div>
         
         <div id="connect">
+        {#
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}" class="btn">
@@ -68,6 +69,7 @@
             {% else %}
                 <a href="{{ path('fos_user_security_login') }}" class="btn">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
             {% endif %}
+        #}
         </div>
 
         <div id="content">

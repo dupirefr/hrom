@@ -20,7 +20,7 @@ class PartnerAdminController extends Controller {
     public function listAction($page) {
         $repository = $this->getDoctrine()->getManager()->getRepository('HROMPartnerBundle:Partner');
 
-        $limit = Configuration::ADMIN_CONTACTS_PER_PAGE;
+        $limit = Configuration::ADMIN_PARTNERS_PER_PAGE;
 
         $partnersList = $repository->findBy(array(), array('name' => 'asc'), $limit, ($page - 1)*$limit);
 

@@ -4,10 +4,3 @@ welcome:
 home:
     path:	/home
     defaults:	{ _controller: HROMCoreBundle:Core:index }
-school:
-    path:  /school
-    defaults: { _controller: HROMCoreBundle:Core:school }
-    
-links:
-    path:  /links
-    defaults: { _controller: HROMCoreBundle:Core:links }

@@ -29,6 +29,11 @@ class Configuration {
     
     //Cursus
     const ADMIN_CURSUS_PER_PAGE = 50;
+    
+    //Partners
+    const PARTNERS_PER_PAGE = 10;
+    
+    const ADMIN_PARTNERS_PER_PAGE = 50;
 }
 
 ?>

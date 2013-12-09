@@ -13,6 +13,9 @@
 {% block header_title %}Agenda{% if eventsList is defined %} : Evénements du {{ calendar.date|date('d/m/Y') }}{% endif %}{% endblock %}
 
 {% block body %}
+    L'agenda ci-dessous vous permet de prendre connaissance des différentes activités organisées par l'Harmonie de Malonne. Vous pouvez naviguer de mois en mois et d'année en année.
+    Les dates marquées en rouge sont celles lors desquelles des événements se déroulent. Cliquez dessus pour obtenir plus d'information.
+    
     <div id="agenda">
         <div class="error">
             <ul>
@@ -24,9 +27,15 @@
         
         {% if eventsList is defined %}
             <div id="eventsList">
+                <h2>Evénements du {{ calendar.date|date('d/m/Y') }}</h2>
+                
                 {% for event in eventsList %}
                     {% include('HROMEventsBundle:Events:event.html.twig') %}
                 {% endfor %}
+                    
+                {% if eventsList is empty %}
+                    Pas d'événement pour la date sélectionnée.
+                {% endif %}
             </div>
         {% endif %}
         
