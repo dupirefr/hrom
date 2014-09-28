@@ -15,9 +15,11 @@
 {% block header_title %}Photos/Vidéos{% endblock %}
 
 {% block body %}
-    Voici la liste des albums photos et vidéos de l'Harmonie. A visionner sans modération !
+    <section id="page-description">
+        <p>Voici la liste des albums photos et vidéos de l'Harmonie. A visionner sans modération !</p>
+    </section>
     
-    <div id="albums">
+    <section id="albums">
         {% for album in albumList %}
             <div class="album-intro">
                 <a
@@ -31,7 +33,7 @@
 
             {% if (loop.index) % albumCols == 0 or (loop.last) %}<br />{% endif %}
         {% endfor %}
-    </div>
+    </section>
 
     {% set page = app.request.get('page') %}
     {% set navRoute = 'album_all' %}

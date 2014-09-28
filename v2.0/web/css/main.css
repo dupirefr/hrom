@@ -31,11 +31,11 @@ a {
 }
 
 /*Header*/
-#header {
+header {
     height: 20%;
 }
 
-#header table {
+header table {
     height: 100%;
     width: 100%;
 }
@@ -57,7 +57,7 @@ a {
 }
 
 /*Menu*/
-#left_part {
+nav {
     position: absolute;
     top: 20%;
 
@@ -70,7 +70,7 @@ a {
     margin: 0px 0px 0px 15px;
 }
 
-#left_part a {
+nav a{
     display: block;
     
     padding: 7px 15px 7px 15px;
@@ -84,14 +84,11 @@ a {
     border-bottom-left-radius: 20px;
 }
 
-#left_part a:hover, #left_part .selected {
+nav a:hover, nav .selected {
     background-color: #B7CA79;        
     
     color: black; 
     text-decoration: underline;
-}
-
-#left_part li:hover a, #left_part .selected a {
 }
 
 /*Content*/
@@ -147,10 +144,6 @@ a {
     margin-bottom: 1%;
 }
 
-#page-description {
-    
-}
-
 #right_part {
     position: absolute;
     left: 85%;
@@ -163,6 +156,36 @@ a {
 #right_part h1 {
     font-size: 14pt;
     text-decoration: underline;
+}
+
+#intro {
+    text-align: center;
+}
+
+#index-img {
+    display: inline-block;
+    
+    vertical-align: middle;
+    
+    width: 55%;
+}
+
+#index-img img {
+    width: 100%;
+}
+
+#index-intro {
+    display: inline-block;
+    
+    vertical-align: middle;
+    
+    width: 35%;
+    
+    text-align: center;
+}
+
+#page-description {
+    font-style: italic;
 }
        
 /*Buttons*/

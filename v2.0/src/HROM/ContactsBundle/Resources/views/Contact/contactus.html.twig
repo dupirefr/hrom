@@ -14,128 +14,133 @@
 {% block header_title %}Nous contacter{% endblock %}
 
 {% block body %}
-    Vous souhaitez obtenir un renseignement sur un concert, sur un cours ou sur l'Harmonie en général : vous trouverez votre bonheur ci-dessous.
-    <h2>Le comité</h2>
-    <table class="listing">
-        <thead>
-            <tr><th width="10%">Fonction</th> <th width="20%">Nom</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
-        </thead>
-
-        <tbody>
-            {% for member in committee %}
-                <tr class="
-                    {% if loop.index is divisibleby(2) %}
-                        pair
-                    {% else %}
-                        impair
-                    {% endif %}
-                ">
-                    <td>{{ committeeRolesArray[member.committeeRole] }}</td>
-                    
-                    <td>{{ member.fullname }}</td>
-                    
-                    <td><ul>
-                        {% for phoneNumber in member.phoneNumbers %}
-                            <li>{{ phoneNumber.number }}</li>
-                        {% endfor %}
-                    </ul></td>
-                    
-                    <td><ul>
-                        {% for emailAddress in member.emailAddresses %}
-                            <li>{{ emailAddress.address|converturls() }}</li>
-                        {% endfor %}
-                    </ul></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <section id="page-description">
+        <p>Vous souhaitez obtenir un renseignement sur un concert, sur un cours ou sur l'Harmonie en général : vous trouverez votre bonheur ci-dessous.</p>
+    </section>
     
-    <h2>Le chef de musique</h2>
-    <table class="listing">
-        <thead>
-            <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
-        </thead>
+    <section>
+        <h2>Le comité</h2>
+        <table class="listing">
+            <thead>
+                <tr><th width="10%">Fonction</th> <th width="20%">Nom</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            </thead>
 
-        <tbody>
-            <tr class="impair">
-                <td>{{ director.fullname }}</td>
+            <tbody>
+                {% for member in committee %}
+                    <tr class="
+                        {% if loop.index is divisibleby(2) %}
+                            pair
+                        {% else %}
+                            impair
+                        {% endif %}
+                    ">
+                        <td>{{ committeeRolesArray[member.committeeRole] }}</td>
 
-                <td><ul>
-                    {% for phoneNumber in director.phoneNumbers %}
-                        <li>{{ phoneNumber.number }}</li>
-                    {% endfor %}
-                </ul></td>
+                        <td>{{ member.fullname }}</td>
 
-                <td><ul>
-                    {% for emailAddress in director.emailAddresses %}
-                        <li>{{ emailAddress.address|converturls() }}</li>
-                    {% endfor %}
-                </ul></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <h2>Les professeurs</h2>
-    <table class="listing">
-        <thead>
-            <tr><th width="20%">Nom</th> <th width="20%">Cours</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
-        </thead>
+                        <td><ul>
+                            {% for phoneNumber in member.phoneNumbers %}
+                                <li>{{ phoneNumber.number }}</li>
+                            {% endfor %}
+                        </ul></td>
 
-        <tbody>
-            {% for teacher in teachers %}
-                <tr class="
-                    {% if loop.index is divisibleby(2) %}
-                        pair
-                    {% else %}
-                        impair
-                    {% endif %}
-                ">
-                    <td>{{ teacher.fullname }}</td>
+                        <td><ul>
+                            {% for emailAddress in member.emailAddresses %}
+                                <li>{{ emailAddress.address|converturls() }}</li>
+                            {% endfor %}
+                        </ul></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-                    <td><ul>
-                        {% for cursus in teacher.courses %}
-                            <li>{{ cursus.name }}</li>
-                        {% endfor %}
-                    </ul></td>
+        <h2>Le chef de musique</h2>
+        <table class="listing">
+            <thead>
+                <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            </thead>
+
+            <tbody>
+                <tr class="impair">
+                    <td>{{ director.fullname }}</td>
 
                     <td><ul>
-                        {% for phoneNumber in teacher.phoneNumbers %}
+                        {% for phoneNumber in director.phoneNumbers %}
                             <li>{{ phoneNumber.number }}</li>
                         {% endfor %}
                     </ul></td>
 
                     <td><ul>
-                        {% for emailAddress in teacher.emailAddresses %}
+                        {% for emailAddress in director.emailAddresses %}
                             <li>{{ emailAddress.address|converturls() }}</li>
                         {% endfor %}
                     </ul></td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <h2>Le webmaster</h2>
-    <table class="listing">
-        <thead>
-            <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
-        </thead>
+            </tbody>
+        </table>
 
-        <tbody>
-            <tr class="impair">
-                <td>{{ webmaster.fullname }}</td>
+        <h2>Les professeurs</h2>
+        <table class="listing">
+            <thead>
+                <tr><th width="20%">Nom</th> <th width="20%">Cours</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            </thead>
 
-                <td><ul>
-                    {% for phoneNumber in webmaster.phoneNumbers %}
-                        <li>{{ phoneNumber.number }}</li>
-                    {% endfor %}
-                </ul></td>
+            <tbody>
+                {% for teacher in teachers %}
+                    <tr class="
+                        {% if loop.index is divisibleby(2) %}
+                            pair
+                        {% else %}
+                            impair
+                        {% endif %}
+                    ">
+                        <td>{{ teacher.fullname }}</td>
 
-                <td><ul>
-                    {% for emailAddress in webmaster.emailAddresses %}
-                        <li>{{ emailAddress.address|converturls() }}</li>
-                    {% endfor %}
-                </ul></td>
-            </tr>
-        </tbody>
-    </table>
+                        <td><ul>
+                            {% for cursus in teacher.courses %}
+                                <li>{{ cursus.name }}</li>
+                            {% endfor %}
+                        </ul></td>
+
+                        <td><ul>
+                            {% for phoneNumber in teacher.phoneNumbers %}
+                                <li>{{ phoneNumber.number }}</li>
+                            {% endfor %}
+                        </ul></td>
+
+                        <td><ul>
+                            {% for emailAddress in teacher.emailAddresses %}
+                                <li>{{ emailAddress.address|converturls() }}</li>
+                            {% endfor %}
+                        </ul></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Le webmaster</h2>
+        <table class="listing">
+            <thead>
+                <tr><th width="30%">Nom</th>  <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th></tr>
+            </thead>
+
+            <tbody>
+                <tr class="impair">
+                    <td>{{ webmaster.fullname }}</td>
+
+                    <td><ul>
+                        {% for phoneNumber in webmaster.phoneNumbers %}
+                            <li>{{ phoneNumber.number }}</li>
+                        {% endfor %}
+                    </ul></td>
+
+                    <td><ul>
+                        {% for emailAddress in webmaster.emailAddresses %}
+                            <li>{{ emailAddress.address|converturls() }}</li>
+                        {% endfor %}
+                    </ul></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 {% endblock %}

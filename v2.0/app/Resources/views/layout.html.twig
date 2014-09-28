@@ -22,7 +22,7 @@
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div id="header">
+        <header>
             <table>
                 <tr>
                     <td id="logo">
@@ -35,9 +35,9 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </header>
             
-        <div id="left_part">
+        <nav>
             {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 
             <a href="{{ path('home') }}" {% if currentRoute == path('home') %}class="selected"{% endif %}>Accueil</a></li>
@@ -57,7 +57,7 @@
                     <a href="{{ path('wm_home') }}" {% if '/wm/' in currentRoute %}class="selected"{% endif %}>Webmastering</a></li>
                 {% endif %}
             {% endif %}
-        </div>
+        </nav>
         
         <div id="connect">
         {#

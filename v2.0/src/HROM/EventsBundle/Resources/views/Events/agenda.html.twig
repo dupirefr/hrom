@@ -13,10 +13,14 @@
 {% block header_title %}Agenda{% if eventsList is defined %} : Evénements du {{ calendar.date|date('d/m/Y') }}{% endif %}{% endblock %}
 
 {% block body %}
-    L'agenda ci-dessous vous permet de prendre connaissance des différentes activités organisées par l'Harmonie de Malonne. Vous pouvez naviguer de mois en mois et d'année en année.
-    Les dates marquées en rouge sont celles lors desquelles des événements se déroulent. Cliquez dessus pour obtenir plus d'information.
-    
-    <div id="agenda">
+    <section id="page-description">
+        <p>
+            L'agenda ci-dessous vous permet de prendre connaissance des différentes activités organisées par l'Harmonie de Malonne. Vous pouvez naviguer de mois en mois et d'année en année.
+            Les dates marquées en rouge sont celles lors desquelles des événements se déroulent. Cliquez dessus pour obtenir plus d'information.
+        </p>
+    </section>
+   
+    <section id="agenda">
         <div class="error">
             <ul>
                 {% for message in app.session.flashbag.get('error') %}
@@ -76,5 +80,5 @@
         </table>
             
         <div id="today"><a href="{{ path('events_calendar') }}" class="btn">Aujourd'hui</a></div>
-    </div>
+    </section>
 {% endblock %}

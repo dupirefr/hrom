@@ -15,13 +15,15 @@
 {% block header_title %}Liens{% endblock %}
 
 {% block body %}
-    L'Harmonie est en contact et partenariat avec diverses sociétés et associations. Vous trouverez quelques informations utiles concernant ces dernières sur cette page.
+    <section id="page-description">
+        <p>L'Harmonie est en contact et partenariat avec diverses sociétés et associations. Vous trouverez quelques informations utiles concernant ces dernières sur cette page.</p>
+    </section>
     
-    <div id="partners">
+    <section id="partners">
         {% for partner in partnersList %}
             {% include "HROMPartnerBundle:Partner:partner.html.twig" %}
         {% endfor %}
-    </div>
+    </section>
 
     {% set page = app.request.get('page') %}
     {% set navRoute = 'partners_all' %}
