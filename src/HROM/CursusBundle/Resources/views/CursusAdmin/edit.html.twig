@@ -1,0 +1,20 @@
+{#
+    Cursus modification page
+
+    @author François Dupire
+#}
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Modifier un cours - {{ parent() }}{% endblock %}
+{% block meta_description %}Modification d'un cours existant.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hromcontacts/css/contact.css') }}" />
+{% endblock %}
+{% block header_title %}Modifier un cours{% endblock %}
+
+{% block body %}
+    {% set actionRouteParams = {'id' : app.request.get('id')} %}
+    {% include "HROMCursusBundle:CursusAdmin:form.html.twig" %}
+{% endblock %}

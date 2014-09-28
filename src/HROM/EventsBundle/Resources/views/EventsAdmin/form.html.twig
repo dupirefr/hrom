@@ -1,0 +1,39 @@
+{#
+    Event form
+
+    @author François Dupire
+#}
+{% form_theme form ':Form:form.html.twig' %}
+
+<form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form" novalidate>	
+    <div>Les champs marqués d'une astérisque (*) sont obligatoires.</div>
+    
+    <div class="error">{{ form_errors(form) }}</div>
+    
+    <fieldset>
+        <legend>Evénement</legend>
+        {{ form_row(form.object) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.time) }}
+       
+        <fieldset>
+            <legend>{{ form_label(form.address) }}</legend>
+            <span class="help">{{ form.address.vars.attr.help }}</span><br />
+            
+            {% set address = form.address %}
+            {% include 'HROMCoreBundle:Address:addressForm.html.twig' %}
+        </fieldset>
+        
+        <fieldset>
+            <legend>{{ form_label(form.picture) }}</legend>
+            
+            {% set picture = form.picture %}
+            {% include 'HROMCoreBundle:Picture:pictureForm.html.twig' %}
+        </fieldset>
+    </fieldset>
+	
+    {{ form_rest(form) }}
+
+    <div align="center"><input class="btn" type="submit" value="Enregistrer" /></div>
+</form>

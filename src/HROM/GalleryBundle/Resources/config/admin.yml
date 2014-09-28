@@ -1,0 +1,21 @@
+album_list:
+    path:	/album/{page}
+    defaults:	{ _controller: HROMGalleryBundle:GalleryAdmin:list, page: 1 }
+    requirements:
+        page:	(([1-9])+([0-9])*)
+
+album_add:
+    path: /album/add
+    defaults: { _controller: HROMGalleryBundle:GalleryAdmin:add }
+    
+album_edit:
+    path: /album/edit/{id}
+    defaults: { _controller: HROMGalleryBundle:GalleryAdmin:edit }
+    requirements:
+        id: \d+
+
+album_delete:
+    path:	/album/delete/{id}
+    defaults:	{ _controller: HROMGalleryBundle:GalleryAdmin:delete }
+    requirements:
+        id:	\d+

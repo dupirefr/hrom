@@ -1,0 +1,28 @@
+{#
+    News form
+
+    @author François Dupire
+#}
+{% form_theme form ':Form:form.html.twig' %}
+
+<form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form">	
+    <div>Les champs marqués d'une astérisque (*) sont obligatoires.</div>
+    
+    <div class="error">{{ form_errors(form) }}</div>
+    
+    <fieldset>
+        <legend>News</legend>
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+       
+        <fieldset>
+            <legend>{{ form_label(form.picture) }}</legend>
+            {% set picture = form.picture %}
+            {% include "HROMCoreBundle:Picture:pictureForm.html.twig" %}
+        </fieldset>
+    </fieldset>
+	
+    {{ form_rest(form) }}
+
+    <div align="center"><input class="btn" type="submit" value="Enregistrer" /></div>
+</form>

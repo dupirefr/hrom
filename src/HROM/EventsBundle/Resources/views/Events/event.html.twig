@@ -1,0 +1,32 @@
+{#
+    Little piece of HTML-TWIG for displaying an event
+
+    @author François Dupire
+#}
+<div class="event" id="event{{ event.id }}">
+    <h2>{{ event.object }}</h2>
+
+    {% if not (event.picture is empty) %}<img src="{{ asset(event.picture.path) }}" alt="{{ event.picture.alt }}" />{% endif %}
+
+    <p>
+        <h3>Quand ?</h3>
+        Le {{ event.date|date('d/m/Y') }}{% if not (event.time is empty) %} à {{ event.time|date('h:i') }}{% endif %}<br />
+    </p>
+        
+    <p>
+        <h3>Où ?</h3>
+        {% set address = event.address %}
+        {% if not (address is empty) %}
+            {% include "HROMCoreBundle:Address:address.html.twig" %}
+        {% else %}
+            Lieu indéterminé<br />
+        {% endif %}
+    </p>
+            
+    <p>
+        {% if not (event.description is empty) %}
+            <h3>Quoi ?</h3>
+            {{ event.description }}
+        {% endif %}
+    </p>
+</div>

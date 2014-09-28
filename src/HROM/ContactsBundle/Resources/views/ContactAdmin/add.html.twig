@@ -1,0 +1,27 @@
+{#
+    Contacts adding page
+
+    @author François Dupire
+#}
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Ajouter un contact - {{ parent() }}{% endblock %}
+{% block meta_description %}Ajout d'un nouveau contact.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hromcontacts/css/contact.css') }}" />
+{% endblock %}
+{% block header_title %}Ajouter un contact{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/hromcontacts/js/phones.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/hromcontacts/js/emails.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/hromcontacts/js/committeeRole.js') }}"></script>
+{% endblock %}
+    
+{% block body %}   
+    {% include "HROMContactsBundle:ContactAdmin:form.html.twig" %}
+{% endblock %}

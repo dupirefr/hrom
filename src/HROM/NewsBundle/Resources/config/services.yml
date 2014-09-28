@@ -1,0 +1,7 @@
+parameters:
+#    hrom_news.example.class: HROM\NewsBundle\Example
+
+services:
+#    hrom_news.example:
+#        class: %hrom_news.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,7 @@
+parameters:
+#    hrom_cursus.example.class: HROM\CursusBundle\Example
+
+services:
+#    hrom_cursus.example:
+#        class: %hrom_cursus.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

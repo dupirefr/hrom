@@ -1,0 +1,17 @@
+{#
+    Little piece of HTML-TWIG for displaying a mini-calender
+
+    @author François Dupire
+#}
+<div id="mini_agenda">
+    <table>
+        <caption>
+            {{ (calendar.date|date('F'))|trans }} {{ calendar.date|date('Y') }}
+        </caption>
+
+        <tr><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th></tr>
+
+        {% set cal = calendar.calendar %}
+        {% include 'HROMEventsBundle:Events:calendar.html.twig' %}
+    </table>
+</div>
