@@ -1,3 +1,0 @@
-contactus:
-    pattern:  /
-    defaults: { _controller: HROMContactsBundle:Contact:contactUs }

@@ -1,5 +1,0 @@
-news_all:
-    path:	/{page}
-    defaults:	{ _controller: HROMNewsBundle:News:all, page: 1 }
-    requirements:
-        page:	(([1-9])+([0-9])*)

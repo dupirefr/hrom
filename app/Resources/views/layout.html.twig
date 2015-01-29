@@ -1,0 +1,103 @@
+{#
+    Main layout
+
+    @author François Dupire
+#}
+
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>{% block title %}HROM{% endblock %}</title>
+        
+        <meta name="description" content="{% block meta_description %}{% endblock %}" />
+        
+        {% block stylesheets %}
+            <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/hromevents/css/events.css') }}" />
+        {% endblock %}
+        
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <table>
+                <tr>
+                    <td id="logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="logo" />
+                    </td>
+                    
+                    <td id="header_title">
+                        <h1>Harmonie Royale Ouvrière de Malonne</h1>
+                        <h2>{% block header_title %}{% endblock %}</h2>
+                    </td>
+                </tr>
+            </table>
+        </header>
+            
+        <nav>
+            {% set currentRoute = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+            <a href="{{ path('home') }}" {% if currentRoute == path('home') %}class="selected"{% endif %}>Accueil</a></li>
+            <a href="{{ path('school') }}" {% if currentRoute == path('school') %}class="selected"{% endif %}>Ecole de Musique</a></li>
+            <a href="{{ path('events_calendar') }}" {% if path('events_calendar') in currentRoute %}class="selected"{% endif %}>Agenda</a></li>
+            <a href="{{ path('album_all') }}" {% if path('album_all') in currentRoute %}class="selected"{% endif %}>Photos/Vidéos</a></li>
+            <a href="{{ path('contactus') }}" {% if currentRoute == path('contactus') %}class="selected"{% endif %}>Contacts</a></li>
+            <a href="{{ path('partners_all') }}" {% if currentRoute == path('partners_all') %}class="selected"{% endif %}>Liens</a></li>
+
+            {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_WEBMASTER") %}
+                <hr />
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a href="{{ path('admin_home') }}" {% if '/admin/' in currentRoute %}class="selected"{% endif %}>Administration</a></li>
+                {% endif %}
+
+                {% if is_granted("ROLE_WEBMASTER") %}
+                    <a href="{{ path('wm_home') }}" {% if '/wm/' in currentRoute %}class="selected"{% endif %}>Webmastering</a></li>
+                {% endif %}
+            {% endif %}
+        </nav>
+        
+        <div id="connect">
+        {#
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}" class="btn">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}" class="btn">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        #}
+        </div>
+
+        <div id="content">
+            <div id="main">
+                <div id="compact">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+
+            <div id="right_part">
+                {% block right_part %}
+                    <div align="center">
+                        <h1>News</h1>
+                        {{ render(controller("HROMNewsBundle:News:overview")) }}
+                        
+                        <h1><a href="{{ path('events_calendar') }}">Agenda</a></h1>
+                        {{ render(controller('HROMEventsBundle:Events:miniCalendar')) }}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+        
+        {% block javascripts %}
+            <script
+                type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+            >
+            </script>
+        {% endblock %}
+    </body>
+</html>

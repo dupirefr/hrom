@@ -1,3 +1,0 @@
-wm_home:
-    path:  /
-    defaults: { _controller: HROMWebmasterBundle:Webmaster:index }

@@ -1,6 +1,0 @@
-welcome:
-    path:  /
-    defaults: { _controller: HROMCoreBundle:Core:root }
-home:
-    path:	/home
-    defaults:	{ _controller: HROMCoreBundle:Core:index }

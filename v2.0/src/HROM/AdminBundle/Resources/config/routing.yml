@@ -1,3 +1,0 @@
-admin_home:
-    path:  /
-    defaults: { _controller: HROMAdminBundle:Admin:index }
