@@ -1,0 +1,7 @@
+parameters:
+#    hrom_webmaster.example.class: HROM\WebmasterBundle\Example
+
+services:
+#    hrom_webmaster.example:
+#        class: %hrom_webmaster.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

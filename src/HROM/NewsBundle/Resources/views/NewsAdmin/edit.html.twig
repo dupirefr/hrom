@@ -1,0 +1,19 @@
+{#
+    News modifying page
+
+    @author François Dupire
+#}
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Modifier une news - {{ parent() }}{% endblock %}
+{% block meta_description %}Modification d'une news existante.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/form.css') }}" />
+{% endblock %}
+{% block header_title %}Modifier une news{% endblock %}
+
+{% block body %}
+	{% set actionRouteParams = {'id' : app.request.get('id')} %}
+    {% include "HROMNewsBundle:NewsAdmin:form.html.twig" %}
+{% endblock %}

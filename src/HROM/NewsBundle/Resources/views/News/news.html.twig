@@ -1,0 +1,14 @@
+{#
+    Little piece of HTML-TWIG for displaying a news
+
+    @author François Dupire
+#}
+<div class="news" id="news{{ news.id }}">
+    <h2>{{ news.title }}</h2>
+
+    {% if not (news.picture is empty) %}<img src="{{ asset(news.picture.path) }}" alt="{{ news.picture.alt }}" />{% endif %}
+
+    <p>{{ news.content|converturls }}</p><br />
+
+    <p class="signature">Ecrit par {{ news.author.surname }} {{ news.author.givenName }} le {{ news.instant|date("d/m/Y à H:i") }}</p>
+</div>

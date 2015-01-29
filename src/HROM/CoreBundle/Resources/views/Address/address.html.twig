@@ -1,0 +1,8 @@
+{#
+    Little piece of HTML-TWIG for displaying an address
+
+    @author François Dupire
+#}
+{{ address.street }}{% if not (address.number is empty) %}, {{ address.number }}<br />{% endif %}
+{{ address.postalCode }}{% if not (address.city is empty) %} {{ address.city }}<br />{% endif %}
+{% if not (address.box is empty) %}Boîte {{ address.box }}{% endif %}

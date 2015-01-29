@@ -1,0 +1,11 @@
+album_all:
+    path:	/{page}
+    defaults:	{ _controller: HROMGalleryBundle:Gallery:all, page: 1 }
+    requirements:
+        page:	(([1-9])+([0-9])*)
+        
+album_select:
+    path: /album/{id}
+    defaults: { _controller: HROMGalleryBundle:Gallery:select, page: 1 }
+    requirements:
+        page:	(([1-9])+([0-9])*)

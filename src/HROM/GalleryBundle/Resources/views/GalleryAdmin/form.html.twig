@@ -1,0 +1,27 @@
+{#
+    Album form
+
+    @author François Dupire
+#}
+{% form_theme form ':Form:form.html.twig' %}
+
+<form action="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}" method="post" {{ form_enctype(form) }} class="form">
+    <div class="description"></div>
+    
+    <div class="error">{{ form_errors(form) }}</div>
+	
+    <div>Les champs marqués d'une astérisque (*) sont obligatoires.</div>
+    
+    <fieldset>
+        <legend>Album</legend>
+        
+        {{ form_label(form.name, "Nom") }} {{ form_widget(form.name, {attr : {size : 40} }) }} <span class="error">{{ form_errors(form.name) }}</span><br />
+        {{ form_label(form.year, "Année") }} {{ form_widget(form.year) }} <span class="error">{{ form_errors(form.year) }}</span><br />
+        {{ form_label(form.description, "Description") }} {{ form_widget(form.description, {attr : {cols : 50, rows : 5}}) }} <span class="error">{{ form_errors(form.description) }}</span><br />
+        {{ form_label(form.googleAlbumID, "Identifiant") }} {{ form_widget(form.googleAlbumID, {attr : {size : 50} }) }} <span class="error">{{ form_errors(form.googleAlbumID) }}</span><br />
+    </fieldset>
+	
+    {{ form_rest(form) }}
+
+    <div align="center"><input class="btn" type="submit" value="Enregistrer" /></div>
+</form>

@@ -1,0 +1,73 @@
+{#
+    Contacts list page
+
+    @author François Dupire
+#}
+{% extends "HROMAdminBundle::layout.html.twig" %}
+
+{% block title %}Liste des contacts - {{ parent() }}{% endblock %}
+{% block meta_description %}Liste des contacts.{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/list.css') }}" />
+{% endblock %}
+{% block header_title %}Liste des contacts{% endblock %}
+
+{% block body %}
+    <div align="right"><a href="{{ path('contact_add') }}" class="btn">Ajouter un contact</a></div>
+    
+    <div class="succeed">
+        <ul>
+            {% for message in app.session.flashbag.get('succeed') %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <table class="listing">
+        <thead>
+            <tr><th width="10%">Nom</th> <th width="10%">Prénom</th> <th width="15%">Adresse</th> <th width="20%">Téléphone(s)</th> <th width="25%">Email(s)</th> <th width="10%">Rôles</th> <th id="editColumn"></th> <th id="deleteColumn"></th></tr>
+        </thead>
+
+        <tbody>
+            {% for contact in contactsList %}
+                <tr class="
+                    {% if loop.index is divisibleby(2) %}
+                        pair
+                    {% else %}
+                        impair
+                    {% endif %}
+                ">
+                    <td>{{ contact.surname }}</td>
+                    <td>{{ contact.givenName }}</td>
+                    <td>
+                        {% set address = contact.address %}
+                        {% include('HROMCoreBundle:Address:address.html.twig') %}
+                    </td>
+                    <td><ul>
+                        {% for phoneNumber in contact.phoneNumbers %}
+                            <li>{{ phoneNumber.number }}</li>
+                        {% endfor %}
+                    </ul></td>
+                    <td><ul>
+                        {% for emailAddress in contact.emailAddresses %}
+                            <li>{{ emailAddress.address|converturls() }}</li>
+                        {% endfor %}
+                    </ul></td>
+                    <td><ul>
+                        {% for role in contact.roles %}
+                            <li>{{ rolesArray[role] }} {% if role == 'ROLE_COMMITTEE' %}({{ committeeRolesArray[contact.committeeRole] }}){% endif %}</li>
+                        {% endfor %}
+                    </ul></td>
+                    <td align="center"><a href="{{ path('contact_edit', {'id' : contact.id}) }}">Modif.</a></td>
+                    <td align="center"><a href="{{ path('contact_delete',{'id' : contact.id}) }}">Suppr.</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% set page = app.request.get('page') %}
+    {% set navRoute = 'contacts_list' %}
+
+    {% include '::listnav.html.twig' %}
+{% endblock %}
