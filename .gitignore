@@ -1,3 +1,8 @@
 .idea/
-bin/
+app/cache/
 app/logs/
+bin/
+vendor/
+
+composer.phar
+composer.lock
